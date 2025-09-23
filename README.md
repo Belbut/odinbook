@@ -1,24 +1,50 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Data Architecture
 
-Things you may want to cover:
+User: 
+  -email(string)
+  -password(string)
+  *has_one :Profile
+  *has_and_belongs_to_many: Posts AS Liked
+  *has_many :Posts
+  *has_many :Comments
+ 
 
-* Ruby version
 
-* System dependencies
+Profile:
+  -name(string) 
+  -birthday(date)
+  -profile photo(binary)
+  -background photo(binary)
+  -location(string)
+  *belong_to :User
+  
+--------
+Post:
+  -Body(Text)
+  *belongs_to :User As Author
+  *has_one :Annex
+  *has_and_belongs_to_many :Users As Likes
+  *has_many :Comments AS :Commentable
 
-* Configuration
+Annex:
+  *has_one :Video
+  *has_one :Image, AS :imageable
+  *belongs_to :Post
 
-* Database creation
+Image:
+  -File (binary)
+  -belongs_to: Imageable Poly:true
 
-* Database initialization
+Video:
+  -File (binary)
+  -belongs_to :Annex
 
-* How to run the test suite
+Comment:
+  -Body(Text)
+  *belongs_to :User AS Author
+  *belongs_to :Commentable
+  *has_many :replies AS :Commentable, class_name :Comment
+  
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
