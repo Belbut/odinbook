@@ -5,9 +5,9 @@ Data Architecture
 User: 
   -email(string)
   -password(string)
-  *has_one :Profile
-  *has_and_belongs_to_many: Posts AS Liked
-  *has_many :Posts
+  *has_one: Profile
+  *has_and_belongs_to_many: Posts AS Likes
+  *has_many: Posts
   *has_many :Comments
  
 
@@ -18,28 +18,29 @@ Profile:
   -profile photo(binary)
   -background photo(binary)
   -location(string)
-  *belong_to :User
+  *belong_to: User
+  *has_one: Profile_picture As Imageable class_name:Image
   
 --------
 Post:
   -Body(Text)
-  *belongs_to :User As Author
-  *has_one :Annex
+  *belongs_to: User As Author
+  *has_one: Annex
   *has_and_belongs_to_many :Users As Likes
   *has_many :Comments AS :Commentable
 
 Annex:
-  *has_one :Video
-  *has_one :Image, AS :imageable
-  *belongs_to :Post
+  *belongs_to: Post
+  *belongs to Attachable Poly:true
 
 Image:
   -File (binary)
-  -belongs_to: Imageable Poly:true
+  *belongs_to: Imageable Poly:true
+  *Has_one :Annex AS Attachable
 
 Video:
   -File (binary)
-  -belongs_to :Annex
+  *Has_one :Annex AS Attachable
 
 Comment:
   -Body(Text)
