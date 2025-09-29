@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   devise :confirmable, :trackable
 
-  devise :omniauthable, omniauth_providers: %i[facebook instagram github]
+  devise :omniauthable, omniauth_providers: %i[github]
 end
