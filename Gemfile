@@ -73,3 +73,5 @@ gem "omniauth-github", "~> 1.0"
 gem "omniauth-rails_csrf_protection", "~> 0.1.2"
 
 gem "faker", "~> 3.5"
+
+gem "rails-controller-testing", "~> 1.0"
