@@ -52,6 +52,7 @@ group :development, :test do
 
   gem "byebug", platform: :mri
   gem "rspec-rails", "~> 8.0.0"
+  gem "pry-byebug", "~> 3.11"
 end
 
 group :development do

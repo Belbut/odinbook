@@ -1,0 +1,9 @@
+john:
+  email: john@example.com
+  encrypted_password: "123456"
+  confirmed_at: <%= Time.current %>
+
+mary:
+  email: "mary@test.com"
+  encrypted_password: "123456"
+  confirmed_at: <%= Time.current %>
