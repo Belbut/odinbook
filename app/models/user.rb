@@ -7,4 +7,6 @@ class User < ApplicationRecord
   devise :confirmable, :trackable
 
   devise :omniauthable, omniauth_providers: %i[github]
+
+  has_one :profile, required: true
 end
