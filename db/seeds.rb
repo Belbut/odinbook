@@ -12,7 +12,10 @@
 test_user = User.new(
   email: "test@test.com",
   password: "123456",
-  password_confirmation: "123456"
+  password_confirmation: "123456",
+  profile_attributes: {
+    name: "Andre Belbut"
+  }
 )
 test_user.skip_confirmation!
 test_user.save!
@@ -21,7 +24,14 @@ test_user.save!
   mass_user = User.new(
     email: Faker::Internet.email,
     password: "123456",
-    password_confirmation: "123456"
+    password_confirmation: "123456",
+    profile_attributes: {
+      name: Faker::FunnyName.name,
+      birthday: Faker::Date.birthday(min_age: 0, max_age: 110),
+      # t.string :profile_photo TODO
+      # t.string :background_photo TODO
+      location: Faker::Address.city
+    }
   )
   mass_user.skip_confirmation!
   mass_user.save!

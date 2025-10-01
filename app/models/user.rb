@@ -9,4 +9,5 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: %i[github]
 
   has_one :profile, required: true
+  accepts_nested_attributes_for :profile
 end
