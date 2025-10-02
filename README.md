@@ -13,6 +13,7 @@ Data Architecture
     -email(string)
     -password(string)
     *has_one: Profile
+    *has_and_belongs_to_many: Users AS Friends
     *has_and_belongs_to_many: Posts AS Likes
     *has_many: Posts
     *has_many :Comments
