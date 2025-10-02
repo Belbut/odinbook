@@ -23,11 +23,13 @@
   </head>
 
   <body>
+    <%= debug(params)%>
     <nav>
       <% if user_signed_in? %>
-        <%= button_to("Sign Out", destroy_user_session_path, :method=>:delete) %>
+        <%= link_to "My Profile", user_profile_path(current_user)%>
+        <%= button_to "Sign Out", destroy_user_session_path, :method=>:delete %>
       <%else%>
-        <%=link_to("Sign In", new_user_session_path) %>
+        <%= link_to "Sign In", new_user_session_path %>
       <%end%>
     </nav>
 
