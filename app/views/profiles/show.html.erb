@@ -4,11 +4,11 @@
 <header>
     <nav>
         <ul>
-            <li><button>Feed</button></li>
+            <li><%=link_to image_tag "feed_icon.svg"%></li>
             <li><input type="text" name="profile_search" id="search_bar"></li>
-            <li><button>Message</button></li>
-            <li><button>Notif</button></li>
-            <li><button>Profile</button></li>
+            <li><%=link_to image_tag "message_icon.svg"%></li>
+            <li><%=link_to image_tag "notification_icon.svg"%></li>
+            <li><%=link_to image_tag "user_icon.svg"%></li>
         </ul>
     </nav>
 </header>
@@ -16,26 +16,27 @@
     <section>
         <div>
             <img src="" alt="Background Image">
-            <button>Edit Background</button>
+            <%=link_to image_tag("camera_icon.svg")+"Edit background"%>
         </div>
         <div>
             <div>
                 <img src="" alt="Profile Image">
-                <button>Change</button>
+                <%=link_to image_tag "camera_icon.svg"%>
             </div>
             <div>
-                <h1>Name</h1>
-                <a>Friends</a>
+                <h1><%=@profile.name%></h1>
+                <a><%=%>Friends</a>
             </div>
         </div>
-        <button>Edit Profile</button>
+
+        <%=link_to image_tag("edit_icon.svg") + "Edit Profile"%>
     </section>
     <div>
         <nav>
             <ul>
-                <li><button>Publication</button></li>
-                <li><button>Friends</button></li>
-                <li><button>Photos</button></li>                
+                <li><%= link_to "Publication"%></li>
+                <li><%= link_to "Friends"%></li>
+                <li><%= link_to "Photos"%></li>                
             </ul>
         </nav>
     </div>
@@ -43,29 +44,30 @@
     <section>
         <h2>Biography</h2>
         <ul>
-            <li>Location</li>
-            <li>Age</li>
-            <li>Joined</li>
+            <%= image_tag("local_icon.svg") + "From #{@profile.location}" if @profile.location%>
+            <%= image_tag("calendar_icon.svg") + "Birthday #{@profile.birthday}" if @profile.birthday%>
+            <%= image_tag("date_icon.svg") + "Joined #{@profile.created_at.to_date.to_fs(:short)}" if @profile.created_at%>
         </ul>
     </section>
 
     <section>
         <h2>Post</h2>
         <div>
-            <button>Profile</button>
-            <input type="text" name="" id="">
+            <%=link_to image_tag("user_icon.svg"), user_profile_path(@profile.user)%>
+            <input type="txt" name="" id="">
         </div>
         <div>
-            <button>Add</button>
-            <button>Tag</button>
-            <button>Submit</button>
+            <%=button_to image_tag "attach_icon.svg"%>
+            <%=button_to image_tag "tag_icon.svg"%>
+            <%=button_to "Post"%>
+
         </div>
     </section>
 
     <section>
         <div>
             <h2>Photos</h2>
-            <a href="">All Photos</a>
+            <%=link_to "View all photos"%>
         </div>
         <div>
             <img src="" alt="1" id="img1">
@@ -85,4 +87,4 @@
 </main>
 
 
-<footer></footer>
+<footer>Created by <%=link_to "André Belbut", "https://github.com/Belbut"%></footer>
