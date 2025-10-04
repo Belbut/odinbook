@@ -23,11 +23,10 @@ Data Architecture
   Profile:
     -name(string) 
     -birthday(date)
-    -profile photo(string)
-    -background photo(string)
     -location(string)
     *belong_to: User
-    *has_one: Profile_picture As Imageable class_name:Image
+    *has_one: avatar_picture As Imageable class_name:Image
+    *has_one: Background_picture As Imageable class_name:Image
     
   --------
   Post:
@@ -45,6 +44,8 @@ Data Architecture
     -File (string)
     *belongs_to: Imageable Poly:true
     *Has_one :Annex AS Attachable
+    *has_one_attached :file
+
 
   Video:
     -File (string)
