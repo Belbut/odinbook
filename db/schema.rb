@@ -53,7 +53,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_04_145904) do
   create_table "profiles", force: :cascade do |t|
     t.string "name", null: false
     t.date "birthday"
-    t.string "profile_photo"
+    t.string "avatar_photo"
     t.string "background_photo"
     t.string "location"
     t.bigint "user_id", null: false
