@@ -9,6 +9,13 @@
 #   end
 
 # require Faker
+# @message.images.attach(io: File.open("/path/to/file"), filename: "file.pdf")
+
+avatar_img = Default::Image.new(kind: :avatar)
+avatar_img.file.attach(io: File.open("app/assets/images/default_user_profile_picture.png"),
+                       filename: "default_avatar.png")
+avatar_img.save!
+
 test_user = User.new(
   email: "test@test.com",
   password: "123456",
