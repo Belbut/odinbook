@@ -5,9 +5,7 @@ class ProfilesController < ApplicationController
     @profile = user.profile
   end
 
-  def edit
-    nil
-  end
+  def edit; end
 
   def update; end
 

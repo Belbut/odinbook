@@ -16,6 +16,11 @@ avatar_img.file.attach(io: File.open("app/assets/images/default_user_profile_pic
                        filename: "default_avatar.png")
 avatar_img.save!
 
+background_img = Default::Image.new(kind: :background)
+background_img.file.attach(io: File.open("app/assets/images/default_user_background_picture.jpg"),
+                           filename: "default_background.png")
+background_img.save!
+
 test_user = User.new(
   email: "test@test.com",
   password: "123456",
