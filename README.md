@@ -58,3 +58,9 @@ Data Architecture
     *has_many :replies AS :Commentable, class_name :Comment
 
 
+This app uses Active Storage with `libvips` for image processing.
+
+Install `libvips` before running the server:
+
+- macOS: `brew install vips`
+- Ubuntu/Debian: `sudo apt install libvips libvips-dev`
