@@ -1,2 +1,31 @@
 <h1>Profiles#edit</h1>
 <p>Find me in app/views/profiles/edit.html.erb</p>
+
+<header></header>
+<main>
+    <h1>Edit Profile</h1>
+
+    <%= form_with model: @profile do |form|%>
+    <section>
+        <h2>Profile photo</h2>
+    </section>
+
+    <section>
+        <h2>Background photo</h2>
+    </section>
+
+    <section>
+        <h2>Bibliography</h2>
+        <%= form.label :name%>
+        <%= form.text_field :name%>
+
+        <%= form.label :birthday %>
+        <%= form.date_field :birthday %>
+
+        <%= form.label :location%>
+        <%= form.text_field :location%>
+    </section>
+    <%=form.submit %>
+    <%end%>
+</main>
+<footer></footer>
