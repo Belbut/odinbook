@@ -68,7 +68,7 @@ end
 
 gem "devise", "~> 4.9"
 
-gem "omniauth-github", "~> 1.0"
+gem "omniauth-github", "~> 2.0"
 
 gem "omniauth-rails_csrf_protection", "~> 0.1.2"
 
