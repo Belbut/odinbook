@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_21_150759) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_21_155359) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -40,6 +40,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_21_150759) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.string "annexable_type"
+    t.bigint "annexable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["annexable_type", "annexable_id"], name: "index_attachments_on_annexable"
+    t.index ["post_id"], name: "index_attachments_on_post_id"
   end
 
   create_table "default_images", force: :cascade do |t|
@@ -99,8 +109,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_21_150759) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "attachments", "posts"
   add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"
 end

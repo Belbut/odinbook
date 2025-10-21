@@ -32,7 +32,7 @@ Data Architecture
   Post:
     -Body(Text)
     *belongs_to: User As Author
-    *has_one: Attachments
+    *has_many: Attachments
 
     *has_and_belongs_to_many :Users As Likes
     *has_many :Comments AS :Commentable
