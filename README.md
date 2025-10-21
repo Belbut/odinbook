@@ -32,24 +32,25 @@ Data Architecture
   Post:
     -Body(Text)
     *belongs_to: User As Author
-    *has_one: Annex
+    *has_one: Attachments
+
     *has_and_belongs_to_many :Users As Likes
     *has_many :Comments AS :Commentable
 
-  Annex:
+  Attachment:
     *belongs_to: Post
-    *belongs to Attachable Poly:true
+    *belongs to Annexable Poly:true
 
   Image:
-    -File (string)
+    -has_one_attached file
     *belongs_to: Imageable Poly:true
-    *Has_one :Annex AS Attachable
-    *has_one_attached :file
+
+    *Has_one :Attachment AS Annexable
 
 
   Video:
-    -File (string)
-    *Has_one :Annex AS Attachable
+    -has_one_attached file
+    *Has_one :Attachment AS Annexable
 
   Comment:
     -Body(Text)
