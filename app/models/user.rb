@@ -10,4 +10,6 @@ class User < ApplicationRecord
 
   has_one :profile, required: true
   accepts_nested_attributes_for :profile
+
+  has_many :posts
 end
