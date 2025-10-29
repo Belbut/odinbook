@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:index] do
     resource :profile, only: %i[show]
+    resources :posts, only: %i[index]
   end
 
   resource :profile, only: %i[edit update]
+  resources :posts, only: %i[show new create edit update destroy]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
