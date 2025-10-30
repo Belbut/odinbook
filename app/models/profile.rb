@@ -7,6 +7,15 @@ class Profile < ApplicationRecord
   normalizes :birthday, with: ->(birthday) { birthday.empty? ? nil : birthday }
   normalizes :location, with: ->(location) { location.empty? ? nil : location }
 
+  def avatar
+    avatar_or_default
+  end
+
+  def background
+    background_or_default
+  end
+
+  private
   def avatar_or_default
     record = avatar_photo || ::Default::Image.find_by(kind: "avatar")
     record.file

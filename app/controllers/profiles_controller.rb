@@ -1,8 +1,8 @@
 class ProfilesController < ApplicationController
   before_action :load_profile, only: %i[edit update]
   def show
-    user = User.find(profile_params)
-    @profile = user.profile
+    @user = User.find(profile_params)
+    @profile = @user.profile
   end
 
   def edit; end

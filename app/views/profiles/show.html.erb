@@ -8,19 +8,19 @@
             <li><input type="text" name="profile_search" id="search_bar"></li>
             <li><%=link_to image_tag "message_icon.svg"%></li>
             <li><%=link_to image_tag "notification_icon.svg"%></li>
-            <li><%=link_to image_tag @profile.avatar_or_default.representation(resize_to_fill: [40, 40])%></li>
+            <li><%=render partial: "avatar_link", locals: {user: current_user}%></li>
         </ul>
     </nav>
 </header>
 <main>
     <section>
         <div>
-            <%=image_tag @profile.background_or_default.representation(resize_to_fill:[1250,600])%>
+            <%=image_tag @profile.background.representation(resize_to_fill:[1250,600])%>
             <%=link_to image_tag("camera_icon.svg")+"Edit background"%>
         </div>
         <div>
             <div>
-                <%= image_tag @profile.avatar_or_default.representation(resize_to_fill: [170, 170]) %>
+                <%= image_tag @profile.avatar.representation(resize_to_fill: [170, 170]) %>
                 <%=link_to image_tag "camera_icon.svg"%>
             </div>
             <div>
@@ -53,7 +53,7 @@
     <section>
         <h2>Post</h2>
         <div>
-            <%=link_to image_tag @profile.avatar_or_default.representation(resize_to_fill: [40, 40])%>
+            <%=render partial: "avatar_link", locals: {user: current_user}%>
             <input type="txt" name="" id="">
         </div>
         <div>
