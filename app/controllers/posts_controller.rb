@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
-  def index; end
+  def index
+    @author = User.find(user_params)
+    @author_profile = @author.profile
+    @posts = @author.posts
+  end
 
   def show; end
 
@@ -12,4 +16,14 @@ class PostsController < ApplicationController
   def update; end
 
   def destroy; end
+
+  private
+
+  def user_params
+    params.expect(:user_id)
+  end
+
+  def post_params
+    params.expect(:id)
+  end
 end
