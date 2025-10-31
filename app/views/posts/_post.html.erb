@@ -7,11 +7,23 @@
         </div>
         <div><%= post.updated_at.to_date.to_fs(:long_ordinal)%></div>
     </section>
-    <section>
+    <section class="content">
         <div><%=post.body%></div>
         <%preview_attachments(post).each_with_index do |attachment, index| %>
             <%= attachment.representation %>
             <%= not_displayed_attachments(post) if index == 4 %>
         <%end%>
+    </section>
+    <section class="interact">
+       <span>Number of reactions</span>
+       <%=button_to "Like"%>
+       <%=button_to "Comment"%>
+       <%=button_to "Share"%>
+    </section>
+    <section class="comment">
+        <span><%= render  partial: "profiles/avatar_link", locals: { user: current_user } %></span>
+        <span>Comment</span>
+        <input type="textarea">
+        <input type="button" value="send">
     </section>
 </div>
