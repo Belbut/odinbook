@@ -7,9 +7,19 @@ class PostsController < ApplicationController
 
   def show; end
 
-  def new; end
+  def new
+    @post = current_user.posts.new
+  end
 
-  def create; end
+  def create
+    @post = current_user.posts.new(post_params)
+
+    if @post.save
+      redirect_to @post
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
 
   def edit; end
 
@@ -24,6 +34,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.expect(:id)
+    params.expect(post: %i[body])
   end
 end

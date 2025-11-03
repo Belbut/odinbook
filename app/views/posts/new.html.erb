@@ -1,2 +1,9 @@
 <h1>Posts#new</h1>
 <p>Find me in app/views/posts/new.html.erb</p>
+
+<%= form_with model: @post do |post_form| %>
+    <%= post_form.hidden_field :title, value: "Type of Post" %>
+    <div><%= post_form.text_area :body, maxlength: 500, placeholder: "What do you want to share?" %></div>
+
+    <div><%= post_form.submit "Publish" %></div>
+<% end %>
