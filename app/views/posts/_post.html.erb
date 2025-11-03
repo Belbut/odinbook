@@ -1,24 +1,26 @@
 <div class="post">
-    <section class= "heading" >
+    <section class="heading">
         <div>
             <span><%= render  partial: "profiles/avatar_link", locals: { user: post.author } %></span>
-            <span><%= link_to(post.author.profile.name, user_profile_path(post.author))%></span>
+            <span><%= link_to(post.author.profile.name, user_profile_path(post.author)) %></span>
             <span> Post Title </span>
         </div>
-        <div><%= post.updated_at.to_date.to_fs(:long_ordinal)%></div>
+        <div><%= post.updated_at.to_date.to_fs(:long_ordinal) %></div>
     </section>
     <section class="content">
-        <div><%=post.body%></div>
-        <%preview_attachments(post).each_with_index do |attachment, index| %>
+        <div><%= post.body %></div>
+        <% preview_attachments(post).each_with_index do |attachment, index| %>
             <%= attachment.representation %>
             <%= not_displayed_attachments(post) if index == 4 %>
-        <%end%>
+        <% end %>
     </section>
     <section class="interact">
        <span>Number of reactions</span>
-       <%=button_to "Like"%>
-       <%=button_to "Comment"%>
-       <%=button_to "Share"%>
+       <div>
+           <%= button_to "Like" %>
+           <%= button_to "Comment" %>
+           <%= button_to "Share" %>
+       </div>
     </section>
     <section class="comment">
         <span><%= render  partial: "profiles/avatar_link", locals: { user: current_user } %></span>

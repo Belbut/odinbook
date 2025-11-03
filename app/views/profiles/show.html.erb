@@ -4,39 +4,39 @@
 <header>
     <nav>
         <ul>
-            <li><%=link_to image_tag "feed_icon.svg"%></li>
+            <li><%= link_to image_tag "feed_icon.svg" %></li>
             <li><input type="text" name="profile_search" id="search_bar"></li>
-            <li><%=link_to image_tag "message_icon.svg"%></li>
-            <li><%=link_to image_tag "notification_icon.svg"%></li>
-            <li><%=render partial: "avatar_link", locals: {user: current_user}%></li>
+            <li><%= link_to image_tag "message_icon.svg" %></li>
+            <li><%= link_to image_tag "notification_icon.svg" %></li>
+            <li><%= render partial: "avatar_link", locals: {user: current_user} %></li>
         </ul>
     </nav>
 </header>
 <main>
     <section>
         <div>
-            <%=image_tag @profile.background.representation(resize_to_fill:[1250,600])%>
-            <%=link_to image_tag("camera_icon.svg")+"Edit background"%>
+            <%= image_tag @profile.background.representation(resize_to_fill:[1250,600]) %>
+            <%= link_to image_tag("camera_icon.svg")+"Edit background" %>
         </div>
         <div>
             <div>
                 <%= image_tag @profile.avatar.representation(resize_to_fill: [170, 170]) %>
-                <%=link_to image_tag "camera_icon.svg"%>
+                <%= link_to image_tag "camera_icon.svg" %>
             </div>
             <div>
-                <h1><%=@profile.name%></h1>
-                <a><%=%>Friends</a>
+                <h1><%= @profile.name %></h1>
+                <a><%= %>Friends</a>
             </div>
         </div>
 
-        <%=link_to image_tag("edit_icon.svg") + "Edit Profile", edit_profile_path %>
+        <%= link_to image_tag("edit_icon.svg") + "Edit Profile", edit_profile_path %>
     </section>
     <div>
         <nav>
             <ul>
-                <li><%= link_to "Publications"%></li>
-                <li><%= link_to "Friends"%></li>
-                <li><%= link_to "Photos"%></li>                
+                <li><%= link_to "Publications" %></li>
+                <li><%= link_to "Friends" %></li>
+                <li><%= link_to "Photos" %></li>
             </ul>
         </nav>
     </div>
@@ -44,22 +44,22 @@
     <section>
         <h2>Biography</h2>
         <ul>
-            <%= image_tag("local_icon.svg") + "From #{@profile.location}" if @profile.location%>
-            <%= image_tag("calendar_icon.svg") + "Birthday #{@profile.birthday}" if @profile.birthday%>
-            <%= image_tag("date_icon.svg") + "Joined #{@profile.created_at.to_date.to_fs(:short)}" if @profile.created_at%>
+            <%= image_tag("local_icon.svg") + "From #{@profile.location}" if @profile.location %>
+            <%= image_tag("calendar_icon.svg") + "Birthday #{@profile.birthday}" if @profile.birthday %>
+            <%= image_tag("date_icon.svg") + "Joined #{@profile.created_at.to_date.to_fs(:short)}" if @profile.created_at %>
         </ul>
     </section>
 
     <section>
         <h2>Post</h2>
         <div>
-            <%=render partial: "avatar_link", locals: {user: current_user}%>
+            <%= render partial: "avatar_link", locals: {user: current_user} %>
             <input type="txt" name="" id="">
         </div>
         <div>
-            <%=button_to image_tag "attach_icon.svg"%>
-            <%=button_to image_tag "tag_icon.svg"%>
-            <%=button_to "Post"%>
+            <%= button_to image_tag "attach_icon.svg" %>
+            <%= button_to image_tag "tag_icon.svg" %>
+            <%= button_to "Post" %>
 
         </div>
     </section>
@@ -67,7 +67,7 @@
     <section>
         <div>
             <h2>Photos</h2>
-            <%=link_to "View all photos"%>
+            <%= link_to "View all photos" %>
         </div>
         <div>
             <img src="" alt="1" id="img1">
@@ -86,5 +86,4 @@
     </section>
 </main>
 
-
-<footer>Created by <%=link_to "André Belbut", "https://github.com/Belbut"%></footer>
+<footer>Created by <%= link_to "André Belbut", "https://github.com/Belbut" %></footer>

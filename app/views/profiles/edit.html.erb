@@ -5,7 +5,7 @@
 <main>
     <h1>Edit Profile</h1>
 
-    <%= form_with model: @profile do |form|%>
+    <%= form_with model: @profile do |form| %>
     <section>
         <h2>Profile photo</h2>
     </section>
@@ -16,16 +16,16 @@
 
     <section>
         <h2>Bibliography</h2>
-        <%= form.label :name%>
-        <%= form.text_field :name%>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
 
         <%= form.label :birthday %>
         <%= form.date_field :birthday %>
 
-        <%= form.label :location%>
-        <%= form.text_field :location%>
+        <%= form.label :location %>
+        <%= form.text_field :location %>
     </section>
-    <%=form.submit %>
-    <%end%>
+    <%= form.submit %>
+    <% end %>
 </main>
 <footer></footer>
