@@ -1,8 +1,8 @@
 <div class="post">
     <section class= "heading" >
         <div>
-            <span><%= render  partial: "profiles/avatar_link", locals: { user: post_author } %></span>
-            <span><%= link_to(profile.name, user_profile_path(post_author))%></span>
+            <span><%= render  partial: "profiles/avatar_link", locals: { user: post.author } %></span>
+            <span><%= link_to(post.author.profile.name, user_profile_path(post.author))%></span>
             <span> Post Title </span>
         </div>
         <div><%= post.updated_at.to_date.to_fs(:long_ordinal)%></div>

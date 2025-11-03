@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
   def index
-    @author = User.find(user_params)
-    @author_profile = @author.profile
-    @posts = @author.posts
+    author = User.find(user_params)
+    @posts = author.posts
   end
 
-  def show; end
+  def show
+    @post = Post.find(params[:id])
+    @author = @post.author
+  end
 
   def new
     @post = current_user.posts.new
@@ -34,6 +36,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.expect(post: %i[body])
+    params.expect(post: %i[body attachments])
   end
 end
