@@ -14,10 +14,12 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
+    shared_files = params[:post][:files]
 
-    @attachment = @post.attachments.new
-    @img = Image.new(file: params[:post][:file])
-    @attachment.annexable = @img
+    shared_files.each do |file|
+      img = Image.new(file: file)
+      @post.attachments.build(annexable: img)
+    end
 
     if @post.save
       redirect_to @post
