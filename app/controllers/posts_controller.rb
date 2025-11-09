@@ -15,6 +15,10 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
 
+    @attachment = @post.attachments.new
+    @img = Image.new(file: params[:post][:file])
+    @attachment.annexable = @img
+
     if @post.save
       redirect_to @post
     else
@@ -35,6 +39,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.expect(post: %i[body attachments])
+    params.expect(post: %i[body])
   end
 end

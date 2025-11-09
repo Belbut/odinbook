@@ -10,7 +10,7 @@
     <section class="content">
         <div><%= post.body %></div>
         <% preview_attachments(post).each_with_index do |attachment, index| %>
-            <%= attachment.representation %>
+            <%= image_tag attachment.annexable.file.representation(resize_to_limit: [400, 400]) %>
             <%= not_displayed_attachments(post) if index == 4 %>
         <% end %>
     </section>
