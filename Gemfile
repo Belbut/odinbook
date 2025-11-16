@@ -61,6 +61,8 @@ group :development do
   gem "solargraph"
   gem "solargraph-rails"
   gem "web-console"
+  gem 'solargraph'
+  gem 'solargraph-rails'
 end
 
 group :test do
