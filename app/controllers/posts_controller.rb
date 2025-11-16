@@ -14,12 +14,9 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    shared_files = params[:post][:files]
 
-    shared_files.each do |file|
-      img = Image.new(file: file)
-      @post.attachments.build(annexable: img)
-    end
+    added_files = params[:post][:added_files]
+    @post.attach_files(added_files)
 
     if @post.save
       redirect_to @post
@@ -28,9 +25,19 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @post = current_user.posts.find(params[:id])
+  end
 
-  def update; end
+  def update
+    @post = current_user.posts.find(params[:id])
+
+    added_files = params[:post][:added_files]
+    @post.attach_files(added_files)
+
+    @post.update(post_params)
+    redirect_to @post
+  end
 
   def destroy; end
 

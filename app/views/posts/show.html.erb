@@ -2,3 +2,4 @@
 <p>Find me in app/views/posts/show.html.erb</p>
 
 <%= render @post %>
+<%= link_to "Edit" , edit_post_path(@post) if @post.author == current_user %>
