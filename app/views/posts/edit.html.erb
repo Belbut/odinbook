@@ -7,10 +7,9 @@
     <% @post.attachments.each_with_index do |attachment, index| %>
         <div>
             <%= image_tag attachment.annexable.file.representation(resize_to_limit: [250,250]) %>
-            <%= link_to "Delete Image #{index}" %>
+            <%= link_to "Delete", post_attachment_path(@post, attachment), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
         </div>
     <% end %>
-
     <div><%= form.file_field :added_files, multiple: true, include_hidden: false %></div>
 
     <%= form.submit "Save" %>

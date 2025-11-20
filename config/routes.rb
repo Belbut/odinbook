@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   end
 
   resource :profile, only: %i[edit update]
-  resources :posts, only: %i[show new create edit update destroy]
+  resources :posts, only: %i[show new create edit update destroy] do
+    resources :attachments, only: %i[destroy]
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
