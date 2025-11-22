@@ -2,6 +2,7 @@
 <p>Find me in app/views/posts/index.html.erb</p>
 
 <% @posts.each do |post| %>
+    <% puts "printing post #{post.id} **************************************************************** \n " %>
     <%= render partial: post %>
     <div>---------------------------</div>
 <% end %>
