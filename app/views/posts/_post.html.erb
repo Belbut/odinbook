@@ -8,13 +8,13 @@
         <div><%= post.updated_at.to_date.to_fs(:long_ordinal) %></div>
     </section>
     <section class="content">
-        <div><%= post.body %></div>
         <% preview_attachments(post).each_with_index do |attachment, index| %>
             <% if attachment.annexable.present? && attachment.annexable.file.representable? %>
                 <%= image_tag attachment.annexable.file.representation(resize_to_limit: [300, 300]) %>
             <% end %>
             <%= not_displayed_attachments(post) if index == 4 %>
         <% end %>
+        <div><%= post.body %></div>
     </section>
     <section class="interact">
        <span>Number of reactions</span>
@@ -22,6 +22,7 @@
            <%= button_to "Like" %>
            <%= button_to "Comment" %>
            <%= button_to "Share" %>
+           <%= link_to "Edit Post", edit_post_path(post) if post.author == current_user %>
        </div>
     </section>
     <section class="comment">

@@ -1,5 +1,4 @@
 module PostsHelper
-
   def not_displayed_attachments(post)
     "#{post.attachments.size - 5} More" if post.attachments.size > 5
   end

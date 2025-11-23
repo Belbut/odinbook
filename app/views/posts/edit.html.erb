@@ -13,5 +13,5 @@
     <div><%= form.file_field :added_files, multiple: true, include_hidden: false %></div>
 
     <%= form.submit "Save" %>
-
+    <%= link_to "Delete Post", @post, data: {turbo_method: :delete} %>
 <% end %>
