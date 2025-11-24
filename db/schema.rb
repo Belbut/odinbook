@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_21_155359) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_23_162720) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -50,6 +50,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_21_155359) do
     t.datetime "updated_at", null: false
     t.index ["annexable_type", "annexable_id"], name: "index_attachments_on_annexable"
     t.index ["post_id"], name: "index_attachments_on_post_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "body"
+    t.bigint "user_id", null: false
+    t.string "commentable_type", null: false
+    t.bigint "commentable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "default_images", force: :cascade do |t|
@@ -117,6 +128,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_21_155359) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "attachments", "posts"
+  add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"
 end
