@@ -28,7 +28,12 @@
     <section class="comment">
         <span><%= render  partial: "profiles/avatar_link", locals: { user: current_user } %></span>
         <span>Comment</span>
-        <input type="textarea">
-        <input type="button" value="send">
+        <div>
+            <%= form_with model: Comment.new do |form| %>
+                <%= form.hidden_field :post_id, value: post.id %>
+                <%= form.textarea :body, size: "100x10" %>
+                <%= form.submit "Leave a comment" %>
+            <% end %>
+        </div>
     </section>
 </div>
