@@ -1,8 +1,7 @@
-<div class="post">
     <section class="heading">
         <div>
             <span><%= render  partial: "profiles/avatar_link", locals: { user: post.author } %></span>
-            <span><%= link_to(post.author.profile.name, user_profile_path(post.author)) %></span>
+                <span><%= link_to(post.author.profile.name, user_profile_path(post.author)) %></span>
             <span> Post Title </span>
         </div>
         <div><%= post.updated_at.to_date.to_fs(:long_ordinal) %></div>
@@ -25,28 +24,3 @@
            <%= link_to "Edit Post", edit_post_path(post) if post.author == current_user %>
        </div>
     </section>
-    <section class="comments">
-        <div class="view">
-            <% post.comments.first(5).each do |comment| %>
-                <div>
-                    <%= render partial: "profiles/avatar_link", locals: {user: comment.author } %>
-                    <%= comment.body %>
-                    <%= button_to "Like" %>
-                    <%= button_to "Reply" %>
-                    <%= link_to "Edit Comment", edit_comment_path(comment) if comment.author == current_user %>
-                </div>
-            <% end %>
-        </div>
-        <div class="add">
-            <span><%= render  partial: "profiles/avatar_link", locals: { user: current_user } %></span>
-            <span>Comment</span>
-            <div>
-                <%= form_with model: Comment.new do |form| %>
-                    <%= form.hidden_field :post_id, value: post.id %>
-                    <%= form.textarea :body, size: "100x10" %>
-                    <%= form.submit "Leave a comment" %>
-                <% end %>
-            </div>
-        </div>
-    </section>
-</div>
