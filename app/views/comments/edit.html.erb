@@ -1,2 +1,11 @@
 <h1>Comments#edit</h1>
 <p>Find me in app/views/comments/edit.html.erb</p>
+
+<span><%= render  partial: "profiles/avatar_link", locals: { user: current_user } %></span>
+<span>Comment</span>
+<div>
+    <%= form_with model: @comment do |form| %>
+        <%= form.textarea :body, size: "100x10" %>
+        <%= form.submit "Edit comment" %>
+    <% end %>
+</div>
