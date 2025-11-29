@@ -1,8 +1,7 @@
 <h1>Posts#show</h1>
 <p>Find me in app/views/posts/show.html.erb</p>
-
 <div class="post">
-   <%= render @post %>
+    <%= render @post %>
     <section class="comments">
         <div class="view">
             <% @post.comments.first(5).each do |comment| %>
@@ -15,16 +14,6 @@
                 </div>
             <% end %>
         </div>
-        <div class="add">
-            <span><%= render  partial: "profiles/avatar_link", locals: { user: current_user } %></span>
-            <span>Comment</span>
-            <div>
-                <%= form_with model: Comment.new do |form| %>
-                    <%= form.hidden_field :post_id, value: @post.id %>
-                    <%= form.textarea :body, size: "100x10" %>
-                    <%= form.submit "Leave a comment" %>
-                <% end %>
-            </div>
-        </div>
+        <%= render "comments/comment_form", locals: { post: @post} %>
     </section>
 </div>
