@@ -1,7 +1,7 @@
+*************************
 <section class="heading">
     <div>
-        <span><%= render  partial: "profiles/avatar_link", locals: { user: post.author } %></span>
-        <span><%= link_to(post.author.profile.name, user_profile_path(post.author)) %></span>
+        <%= render "profiles/user_identity_header", user: post.author %>
         <span> Post Title </span>
     </div>
     <div><%= post.updated_at.to_date.to_fs(:long_ordinal) %></div>
@@ -26,3 +26,4 @@
         <%= link_to "Edit Post", edit_post_path(post) if post.author == current_user %>
     </div>
 </section>
+*************************
