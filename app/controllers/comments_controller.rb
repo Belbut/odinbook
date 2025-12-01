@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
-  def show; end
+  def show
+    @comment = Comment.find(params[:id])
+  end
 
   def new; end
 
@@ -10,7 +12,6 @@ class CommentsController < ApplicationController
 
     if @comment.save # TODO: filter if the user doesnt have rights to comment
       redirect_to post
-
     else
       render post, status: :unprocessable_entity # TODO: warning message and keep body
     end

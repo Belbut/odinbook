@@ -1,0 +1,7 @@
+<div>
+    <%= render partial: "profiles/avatar_link", locals: {user: comment.author } %>
+    <%= comment.body %>
+    <%= button_to "Like" %>
+    <%= button_to "Reply" %>
+    <%= link_to "Edit Comment", edit_comment_path(comment) if comment.author == current_user %>
+</div>
