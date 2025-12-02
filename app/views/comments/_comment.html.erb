@@ -1,6 +1,6 @@
+<% class_append ||= "" %>
 
-
-<div class=<%= "comment" %>>
+<div class=<%= "comment" + class_append %>>
     <div><%= render "profiles/user_identity_header", user: comment.author %></div>
     <%= comment.body %>
     <div class="reactions">
