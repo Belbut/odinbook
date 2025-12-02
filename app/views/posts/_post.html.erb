@@ -21,15 +21,7 @@
             <div><%= post.body %></div>
         </section>
 
-        <section class="interact">
-            <span>Number of reactions</span>
-            <div>
-                <%= button_to "Like" %>
-                <%= button_to "Comment" %>
-                <%= button_to "Share" %>
-                <%= link_to "Edit Post", edit_post_path(post) if post.author == current_user %>
-            </div>
-        </section>
+        <%= render "shared/interaction", component: post %>
     </div>
 </div>
 *************************
