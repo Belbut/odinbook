@@ -1,0 +1,6 @@
+
+<%= render thread_node %>
+
+<% thread_node.replies do |reply| %>
+    <% render "comments/replies_thread", thread_node: reply , child_depth: child_depth + 1 %>
+<% end %>

@@ -1,6 +1,10 @@
 <h1>Comments#edit</h1>
 <p>Find me in app/views/comments/edit.html.erb</p>
 
+<div class="comment_parent">
+    <%= render "comments/parent_thread", thread_pointer: @comment.parent %>
+</div>
+
 <span><%= render  partial: "profiles/avatar_link", locals: { user: current_user } %></span>
 <span>Comment</span>
 <div>

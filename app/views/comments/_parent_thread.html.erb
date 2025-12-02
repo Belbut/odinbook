@@ -1,0 +1,3 @@
+<%= render partial: "comments/parent_thread", locals: { thread_node: thread_node.parent } unless thread_node.is_a?(Post) %>
+
+<%= render thread_node %>

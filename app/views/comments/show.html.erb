@@ -1,6 +1,16 @@
 <h1>Comments#show</h1>
 <p>Find me in app/views/comments/show.html.erb</p>
 
-<div class="parent thread">add parent thread</div>
-<%= render @comment %>
-<div class="replies thread"> add replies</div>
+<div class="parent thread">
+    <%= render "comments/parent_thread", thread_node: @comment.parent %>
+</div>
+<div class="main_comment">
+    ------------------------------
+    <%= render @comment %>
+    ------------------------------
+</div>
+<div class="replies thread">
+    <% @comment.replies.each do |reply| %>
+        <%= render "comments/replies_thread", thread_node: reply %>
+    <% end %>
+</div>
