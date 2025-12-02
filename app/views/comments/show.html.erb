@@ -1,16 +1,18 @@
 <h1>Comments#show</h1>
 <p>Find me in app/views/comments/show.html.erb</p>
 
-<div class="parent thread">
+<section class="parent thread">
     <%= render "comments/parent_thread", thread_node: @comment.parent %>
-</div>
-<div class="focused_comment">
+</section>
+
+<section class="focused_comment">
     ------------------------------
     <%= render @comment %>
     ------------------------------
-</div>
-<div class="replies thread">
+</section>
+
+<section class="replies thread">
     <% @comment.replies.each do |reply| %>
-        <%= render "comments/replies_thread", thread_node: reply %>
+        <%= render_commentable_children(reply, 0) %>
     <% end %>
-</div>
+</section>
