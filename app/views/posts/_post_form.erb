@@ -1,6 +1,6 @@
 <%= form_with model: @post do |post_form| %>
     <%= post_form.hidden_field :title, value: "Type of Post" %>
-    <div><%= post_form.text_area :body, maxlength: 500, placeholder: "What do you want to share?" %></div>
+    <div><%= post_form.textarea :body, size: "100x10", placeholder: "What do you want to share?" %></div>
     <div><%= post_form.file_field :added_files, multiple: true, include_hidden: false %></div>
     <div><%= post_form.submit "Publish" %></div>
 <% end %>

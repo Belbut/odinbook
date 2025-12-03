@@ -2,14 +2,14 @@
 <p>Find me in app/views/comments/edit.html.erb</p>
 
 <div class="comment_parent">
-    <%= render "comments/parent_thread", thread_pointer: @comment.parent %>
+    <%= render "comments/parent_thread", thread_node: @comment.parent %>
 </div>
 
 <span><%= render  partial: "profiles/avatar_link", locals: { user: current_user } %></span>
 <span>Comment</span>
 <div>
     <%= form_with model: @comment do |form| %>
-        <%= form.textarea :body, size: "100x10" %>
-        <%= form.submit "Edit comment" %>
+        <div><%= form.textarea :body, size: "100x10" %></div>
+        <div><%= form.submit "Edit comment" %></div>
     <% end %>
 </div>

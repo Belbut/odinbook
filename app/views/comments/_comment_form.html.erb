@@ -1,10 +1,10 @@
 <div class="comments">
-    <span><%= render  partial: "profiles/avatar_link", locals: { user: current_user } %></span>
+    <%= render "profiles/user_identity_header", user:current_user %>
     <span>Comment</span>
     <div>
         <%= form_with model: Comment.new do |form| %>
             <%= form.hidden_field :post_id, value: post.id %>
-            <%= form.textarea :body, size: "100x10" %>
+            <%= form.textarea :body, size: "100x10", placeholder: "Add your comment" %>
             <%= form.submit "Leave a comment" %>
         <% end %>
     </div>

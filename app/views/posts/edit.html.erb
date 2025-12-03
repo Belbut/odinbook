@@ -2,7 +2,7 @@
 <p>Find me in app/views/posts/edit.html.erb</p>
 
 <%= form_with model: @post do |form| %>
-    <%= form.text_area :body, maxlength: 500 %>
+    <%= form.text_area :body,size:"100x10", maxlength: 500 %>
 
     <% @post.attachments.each_with_index do |attachment, index| %>
         <div>
