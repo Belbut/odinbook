@@ -5,9 +5,10 @@
     <section class="comments">
         <div class="view">
             <% @post.comments.first(5).each do |comment| %>
+                <%# TODO: handle render of more than 5 comments%>
                 <%= render comment %>
             <% end %>
         </div>
-        <%= render "comments/comment_form", post: @post %>
+        <%= render "comments/comment_form", post: @post unless @post.deleted? %>
     </section>
 </div>
