@@ -2,7 +2,7 @@
 <p>Find me in app/views/posts/edit.html.erb</p>
 
 <%= form_with model: @post do |form| %>
-    <%= form.text_area :body,size:"100x10", maxlength: 500 %>
+    <%= form.text_area :body, size:"100x10", maxlength: 500 %>
 
     <% @post.attachments.each_with_index do |attachment, index| %>
         <div>
@@ -13,5 +13,5 @@
     <div><%= form.file_field :added_files, multiple: true, include_hidden: false %></div>
 
     <%= form.submit "Save" %>
-    <%= link_to "Delete Post", @post, data: {turbo_method: :delete} %>
+    <%= link_to "Delete Post", @post, data: {turbo_method: :delete, turbo_confirm: "Sure you want to delete your post?"} %>
 <% end %>

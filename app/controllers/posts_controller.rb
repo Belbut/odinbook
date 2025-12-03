@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :limit_deleted_usage, only: %i[edit update destroy]
   def index
     author = User.find(user_params)
     @posts = author.posts
@@ -42,11 +43,24 @@ class PostsController < ApplicationController
   def destroy
     @post = current_user.posts.find(params[:id])
 
-    @post.destroy
-    redirect_to user_posts_path(current_user)
+    if @post.update(deleted: true)
+      flash[:alert] = "The post deleted, but the thread is still alive"
+      redirect_to @post
+    else
+      flash.now[:alert] = @post.errors.full_messages.to_sentence
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
+
+  def limit_deleted_usage
+    @post = current_user.posts.find(params[:id])
+
+    return unless @post.deleted?
+
+    redirect_to @post
+  end
 
   def user_params
     params.expect(:user_id)
