@@ -11,5 +11,6 @@
     <%= form_with model: @comment do |form| %>
         <div><%= form.textarea :body, size: "100x10" %></div>
         <div><%= form.submit "Edit comment" %></div>
+        <%= link_to "Delete Comment", @comment, data: {turbo_method: :delete, turbo_confirm: "Sure you want to delete your comment?" } %>
     <% end %>
 </div>

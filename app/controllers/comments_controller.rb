@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :limit_deleted_usage, only: %i[edit update destroy]
   def show
     @comment = Comment.find(params[:id])
   end
@@ -32,11 +33,24 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @comment = current_user.comments.find(params[:id])
+    @comment.update(deleted: true)
+
+    redirect_to @comment
+  end
 
   private
 
   def comment_params
     params.expect(comment: [:body])
+  end
+
+  def limit_deleted_usage
+    @comment = current_user.comments.find(params[:id])
+
+    return unless @comment.deleted?
+
+    redirect_to @comment
   end
 end

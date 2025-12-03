@@ -2,11 +2,13 @@
     <% if defined?(class_append) %>
         <div class="<%= class_append %>">
     <% end %>
-
-        <%= render "profiles/user_identity_header", user: comment.author %>
-        <%= comment.body %>
-        <%= render "shared/interaction", component: comment %>
-
+        <% if comment.deleted? %>
+            <div> This is a fragment of time, this comment was deleted </div>
+        <% else %>
+            <%= render "profiles/user_identity_header", user: comment.author %>
+            <%= comment.body %>
+            <%= render "shared/interaction", component: comment %>
+        <% end %>
     <% if defined?(class_append) %>
         </div>
     <% end %>

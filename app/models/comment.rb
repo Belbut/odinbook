@@ -6,4 +6,8 @@ class Comment < ApplicationRecord
   alias parent commentable
 
   has_many :replies, class_name: "Comment", as: :commentable
+
+  def deleted?
+    deleted == true
+  end
 end
