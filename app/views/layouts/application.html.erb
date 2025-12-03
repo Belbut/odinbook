@@ -33,8 +33,10 @@
       <% end %>
     </nav>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p class="notice" style="color:yellow;"><%= notice %></p>
+    <p class="alert" style="color:red"><%= alert %></p>
+    <%= debug(params) %>
+
     <%= yield %>
   </body>
 </html>
