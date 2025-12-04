@@ -13,6 +13,6 @@
 
 <section class="replies thread">
     <% @comment.replies.each do |reply| %>
-        <%= render_commentable_children(reply, 0) %>
+        <%= render_thread_from(reply) %>
     <% end %>
 </section>
