@@ -4,17 +4,8 @@
         <%= deleted_content(post) %>
     <% else %>
         <%= render "shared/heading", content: post %>
-        
-        <section class="content">
-            <% preview_attachments(post).each_with_index do |attachment, index| %>
-                <% if attachment.annexable.present? && attachment.annexable.file.representable? %>
-                    <%= image_tag attachment.annexable.file.representation(resize_to_limit: [300, 300]) %>
-                <% end %>
-                <%= not_displayed_attachments(post) if index == 4 %>
-                <%# TODO: handle render of more than 5 attachments %>
-            <% end %>
-            <div><%= post.body %></div>
-        </section>
+
+        <%= render "shared/content", content: post %>
 
         <%= render "shared/interaction", component: post %>
     <% end %>
