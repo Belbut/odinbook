@@ -4,8 +4,6 @@
     <% if comment.deleted? %>
         <% render_deleted_content(comment) %>
     <% else %>
-        <%= render "profiles/user_identity_header", user: comment.author %>
-        <%= comment.body %>
-        <%= render "shared/interaction", component: comment %>
+        <%= render_visible_content(comment) %>
     <% end %>
 </div>
