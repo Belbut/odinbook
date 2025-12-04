@@ -1,6 +1,7 @@
 module PostsHelper
   def render_attachments_preview(post)
-    safe_join([render_first_attachments_preview(post), render_amount_not_previewed(post)])
+    attachments = safe_join([render_first_attachments_preview(post), render_amount_not_previewed(post)])
+    content_tag(:div, attachments, class: "attachments")
   end
 
   private

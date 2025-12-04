@@ -1,3 +1,4 @@
+<%# partial parameters: comment[Comment] ; optional: class_append[String]%>
 
 <div class="comment <%= class_append if defined?(class_append) %>">
     <% if comment.deleted? %>

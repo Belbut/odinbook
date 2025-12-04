@@ -1,3 +1,5 @@
+<%# partial parameters: post[Post] ; optional: class_append[String]%>
+
 *************************
 <div class="post <%= class_append if defined?(class_append) %>">
     <% if post.deleted? %>
