@@ -1,7 +1,7 @@
 
 <div class="comment <%= class_append if defined?(class_append) %>">
     <% if comment.deleted? %>
-        <div> This is a fragment of time, this comment was deleted </div>
+        <% deleted_content(comment) %>
     <% else %>
         <%= render "profiles/user_identity_header", user: comment.author %>
         <%= comment.body %>

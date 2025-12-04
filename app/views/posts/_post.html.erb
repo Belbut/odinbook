@@ -1,28 +1,22 @@
 *************************
 <div class="post <%= class_append if defined?(class_append) %>">
     <% if post.deleted? %>
-                <div> This is a fragment of time, this post was deleted </div>
+        <%= deleted_content(post) %>
     <% else %>
-    <section class="heading">
-        <div>
-            <%= render "profiles/user_identity_header", user: post.author %>
-            <span> Post Title </span>
-        </div>
-        <div><%= post.updated_at.to_date.to_fs(:long_ordinal) %></div>
-    </section>
-
-    <section class="content">
-        <% preview_attachments(post).each_with_index do |attachment, index| %>
-            <% if attachment.annexable.present? && attachment.annexable.file.representable? %>
-                <%= image_tag attachment.annexable.file.representation(resize_to_limit: [300, 300]) %>
+        <%= render "shared/heading", content: post %>
+        
+        <section class="content">
+            <% preview_attachments(post).each_with_index do |attachment, index| %>
+                <% if attachment.annexable.present? && attachment.annexable.file.representable? %>
+                    <%= image_tag attachment.annexable.file.representation(resize_to_limit: [300, 300]) %>
+                <% end %>
+                <%= not_displayed_attachments(post) if index == 4 %>
+                <%# TODO: handle render of more than 5 attachments %>
             <% end %>
-            <%= not_displayed_attachments(post) if index == 4 %>
-            <%# TODO: handle render of more than 5 attachments %>
-        <% end %>
-        <div><%= post.body %></div>
-    </section>
+            <div><%= post.body %></div>
+        </section>
 
-    <%= render "shared/interaction", component: post %>
+        <%= render "shared/interaction", component: post %>
     <% end %>
 </div>
 *************************
