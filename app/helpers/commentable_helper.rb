@@ -9,7 +9,7 @@ module CommentableHelper
     current_node + children_nodes.join.html_safe
   end
 
-  def deleted_content(content)
+  def render_deleted_content(content)
     content_tag(:div, "This is a fragment of time, this #{content.class.name} was deleted")
   end
 end

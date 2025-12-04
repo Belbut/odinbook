@@ -1,12 +1,10 @@
 *************************
 <div class="post <%= class_append if defined?(class_append) %>">
     <% if post.deleted? %>
-        <%= deleted_content(post) %>
+        <%= render_deleted_content(post) %>
     <% else %>
         <%= render "shared/heading", content: post %>
-
         <%= render "shared/content", content: post %>
-
         <%= render "shared/interaction", component: post %>
     <% end %>
 </div>
