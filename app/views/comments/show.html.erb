@@ -2,17 +2,13 @@
 <p>Find me in app/views/comments/show.html.erb</p>
 
 <section class="parent thread">
-    <%= render "comments/parent_thread", thread_node: @comment.parent %>
+    <%= render "commentable/parent_thread", thread_node: @comment.parent %>
 </section>
 
-<section class="focused_comment">
+<section class="focused_content">
     ------------------------------
     <%= render @comment %>
     ------------------------------
 </section>
 
-<section class="replies thread">
-    <% @comment.replies.each do |reply| %>
-        <%= render_thread_from(reply) %>
-    <% end %>
-</section>
+<%= render_replies_tree(@comment) %>

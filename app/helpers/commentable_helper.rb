@@ -11,13 +11,21 @@ module CommentableHelper
               ])
   end
 
-  def render_thread_from(commentable_node, children_depth = 0)
-    current_node = render(commentable_node, class_append: "child_depth_#{children_depth}")
+  def render_replies_tree(content)
+    trees = render_tree_from(content, render_first_node: false)
+
+    content_tag(:section, trees, class: "replies tree")
+  end
+
+  private
+
+  def render_tree_from(commentable_node, children_depth = 0, render_first_node: true)
+    current_node = render(commentable_node, class_append: "child_depth_#{children_depth}") if render_first_node
 
     children_nodes = commentable_node.replies.map do |reply|
-      render_thread_from(reply, children_depth + 1)
+      render_tree_from(reply, children_depth + 1)
     end
 
-    safe_join([current_node, children_nodes])
+    safe_join([current_node, children_nodes].compact)
   end
 end

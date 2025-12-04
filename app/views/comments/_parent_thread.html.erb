@@ -1,4 +1,0 @@
-<% parent_depth ||= -1 %>
-<%= render partial: "comments/parent_thread", locals: { thread_node: thread_node.parent, parent_depth: parent_depth-1 } unless thread_node.is_a?(Post) %>
-
-<%= render thread_node, class_append: "parent_depth_#{parent_depth}" %>
