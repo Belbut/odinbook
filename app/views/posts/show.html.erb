@@ -6,4 +6,4 @@
 
 <%= render_replies_tree(@post) %>
 
-<%= render "comments/comment_form", post: @post unless @post.deleted? %>
+<%= render "comments/comment_form", parent_content: @post  unless @post.deleted? %>
