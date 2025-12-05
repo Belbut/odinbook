@@ -5,7 +5,7 @@
     <span>Comment</span>
     <div>
         <%= form_with model: parent_content.replies.new do |form| %>
-            <%= form.hidden_field parent_content.class.name.underscore.to_s, value: parent_content.id %> <%# TODO: extract to helper%>
+            <%= form.hidden_field id_param_for(parent_content), value: parent_content.id %>
             <%= form.textarea :body, size: "100x10", placeholder: "Add your comment" %>
             <%= form.submit "Leave a comment" %>
         <% end %>
