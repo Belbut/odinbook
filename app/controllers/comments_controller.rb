@@ -4,9 +4,12 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  def new; end
+  def new
+    @comment = parent_content.replies.new(author: current_user)
+  end
 
   def create
+    # TODO: create comment with a parent comment
     post = Post.find(params[:comment][:post_id])
     @comment = post.comments.new(comment_params)
     @comment.author = current_user
@@ -52,5 +55,12 @@ class CommentsController < ApplicationController
     return unless @comment.deleted?
 
     redirect_to @comment
+  end
+
+  def parent_content
+    return Comment.find(params[:comment_id]) if params[:comment_id]
+    return Post.find(params[:post_id]) if params[:post_id]
+
+    raise "error"
   end
 end

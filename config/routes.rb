@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # TODO: refactor routes with concerns. maybe write a personal blog post about it.
+
   devise_for :users
   resources :users, only: [:index] do
     resource :profile, only: %i[show]
@@ -6,12 +8,15 @@ Rails.application.routes.draw do
   end
 
   resource :profile, only: %i[edit update]
+
   resources :posts, only: %i[show new create edit update destroy] do
     resources :attachments, only: %i[destroy]
+    resources :comments, only: [:new], as: "reply"
   end
 
-  resources :comments, except: [:index]
-
+  resources :comments, except: %i[new index] do
+    resources :comments, only: [:new], as: "reply"
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

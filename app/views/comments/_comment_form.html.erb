@@ -1,11 +1,11 @@
-<%# partial parameters: parent_content:[Post, Comment] ; optional: nil %>
+<%# partial parameters: comment:[Comment] ; optional: nil %>
 
 <div class="comments">
     <%= render "profiles/user_identity_header", user:current_user %>
     <span>Comment</span>
     <div>
-        <%= form_with model: parent_content.replies.new do |form| %>
-            <%= form.hidden_field id_param_for(parent_content), value: parent_content.id %>
+        <%= form_with model: comment do |form| %>
+            <%= form.hidden_field id_param_for(comment.parent), value: comment.parent.id %>
             <%= form.textarea :body, size: "100x10", placeholder: "Add your comment" %>
             <%= form.submit "Leave a comment" %>
         <% end %>
