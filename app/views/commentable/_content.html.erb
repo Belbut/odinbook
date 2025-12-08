@@ -1,6 +1,6 @@
 <%# partial parameters: content[Post,Comment]%>
 
 <section class="content">
-    <%= render_attachments_preview(content) if content.respond_to?(:attachments) %>
     <div class="body"> <%= content.body %> </div>
+    <%= render_attachments_preview(content) if content.respond_to?(:attachments) %>
 </section>

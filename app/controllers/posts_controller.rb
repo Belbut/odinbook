@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :limit_deleted_usage, only: %i[edit update destroy]
   def index
     author = User.find(user_params)
-    @posts = author.posts
+    @posts = author.posts.active.order(created_at: :desc)
   end
 
   def show

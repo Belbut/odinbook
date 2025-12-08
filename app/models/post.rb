@@ -8,6 +8,9 @@ class Post < ApplicationRecord
   # Alias used only for polymorphic abstractions. use replies comments when post is the only type.
   alias replies comments
 
+  scope :active, -> { where(deleted: false) }
+  scope :deleted, -> { where(deleted: true) }
+
   def attach_files(files_params)
     return if files_params.nil?
 

@@ -1,6 +1,6 @@
 module CommentableHelper
   def render_deleted_content(content)
-    content_tag(:div, "This is a fragment of time, this #{content.class.name} was deleted")
+    content_tag(:div, "This is a fragment of time, this #{content.model_name} was deleted")
   end
 
   def render_visible_content(content)
