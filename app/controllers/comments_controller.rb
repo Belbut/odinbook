@@ -61,6 +61,8 @@ class CommentsController < ApplicationController
     return Comment.find(params[:comment_id]) if params[:comment_id]
     return Post.find(params[:post_id]) if params[:post_id]
 
+    # return Post.find(params[:comments][:post_id]) if params[:comments][:post_id]
+
     raise "error"
   end
 end

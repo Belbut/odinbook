@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comment = @post.comments.new(author: current_user)
+    @comment = Comment.new(commentable: @post, author: current_user)
   end
 
   def new
