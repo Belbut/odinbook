@@ -17,6 +17,12 @@ module CommentableHelper
     content_tag(:section, trees, class: "replies tree")
   end
 
+  def edit_link_for(content)
+    return unless content.author == current_user
+
+    link_to "Edit #{content.model_name}", edit_polymorphic_path(content)
+  end
+
   private
 
   def render_tree_from(commentable_node, children_depth = 0, render_first_node: true)

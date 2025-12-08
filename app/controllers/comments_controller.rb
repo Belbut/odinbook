@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.find(params[:id])
 
     if @comment.update(comment_params)
-      render @comment
+      redirect_to @comment
     else
       flash.now[:alert] = @comment.errors.full_messages.to_sentence
       render :edit, status: :unprocessable_entity

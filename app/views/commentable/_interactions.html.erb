@@ -4,9 +4,8 @@
     <span>Number of reactions</span><%#TODO: after creating model for reactions bind this%>
     <div>
         <%= button_to "Like" %>
-        <%= button_to "Comment" %>
+        <%= button_to "Reply" %>
         <%= button_to "Share" %>
-        <%= link_to "Edit #{content.class.name}", send("edit_#{content.class.to_s.underscore}_path",content) if content.author == current_user %>
-        <%# TODO extract this logic to a helper method %>
+        <%= edit_link_for content %>
     </div>
 </section>
