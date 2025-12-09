@@ -53,6 +53,9 @@ group :development, :test do
   gem "byebug", platform: :mri
   gem "pry-byebug", "~> 3.11"
   gem "rspec-rails", "~> 8.0.0"
+
+  gem "better_errors", "~> 2.10"
+  gem "binding_of_caller", "~> 1.0"
 end
 
 group :development do
@@ -61,8 +64,6 @@ group :development do
   gem "solargraph"
   gem "solargraph-rails"
   gem "web-console"
-  gem 'solargraph'
-  gem 'solargraph-rails'
 end
 
 group :test do

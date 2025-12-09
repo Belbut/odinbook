@@ -80,6 +80,10 @@ GEM
     bcrypt (3.1.20)
     bcrypt_pbkdf (1.1.1)
     benchmark (0.4.1)
+    better_errors (2.10.1)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
+      rouge (>= 1.0.0)
     better_html (2.1.1)
       actionview (>= 6.0)
       activesupport (>= 6.0)
@@ -89,6 +93,8 @@ GEM
       smart_properties
     bigdecimal (3.2.3)
     bindex (0.8.1)
+    binding_of_caller (1.0.1)
+      debug_inspector (>= 1.2.0)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
     brakeman (7.1.0)
@@ -112,6 +118,7 @@ GEM
     debug (1.11.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    debug_inspector (1.2.0)
     devise (4.9.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -240,7 +247,6 @@ GEM
     parser (3.3.9.0)
       ast (~> 2.4.1)
       racc
-    pg (1.6.2)
     pg (1.6.2-x86_64-linux)
     pp (0.6.2)
       prettyprint
@@ -321,6 +327,7 @@ GEM
     reverse_markdown (3.0.0)
       nokogiri
     rexml (3.4.4)
+    rouge (4.6.1)
     rspec-core (3.13.5)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
@@ -430,7 +437,6 @@ GEM
       railties (>= 6.0.0)
     stringio (3.1.7)
     thor (1.4.0)
-    thruster (0.1.15)
     thruster (0.1.15-x86_64-linux)
     tilt (2.6.1)
     timeout (0.4.3)
@@ -471,6 +477,8 @@ PLATFORMS
   x86_64-linux-gnu
 
 DEPENDENCIES
+  better_errors (~> 2.10)
+  binding_of_caller (~> 1.0)
   bootsnap
   brakeman
   byebug
