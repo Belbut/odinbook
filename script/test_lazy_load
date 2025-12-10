@@ -1,0 +1,1345 @@
+Started GET "/users/71/posts" for ::1 at 2025-12-10 17:16:59 +0000
+  ActiveRecord::SchemaMigration Load (0.5ms)  SELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Odinbook'*/
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"71"}
+  User Load (0.4ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/controllers/posts_controller.rb:13:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Post Load (0.8ms)  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 71 AND "posts"."deleted" = FALSE ORDER BY "posts"."created_at" DESC /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/views/posts/index.html.erb:4
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  Profile Load (0.3ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Image Load (0.3ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  Default::Image Load (0.3ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  ActiveStorage::Attachment Load (0.4ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  ActiveStorage::Blob Load (0.3ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 154.1ms | GC: 87.4ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 154.7ms | GC: 87.4ms)
+  Rendered commentable/_heading.html.erb (Duration: 158.5ms | GC: 87.4ms)
+  Attachment Load (0.5ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 75 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 75 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 8.4ms | GC: 0.0ms)
+  User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/commentable_helper.rb:21:in `edit_link_for'
+  Rendered commentable/_interactions.html.erb (Duration: 9.2ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 177.4ms | GC: 87.4ms)
+  CACHE User Load (0.1ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 6.6ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 6.9ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 8.4ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 74 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 74 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 3.0ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 12.6ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.1ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 6.2ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 6.5ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 7.6ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 73 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 73 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 4.0ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 1.1ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 13.2ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 5.2ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 5.4ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 6.6ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 71 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Image Load (0.3ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 102 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.3ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 102 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 215 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 71 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 16.7ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 24.3ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 4.0ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 4.2ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 5.2ms | GC: 0.0ms)
+  Attachment Load (0.2ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 70 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Image Load (0.2ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 101 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.3ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 101 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 214 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 70 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 8.3ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 1.0ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 14.9ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 4.0ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 4.2ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 5.7ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 69 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 69 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 3.2ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 1.0ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 10.3ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 4.9ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 5.1ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 6.7ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 68 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Image Load (0.1ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 95 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.2ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 95 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.1ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 204 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.2ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 96 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.3ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 96 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 205 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.3ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 97 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.2ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 97 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 206 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.2ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 98 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.3ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 98 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 207 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.2ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 99 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.3ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 99 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.3ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 208 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 68 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  CACHE Attachment Count (0.0ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 68
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 32.5ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 1.0ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 40.8ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.1ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 6.9ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 7.2ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 8.6ms | GC: 0.0ms)
+  Attachment Load (0.4ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 67 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Image Load (0.2ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 90 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.2ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 90 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 199 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.1ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 91 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.1ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 91 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 200 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.2ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 92 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.3ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 92 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 201 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.2ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 93 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.2ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 93 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 202 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.2ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 94 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.2ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 94 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.1ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 203 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 67 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 30.3ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 40.1ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 6.0ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 6.1ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 7.6ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 66 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Image Load (0.2ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 85 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.3ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 85 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 194 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.1ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 86 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.1ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 86 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.1ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 195 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.2ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 87 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.3ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 87 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 196 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.2ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 88 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.2ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 88 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 197 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.2ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 89 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.4ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 89 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.1ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 198 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Attachment Count (0.1ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 66 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 37.0ms | GC: 13.4ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.9ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 45.8ms | GC: 13.4ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 5.6ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 5.8ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 7.1ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 65 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Image Load (0.2ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 80 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.4ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 80 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.1ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 189 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.1ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 81 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.2ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 81 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 190 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.1ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 82 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.2ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 82 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 191 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.1ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 83 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.1ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 83 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.1ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 192 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Image Load (0.2ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 84 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.2ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 84 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.1ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 193 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 65 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 27.2ms | GC: 1.8ms)
+  Rendered commentable/_interactions.html.erb (Duration: 1.2ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 36.9ms | GC: 2.6ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 7.0ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 7.2ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 8.9ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 64 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Image Load (0.1ms)  SELECT "images".* FROM "images" WHERE "images"."id" = 79 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Attachment Load (0.2ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 79 AND "active_storage_attachments"."record_type" = 'Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  ActiveStorage::Blob Load (0.3ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 187 LIMIT 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:13:in `block in render_first_attachments_preview'
+  Attachment Count (0.4ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 64 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 10.2ms | GC: 0.7ms)
+  Rendered commentable/_interactions.html.erb (Duration: 1.1ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 20.8ms | GC: 0.7ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 5.0ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 5.2ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 6.2ms | GC: 0.0ms)
+  Attachment Load (0.2ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 46 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 46 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 3.0ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 1.1ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 10.6ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 7.0ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 7.1ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 10.5ms | GC: 1.3ms)
+  Attachment Load (0.2ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 45 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.1ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 45 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 1.8ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 13.4ms | GC: 1.3ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.4ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 3.6ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 4.7ms | GC: 0.0ms)
+  Attachment Load (0.2ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 43 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 43 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 3.0ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 8.7ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 4.6ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 4.8ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 5.7ms | GC: 0.0ms)
+  Attachment Load (0.2ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 22 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.1ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 22 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 1.8ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 8.4ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.6ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 3.7ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 4.5ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 21 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 21 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 2.0ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 7.5ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 4.4ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 4.5ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 5.4ms | GC: 0.0ms)
+  Attachment Load (0.2ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 20 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 20 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 1.9ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 8.3ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.5ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 3.6ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 4.7ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 19 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 19 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 2.1ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 7.8ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 11.9ms | GC: 7.1ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 12.1ms | GC: 7.1ms)
+  Rendered commentable/_heading.html.erb (Duration: 13.0ms | GC: 7.1ms)
+  Attachment Load (0.2ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 18 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 18 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 2.4ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 16.4ms | GC: 7.1ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 4.5ms | GC: 0.6ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 4.6ms | GC: 0.6ms)
+  Rendered commentable/_heading.html.erb (Duration: 5.8ms | GC: 0.6ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 17 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 17 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 1.9ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 8.6ms | GC: 0.6ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 4.5ms | GC: 0.7ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 4.6ms | GC: 0.7ms)
+  Rendered commentable/_heading.html.erb (Duration: 5.4ms | GC: 0.7ms)
+  Attachment Load (0.2ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 16 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 16 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 1.9ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 8.2ms | GC: 0.7ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.9ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 4.1ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 5.7ms | GC: 0.5ms)
+  Attachment Load (0.2ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 15 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.1ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 15 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 1.8ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 8.6ms | GC: 0.5ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.5ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 3.7ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 4.6ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 14 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 14 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 2.7ms | GC: 0.6ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 8.3ms | GC: 0.6ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.5ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 3.6ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 4.6ms | GC: 0.0ms)
+  Attachment Load (0.2ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 13 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.3ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 13 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 2.4ms | GC: 0.5ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 7.9ms | GC: 0.5ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.3ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 3.4ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 4.2ms | GC: 0.0ms)
+  Attachment Load (0.2ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 12 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 12 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 1.9ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 1.3ms | GC: 0.4ms)
+  Rendered posts/_post.html.erb (Duration: 7.8ms | GC: 0.4ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.6ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 3.7ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 4.7ms | GC: 0.0ms)
+  Attachment Load (0.2ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 11 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 11 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 1.8ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 7.4ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 4.1ms | GC: 0.2ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 4.3ms | GC: 0.2ms)
+  Rendered commentable/_heading.html.erb (Duration: 5.1ms | GC: 0.2ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 10 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.3ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 10 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 3.5ms | GC: 0.8ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 9.7ms | GC: 1.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.7ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 3.8ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 4.8ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 9 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 9 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 1.9ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 7.6ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.9ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 4.1ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 5.0ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 8 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 8 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 2.5ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 8.6ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.6ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 3.7ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 4.6ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 7 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.1ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 7 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 1.8ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 7.3ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.4ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 3.6ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 4.3ms | GC: 0.0ms)
+  Attachment Load (0.2ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 6 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.1ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 6 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 1.7ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 7.1ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.5ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 3.7ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 5.0ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 5 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 2.1ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 8.0ms | GC: 0.0ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.7ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 3.9ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 4.7ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 4 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.1ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 4 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 1.9ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 6.3ms | GC: 5.2ms)
+  Rendered posts/_post.html.erb (Duration: 13.2ms | GC: 5.2ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 3.6ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 3.7ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 4.7ms | GC: 0.0ms)
+  Attachment Load (0.2ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 2 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.3ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 2 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 2.8ms | GC: 0.7ms)
+  Rendered commentable/_interactions.html.erb (Duration: 1.0ms | GC: 0.0ms)
+  Rendered posts/_post.html.erb (Duration: 8.9ms | GC: 0.7ms)
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = 71 LIMIT 1
+  ↳ app/views/commentable/_heading.html.erb:5
+  CACHE Profile Load (0.0ms)  SELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = 71 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE Image Load (0.0ms)  SELECT "images".* FROM "images" WHERE "images"."imageable_id" = 71 AND "images"."imageable_type" = 'Profile' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE Default::Image Load (0.0ms)  SELECT "default_images".* FROM "default_images" WHERE "default_images"."kind" = 'avatar' LIMIT 1
+  ↳ app/models/profile.rb:20:in `avatar_or_default'
+  CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 10 AND "active_storage_attachments"."record_type" = 'Default::Image' AND "active_storage_attachments"."name" = 'file' LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  CACHE ActiveStorage::Blob Load (0.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1
+  ↳ app/views/profiles/_avatar_link.html.erb:1
+  Rendered profiles/_avatar_link.html.erb (Duration: 4.4ms | GC: 0.0ms)
+  Rendered profiles/_user_identity_header.html.erb (Duration: 4.6ms | GC: 0.0ms)
+  Rendered commentable/_heading.html.erb (Duration: 5.5ms | GC: 0.0ms)
+  Attachment Load (0.3ms)  SELECT "attachments".* FROM "attachments" WHERE "attachments"."post_id" = 1 ORDER BY "attachments"."id" ASC LIMIT 5 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:12:in `render_first_attachments_preview'
+  Attachment Count (0.2ms)  SELECT COUNT(*) FROM "attachments" WHERE "attachments"."post_id" = 1 /*action='index',application='Odinbook',controller='posts'*/
+  ↳ app/helpers/posts_helper.rb:23:in `render_amount_not_previewed'
+  Rendered commentable/_content.html.erb (Duration: 1.9ms | GC: 0.0ms)
+  Rendered commentable/_interactions.html.erb (Duration: 1.8ms | GC: 0.7ms)
+  Rendered posts/_post.html.erb (Duration: 9.5ms | GC: 0.7ms)
+  Rendered posts/index.html.erb within layouts/application (Duration: 666.7ms | GC: 123.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 677.0ms | GC: 125.2ms)
+Completed 200 OK in 887ms (Views: 634.3ms | ActiveRecord: 60.3ms (353 queries, 206 cached) | GC: 163.9ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUsInB1ciI6ImJsb2JfaWQifX0=--2763ae92ae44ba61ba9b7a0d9b59917c6f208023/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fZmlsbCI6WzQwLDQwXX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--b787a36a0ebad0a3b35f3b61615be3e188359af0/default_avatar.png" for ::1 at 2025-12-10 17:17:00 +0000
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MjE1LCJwdXIiOiJibG9iX2lkIn19--dd2f07f7675cf1596448f10ca4d3d8d7e036d493/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/ab67616d00001e02c8a9d953fadb6b5e32c6db41%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MjE0LCJwdXIiOiJibG9iX2lkIn19--ffc2d3d2d2523093bd60b1fc5f0355e06c037f88/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/ab67616d00001e02c8a9d953fadb6b5e32c6db41%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MjE1LCJwdXIiOiJibG9iX2lkIn19--dd2f07f7675cf1596448f10ca4d3d8d7e036d493", "variation_key"=>"[FILTERED]", "filename"=>"ab67616d00001e02c8a9d953fadb6b5e32c6db41 (1)"}
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MjE0LCJwdXIiOiJibG9iX2lkIn19--ffc2d3d2d2523093bd60b1fc5f0355e06c037f88", "variation_key"=>"[FILTERED]", "filename"=>"ab67616d00001e02c8a9d953fadb6b5e32c6db41 (1)"}
+Processing by ActiveStorage::Representations::RedirectController#show as PNG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTUsInB1ciI6ImJsb2JfaWQifX0=--2763ae92ae44ba61ba9b7a0d9b59917c6f208023", "variation_key"=>"[FILTERED]", "filename"=>"default_avatar"}
+  ActiveStorage::Blob Load (1.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 215 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.2ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 215 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.9ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 117 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.8ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 219 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.7ms) Generated URL for file at key: j9k7nxxppddjdiotehddydoqe83w (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJqOWs3bnh4cHBkZGpkaW90ZWhkZHlkb3FlODN3IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiYWI2NzYxNmQwMDAwMWUwMmM4YTlkOTUzZmFkYjZiNWUzMmM2ZGI0MSAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydhYjY3NjE2ZDAwMDAxZTAyYzhhOWQ5NTNmYWRiNmI1ZTMyYzZkYjQxJTIwJTI4MSUyOS5qcGVnIiwiY29udGVudF90eXBlIjoiaW1hZ2UvanBlZyIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjUtMTItMTBUMTc6MjI6MDAuMzUxWiIsInB1ciI6ImJsb2Jfa2V5In19--28bded386eef1275501248258b02e2b74da20c3e/ab67616d00001e02c8a9d953fadb6b5e32c6db41%20(1).jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJqOWs3bnh4cHBkZGpkaW90ZWhkZHlkb3FlODN3IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiYWI2NzYxNmQwMDAwMWUwMmM4YTlkOTUzZmFkYjZiNWUzMmM2ZGI0MSAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydhYjY3NjE2ZDAwMDAxZTAyYzhhOWQ5NTNmYWRiNmI1ZTMyYzZkYjQxJTIwJTI4MSUyOS5qcGVnIiwiY29udGVudF90eXBlIjoiaW1hZ2UvanBlZyIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjUtMTItMTBUMTc6MjI6MDAuMzUxWiIsInB1ciI6ImJsb2Jfa2V5In19--28bded386eef1275501248258b02e2b74da20c3e/ab67616d00001e02c8a9d953fadb6b5e32c6db41%20(1).jpeg
+Completed 302 Found in 68ms (ActiveRecord: 5.0ms (4 queries, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MjA1LCJwdXIiOiJibG9iX2lkIn19--1fe51106226596c69886d64395ce69fc71487b11/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+  ActiveStorage::Blob Load (24.7ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 214 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.7ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 214 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.7ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 118 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (27.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 15 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.6ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 220 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.3ms) Generated URL for file at key: zqt27dlu1fyf0uflij94vdurzkcm (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ6cXQyN2RsdTFmeWYwdWZsaWo5NHZkdXJ6a2NtIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiYWI2NzYxNmQwMDAwMWUwMmM4YTlkOTUzZmFkYjZiNWUzMmM2ZGI0MSAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydhYjY3NjE2ZDAwMDAxZTAyYzhhOWQ5NTNmYWRiNmI1ZTMyYzZkYjQxJTIwJTI4MSUyOS5qcGVnIiwiY29udGVudF90eXBlIjoiaW1hZ2UvanBlZyIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjUtMTItMTBUMTc6MjI6MDAuMzY3WiIsInB1ciI6ImJsb2Jfa2V5In19--8f12f8445ac1805a2f1876789f9e4f0367d17c75/ab67616d00001e02c8a9d953fadb6b5e32c6db41%20(1).jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ6cXQyN2RsdTFmeWYwdWZsaWo5NHZkdXJ6a2NtIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiYWI2NzYxNmQwMDAwMWUwMmM4YTlkOTUzZmFkYjZiNWUzMmM2ZGI0MSAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydhYjY3NjE2ZDAwMDAxZTAyYzhhOWQ5NTNmYWRiNmI1ZTMyYzZkYjQxJTIwJTI4MSUyOS5qcGVnIiwiY29udGVudF90eXBlIjoiaW1hZ2UvanBlZyIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjUtMTItMTBUMTc6MjI6MDAuMzY3WiIsInB1ciI6ImJsb2Jfa2V5In19--8f12f8445ac1805a2f1876789f9e4f0367d17c75/ab67616d00001e02c8a9d953fadb6b5e32c6db41%20(1).jpeg
+Completed 302 Found in 84ms (ActiveRecord: 44.1ms (4 queries, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MjA2LCJwdXIiOiJibG9iX2lkIn19--1b618e11978707a252a5b44fc12b9fefeaf88a6d/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+  ActiveStorage::VariantRecord Load (1.2ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 15 AND "active_storage_variant_records"."variation_digest" = 'WA+SNPKzHZmFhwGO3Ax/2/WQYMU=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.7ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 14 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.3ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 25 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.4ms) Generated URL for file at key: 14l32eltkws0o2ou3ideb6z4am8t (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiIxNGwzMmVsdGt3czBvMm91M2lkZWI2ejRhbTh0IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiZGVmYXVsdF9hdmF0YXIucG5nXCI7IGZpbGVuYW1lKj1VVEYtOCcnZGVmYXVsdF9hdmF0YXIucG5nIiwiY29udGVudF90eXBlIjoiaW1hZ2UvcG5nIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC4zNzVaIiwicHVyIjoiYmxvYl9rZXkifX0=--eede3f10caa5c52e8d044e0a64cc1e267ae8f7f3/default_avatar.png)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiIxNGwzMmVsdGt3czBvMm91M2lkZWI2ejRhbTh0IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiZGVmYXVsdF9hdmF0YXIucG5nXCI7IGZpbGVuYW1lKj1VVEYtOCcnZGVmYXVsdF9hdmF0YXIucG5nIiwiY29udGVudF90eXBlIjoiaW1hZ2UvcG5nIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC4zNzVaIiwicHVyIjoiYmxvYl9rZXkifX0=--eede3f10caa5c52e8d044e0a64cc1e267ae8f7f3/default_avatar.png
+Completed 302 Found in 90ms (ActiveRecord: 47.3ms (4 queries, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MjA3LCJwdXIiOiJibG9iX2lkIn19--5cb3698ec4c1fe7485cf9664ca91dc44c2ab67f6/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MjA1LCJwdXIiOiJibG9iX2lkIn19--1fe51106226596c69886d64395ce69fc71487b11", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1) (1)"}
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MjA2LCJwdXIiOiJibG9iX2lkIn19--1b618e11978707a252a5b44fc12b9fefeaf88a6d", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.33 (1)"}
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MjA3LCJwdXIiOiJibG9iX2lkIn19--5cb3698ec4c1fe7485cf9664ca91dc44c2ab67f6", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1)"}
+  ActiveStorage::Blob Load (0.7ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 205 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.5ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 205 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.5ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 112 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.6ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 211 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.4ms) Generated URL for file at key: 4n8350p3x8xyacovs8moebxrm4x1 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI0bjgzNTBwM3g4eHlhY292czhtb2VieHJtNHgxIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5ICUyODElMjkuanBlZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ1doYXRzQXBwJTIwSW1hZ2UlMjAyMDI1LTExLTA3JTIwYXQlMjAxNi40Mi4xMCUyMCUyODElMjklMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC40MzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--d3aed99b94acc4d8c36665fc42eb558db6fc72b3/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI0bjgzNTBwM3g4eHlhY292czhtb2VieHJtNHgxIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5ICUyODElMjkuanBlZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ1doYXRzQXBwJTIwSW1hZ2UlMjAyMDI1LTExLTA3JTIwYXQlMjAxNi40Mi4xMCUyMCUyODElMjklMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC40MzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--d3aed99b94acc4d8c36665fc42eb558db6fc72b3/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg
+Completed 302 Found in 47ms (ActiveRecord: 2.2ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJqOWs3bnh4cHBkZGpkaW90ZWhkZHlkb3FlODN3IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiYWI2NzYxNmQwMDAwMWUwMmM4YTlkOTUzZmFkYjZiNWUzMmM2ZGI0MSAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydhYjY3NjE2ZDAwMDAxZTAyYzhhOWQ5NTNmYWRiNmI1ZTMyYzZkYjQxJTIwJTI4MSUyOS5qcGVnIiwiY29udGVudF90eXBlIjoiaW1hZ2UvanBlZyIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjUtMTItMTBUMTc6MjI6MDAuMzUxWiIsInB1ciI6ImJsb2Jfa2V5In19--28bded386eef1275501248258b02e2b74da20c3e/ab67616d00001e02c8a9d953fadb6b5e32c6db41%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+  ActiveStorage::Blob Load (0.4ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 206 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.3ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 206 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.4ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 111 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.3ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 210 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.3ms) Generated URL for file at key: gd0gd0ksb3cciwfygrl9ex7g93m6 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJnZDBnZDBrc2IzY2Npd2Z5Z3JsOWV4N2c5M202IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMyAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMzMlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC40NTFaIiwicHVyIjoiYmxvYl9rZXkifX0=--23d8bec545f5927522421be1e69ed2f532e57e01/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJnZDBnZDBrc2IzY2Npd2Z5Z3JsOWV4N2c5M202IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMyAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMzMlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC40NTFaIiwicHVyIjoiYmxvYl9rZXkifX0=--23d8bec545f5927522421be1e69ed2f532e57e01/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg
+Completed 302 Found in 61ms (ActiveRecord: 1.4ms (4 queries, 0 cached) | GC: 5.5ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ6cXQyN2RsdTFmeWYwdWZsaWo5NHZkdXJ6a2NtIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiYWI2NzYxNmQwMDAwMWUwMmM4YTlkOTUzZmFkYjZiNWUzMmM2ZGI0MSAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydhYjY3NjE2ZDAwMDAxZTAyYzhhOWQ5NTNmYWRiNmI1ZTMyYzZkYjQxJTIwJTI4MSUyOS5qcGVnIiwiY29udGVudF90eXBlIjoiaW1hZ2UvanBlZyIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjUtMTItMTBUMTc6MjI6MDAuMzY3WiIsInB1ciI6ImJsb2Jfa2V5In19--8f12f8445ac1805a2f1876789f9e4f0367d17c75/ab67616d00001e02c8a9d953fadb6b5e32c6db41%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+  ActiveStorage::Blob Load (1.2ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 207 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.4ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 207 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.7ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 113 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.4ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 212 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.3ms) Generated URL for file at key: 4ik4fch5pgh3j4scqowfegv104pe (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI0aWs0ZmNoNXBnaDNqNHNjcW93ZmVndjEwNHBlIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMTAlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC40NjRaIiwicHVyIjoiYmxvYl9rZXkifX0=--bb95633b0fa04d46225ca72c8eef46f76c23c4c1/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI0aWs0ZmNoNXBnaDNqNHNjcW93ZmVndjEwNHBlIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMTAlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC40NjRaIiwicHVyIjoiYmxvYl9rZXkifX0=--bb95633b0fa04d46225ca72c8eef46f76c23c4c1/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg
+Completed 302 Found in 71ms (ActiveRecord: 2.6ms (4 queries, 0 cached) | GC: 6.1ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiIxNGwzMmVsdGt3czBvMm91M2lkZWI2ejRhbTh0IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiZGVmYXVsdF9hdmF0YXIucG5nXCI7IGZpbGVuYW1lKj1VVEYtOCcnZGVmYXVsdF9hdmF0YXIucG5nIiwiY29udGVudF90eXBlIjoiaW1hZ2UvcG5nIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC4zNzVaIiwicHVyIjoiYmxvYl9rZXkifX0=--eede3f10caa5c52e8d044e0a64cc1e267ae8f7f3/default_avatar.png" for ::1 at 2025-12-10 17:17:00 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"ab67616d00001e02c8a9d953fadb6b5e32c6db41 (1)"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"ab67616d00001e02c8a9d953fadb6b5e32c6db41 (1)"}
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"default_avatar"}
+Completed 200 OK in 40ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI0bjgzNTBwM3g4eHlhY292czhtb2VieHJtNHgxIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5ICUyODElMjkuanBlZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ1doYXRzQXBwJTIwSW1hZ2UlMjAyMDI1LTExLTA3JTIwYXQlMjAxNi40Mi4xMCUyMCUyODElMjklMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC40MzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--d3aed99b94acc4d8c36665fc42eb558db6fc72b3/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Completed 200 OK in 42ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJnZDBnZDBrc2IzY2Npd2Z5Z3JsOWV4N2c5M202IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMyAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMzMlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC40NTFaIiwicHVyIjoiYmxvYl9rZXkifX0=--23d8bec545f5927522421be1e69ed2f532e57e01/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Completed 200 OK in 42ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI0aWs0ZmNoNXBnaDNqNHNjcW93ZmVndjEwNHBlIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMTAlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC40NjRaIiwicHVyIjoiYmxvYl9rZXkifX0=--bb95633b0fa04d46225ca72c8eef46f76c23c4c1/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1) (1)"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.33 (1)"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1)"}
+Completed 200 OK in 44ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MjA4LCJwdXIiOiJibG9iX2lkIn19--d83116839dc8997a83b88f1c9ebeffe0a06becbe/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Completed 200 OK in 48ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.8ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTk5LCJwdXIiOiJibG9iX2lkIn19--8ff87e2baefc0eb00502f07a2f5bf7bb7eb20946/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Completed 200 OK in 48ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.8ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MjAwLCJwdXIiOiJibG9iX2lkIn19--26294f89c6a5d7c94e1916bcffbabef1249436de/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MjA4LCJwdXIiOiJibG9iX2lkIn19--d83116839dc8997a83b88f1c9ebeffe0a06becbe", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10"}
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTk5LCJwdXIiOiJibG9iX2lkIn19--8ff87e2baefc0eb00502f07a2f5bf7bb7eb20946", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1) (1)"}
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MjAwLCJwdXIiOiJibG9iX2lkIn19--26294f89c6a5d7c94e1916bcffbabef1249436de", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.33 (1)"}
+  ActiveStorage::Blob Load (0.4ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 208 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.7ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 208 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.4ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 114 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.4ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 213 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.3ms) Generated URL for file at key: 5sll9jmwcfk0w3cyfoolxr2zkk59 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI1c2xsOWptd2NmazB3M2N5Zm9vbHhyMnprazU5IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMC5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjEwLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC42NjdaIiwicHVyIjoiYmxvYl9rZXkifX0=--deceda3a6799aa0ab36208cec3de206c79bc1da3/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI1c2xsOWptd2NmazB3M2N5Zm9vbHhyMnprazU5IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMC5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjEwLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC42NjdaIiwicHVyIjoiYmxvYl9rZXkifX0=--deceda3a6799aa0ab36208cec3de206c79bc1da3/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg
+Completed 302 Found in 54ms (ActiveRecord: 1.9ms (4 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MjAxLCJwdXIiOiJibG9iX2lkIn19--5d9fb0716646742020fdcc680b95577bcc7f5d40/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+  ActiveStorage::Blob Load (0.5ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 199 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.4ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 199 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.3ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 120 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.3ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 221 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.9ms) Generated URL for file at key: xsaayac4aq1vx2kfnzvumvnhxv0r (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ4c2FheWFjNGFxMXZ4Mmtmbnp2dW12bmh4djByIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5ICUyODElMjkuanBlZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ1doYXRzQXBwJTIwSW1hZ2UlMjAyMDI1LTExLTA3JTIwYXQlMjAxNi40Mi4xMCUyMCUyODElMjklMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC42ODJaIiwicHVyIjoiYmxvYl9rZXkifX0=--9e43ba5a09e290b36adff6a0cc1d392be2477f63/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ4c2FheWFjNGFxMXZ4Mmtmbnp2dW12bmh4djByIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5ICUyODElMjkuanBlZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ1doYXRzQXBwJTIwSW1hZ2UlMjAyMDI1LTExLTA3JTIwYXQlMjAxNi40Mi4xMCUyMCUyODElMjklMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC42ODJaIiwicHVyIjoiYmxvYl9rZXkifX0=--9e43ba5a09e290b36adff6a0cc1d392be2477f63/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg
+Completed 302 Found in 61ms (ActiveRecord: 1.5ms (4 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MjAyLCJwdXIiOiJibG9iX2lkIn19--eb59d1050fe5ece4a71d0f5c7f9821e3ceccaafd/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+  ActiveStorage::Blob Load (1.8ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 200 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.4ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 200 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.6ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 119 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.4ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 222 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.3ms) Generated URL for file at key: bmydrbfa84mpyi7rjy392d5it6qm (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJibXlkcmJmYTg0bXB5aTdyankzOTJkNWl0NnFtIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMyAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMzMlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC42OTdaIiwicHVyIjoiYmxvYl9rZXkifX0=--c5b5fcf7ba7c7523df23f628789137749097d4e3/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJibXlkcmJmYTg0bXB5aTdyankzOTJkNWl0NnFtIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMyAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMzMlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC42OTdaIiwicHVyIjoiYmxvYl9rZXkifX0=--c5b5fcf7ba7c7523df23f628789137749097d4e3/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg
+Completed 302 Found in 71ms (ActiveRecord: 3.2ms (4 queries, 0 cached) | GC: 1.6ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MjAzLCJwdXIiOiJibG9iX2lkIn19--813185e0d67b0a73ea753d0773021735057d1da4/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.33.jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MjAxLCJwdXIiOiJibG9iX2lkIn19--5d9fb0716646742020fdcc680b95577bcc7f5d40", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1)"}
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MjAyLCJwdXIiOiJibG9iX2lkIn19--eb59d1050fe5ece4a71d0f5c7f9821e3ceccaafd", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10"}
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MjAzLCJwdXIiOiJibG9iX2lkIn19--813185e0d67b0a73ea753d0773021735057d1da4", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.33"}
+  ActiveStorage::Blob Load (0.5ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 201 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.7ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 201 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.5ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 121 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.8ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 223 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.3ms) Generated URL for file at key: 6g4hunu3jz5cfqapapisr72gp78j (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI2ZzRodW51M2p6NWNmcWFwYXBpc3I3MmdwNzhqIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMTAlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC43NTRaIiwicHVyIjoiYmxvYl9rZXkifX0=--fcc02c1794f22c10873af19811d3ebb828a972da/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI2ZzRodW51M2p6NWNmcWFwYXBpc3I3MmdwNzhqIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMTAlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC43NTRaIiwicHVyIjoiYmxvYl9rZXkifX0=--fcc02c1794f22c10873af19811d3ebb828a972da/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg
+Completed 302 Found in 47ms (ActiveRecord: 2.4ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI1c2xsOWptd2NmazB3M2N5Zm9vbHhyMnprazU5IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMC5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjEwLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC42NjdaIiwicHVyIjoiYmxvYl9rZXkifX0=--deceda3a6799aa0ab36208cec3de206c79bc1da3/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+  ActiveStorage::Blob Load (0.5ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 202 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.4ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 202 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.3ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 122 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (1.1ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 224 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.3ms) Generated URL for file at key: k6ig7k31sxmj6c7p5ftb7c1qp6gx (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJrNmlnN2szMXN4bWo2YzdwNWZ0YjdjMXFwNmd4IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMC5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjEwLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC43NzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--625d1d0d9162cdb20107092a62a9f1d865fc1e07/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJrNmlnN2szMXN4bWo2YzdwNWZ0YjdjMXFwNmd4IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMC5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjEwLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC43NzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--625d1d0d9162cdb20107092a62a9f1d865fc1e07/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg
+Completed 302 Found in 57ms (ActiveRecord: 2.2ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+  ActiveStorage::Blob Load (2.7ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 203 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ4c2FheWFjNGFxMXZ4Mmtmbnp2dW12bmh4djByIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5ICUyODElMjkuanBlZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ1doYXRzQXBwJTIwSW1hZ2UlMjAyMDI1LTExLTA3JTIwYXQlMjAxNi40Mi4xMCUyMCUyODElMjklMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC42ODJaIiwicHVyIjoiYmxvYl9rZXkifX0=--9e43ba5a09e290b36adff6a0cc1d392be2477f63/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+  ActiveStorage::VariantRecord Load (1.1ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 203 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.4ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 123 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.4ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 225 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.4ms) Generated URL for file at key: snsl36u3qntdl7sjnvyctbixl213 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJzbnNsMzZ1M3FudGRsN3NqbnZ5Y3RiaXhsMjEzIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMy5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjMzLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC43ODNaIiwicHVyIjoiYmxvYl9rZXkifX0=--54caaad1c1cf50ca542fc27b8eb5de28d8f5c241/WhatsApp%20Image%202025-11-07%20at%2016.42.33.jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJzbnNsMzZ1M3FudGRsN3NqbnZ5Y3RiaXhsMjEzIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMy5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjMzLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC43ODNaIiwicHVyIjoiYmxvYl9rZXkifX0=--54caaad1c1cf50ca542fc27b8eb5de28d8f5c241/WhatsApp%20Image%202025-11-07%20at%2016.42.33.jpeg
+Completed 302 Found in 65ms (ActiveRecord: 4.6ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJibXlkcmJmYTg0bXB5aTdyankzOTJkNWl0NnFtIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMyAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMzMlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC42OTdaIiwicHVyIjoiYmxvYl9rZXkifX0=--c5b5fcf7ba7c7523df23f628789137749097d4e3/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1) (1)"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.33 (1)"}
+Completed 200 OK in 47ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 4.4ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI2ZzRodW51M2p6NWNmcWFwYXBpc3I3MmdwNzhqIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMTAlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC43NTRaIiwicHVyIjoiYmxvYl9rZXkifX0=--fcc02c1794f22c10873af19811d3ebb828a972da/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Completed 200 OK in 42ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJrNmlnN2szMXN4bWo2YzdwNWZ0YjdjMXFwNmd4IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMC5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjEwLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC43NzJaIiwicHVyIjoiYmxvYl9rZXkifX0=--625d1d0d9162cdb20107092a62a9f1d865fc1e07/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Completed 200 OK in 43ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJzbnNsMzZ1M3FudGRsN3NqbnZ5Y3RiaXhsMjEzIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMy5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjMzLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC43ODNaIiwicHVyIjoiYmxvYl9rZXkifX0=--54caaad1c1cf50ca542fc27b8eb5de28d8f5c241/WhatsApp%20Image%202025-11-07%20at%2016.42.33.jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1)"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.33"}
+Completed 200 OK in 38ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTk0LCJwdXIiOiJibG9iX2lkIn19--cca47885bdb6e1faf0f015dceec90a717652e249/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Completed 200 OK in 41ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTk1LCJwdXIiOiJibG9iX2lkIn19--9d0c4b5ed14bd70e6d534f9af16b934dbf7bb83d/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Completed 200 OK in 41ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTk2LCJwdXIiOiJibG9iX2lkIn19--ac35e3db04044c147f24fbc63eef07834d1e27f5/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTk0LCJwdXIiOiJibG9iX2lkIn19--cca47885bdb6e1faf0f015dceec90a717652e249", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1) (1)"}
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTk1LCJwdXIiOiJibG9iX2lkIn19--9d0c4b5ed14bd70e6d534f9af16b934dbf7bb83d", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.33 (1)"}
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTk2LCJwdXIiOiJibG9iX2lkIn19--ac35e3db04044c147f24fbc63eef07834d1e27f5", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1)"}
+  ActiveStorage::Blob Load (0.6ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 194 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.6ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 194 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.7ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 124 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.6ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 226 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.4ms) Generated URL for file at key: o7tw2ab4riedvoujtyfzao8wquo3 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJvN3R3MmFiNHJpZWR2b3VqdHlmemFvOHdxdW8zIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5ICUyODElMjkuanBlZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ1doYXRzQXBwJTIwSW1hZ2UlMjAyMDI1LTExLTA3JTIwYXQlMjAxNi40Mi4xMCUyMCUyODElMjklMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC45NzRaIiwicHVyIjoiYmxvYl9rZXkifX0=--8a5349772bcdb3217e97c7b6fcdd5f3f685ec26c/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJvN3R3MmFiNHJpZWR2b3VqdHlmemFvOHdxdW8zIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5ICUyODElMjkuanBlZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ1doYXRzQXBwJTIwSW1hZ2UlMjAyMDI1LTExLTA3JTIwYXQlMjAxNi40Mi4xMCUyMCUyODElMjklMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC45NzRaIiwicHVyIjoiYmxvYl9rZXkifX0=--8a5349772bcdb3217e97c7b6fcdd5f3f685ec26c/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg
+Completed 302 Found in 47ms (ActiveRecord: 2.5ms (4 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTk3LCJwdXIiOiJibG9iX2lkIn19--9b1f1d1afe9c8898247e4722edd22bf6d81e4cba/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg" for ::1 at 2025-12-10 17:17:00 +0000
+  ActiveStorage::Blob Load (0.5ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 195 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.5ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 195 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.4ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 125 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (1.1ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 227 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.6ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 196 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.3ms) Generated URL for file at key: kflb27al6izu1aarevkvejrujwmb (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJrZmxiMjdhbDZpenUxYWFyZXZrdmVqcnVqd21iIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMyAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMzMlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC45OTNaIiwicHVyIjoiYmxvYl9rZXkifX0=--fd128e9a545422c92daab8bc8120ee825e605eb6/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJrZmxiMjdhbDZpenUxYWFyZXZrdmVqcnVqd21iIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMyAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMzMlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC45OTNaIiwicHVyIjoiYmxvYl9rZXkifX0=--fd128e9a545422c92daab8bc8120ee825e605eb6/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg
+Completed 302 Found in 60ms (ActiveRecord: 2.5ms (4 queries, 0 cached) | GC: 0.9ms)
+
+
+  ActiveStorage::VariantRecord Load (1.7ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 196 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTk4LCJwdXIiOiJibG9iX2lkIn19--d8a239ba4adb0409d9fc91129b56b17e7472c490/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.33.jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+  ActiveStorage::Attachment Load (1.2ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 126 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.3ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 228 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.4ms) Generated URL for file at key: t93c7k9t9ecpyeapt2nuputwzxmj (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ0OTNjN2s5dDllY3B5ZWFwdDJudXB1dHd6eG1qIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMTAlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4wMDhaIiwicHVyIjoiYmxvYl9rZXkifX0=--e945a3f84453af63efa888bd2e1d92fbbe0f7d44/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ0OTNjN2s5dDllY3B5ZWFwdDJudXB1dHd6eG1qIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMTAlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4wMDhaIiwicHVyIjoiYmxvYl9rZXkifX0=--e945a3f84453af63efa888bd2e1d92fbbe0f7d44/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg
+Completed 302 Found in 69ms (ActiveRecord: 3.7ms (4 queries, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTg5LCJwdXIiOiJibG9iX2lkIn19--faf738f194b28c1345426945d28186684086ffdc/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTk3LCJwdXIiOiJibG9iX2lkIn19--9b1f1d1afe9c8898247e4722edd22bf6d81e4cba", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10"}
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTk4LCJwdXIiOiJibG9iX2lkIn19--d8a239ba4adb0409d9fc91129b56b17e7472c490", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.33"}
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTg5LCJwdXIiOiJibG9iX2lkIn19--faf738f194b28c1345426945d28186684086ffdc", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1) (1)"}
+  ActiveStorage::Blob Load (0.4ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 197 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.4ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 197 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.5ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 127 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.5ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 229 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.3ms) Generated URL for file at key: bo8xcquvnway6ufe038ku8nixq7i (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJibzh4Y3F1dm53YXk2dWZlMDM4a3U4bml4cTdpIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMC5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjEwLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4wNzdaIiwicHVyIjoiYmxvYl9rZXkifX0=--94176a973b0355390b9d7e980f2c7d457f6a547c/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJibzh4Y3F1dm53YXk2dWZlMDM4a3U4bml4cTdpIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMC5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjEwLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4wNzdaIiwicHVyIjoiYmxvYl9rZXkifX0=--94176a973b0355390b9d7e980f2c7d457f6a547c/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg
+Completed 302 Found in 59ms (ActiveRecord: 1.9ms (4 queries, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJvN3R3MmFiNHJpZWR2b3VqdHlmemFvOHdxdW8zIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5ICUyODElMjkuanBlZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ1doYXRzQXBwJTIwSW1hZ2UlMjAyMDI1LTExLTA3JTIwYXQlMjAxNi40Mi4xMCUyMCUyODElMjklMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC45NzRaIiwicHVyIjoiYmxvYl9rZXkifX0=--8a5349772bcdb3217e97c7b6fcdd5f3f685ec26c/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+  ActiveStorage::Blob Load (0.4ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 198 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.8ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 198 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (3.0ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 189 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (2.9ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 128 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (2.9ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 189 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (3.4ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 230 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.4ms) Generated URL for file at key: rp8uxg81w4t2kwefurwzgu39y9kx (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJycDh1eGc4MXc0dDJrd2VmdXJ3emd1Mzl5OWt4IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMy5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjMzLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4xMDhaIiwicHVyIjoiYmxvYl9rZXkifX0=--802483849328099128badb09541b0461face79e8/WhatsApp%20Image%202025-11-07%20at%2016.42.33.jpeg)
+  ActiveStorage::Attachment Load (3.1ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 130 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJycDh1eGc4MXc0dDJrd2VmdXJ3emd1Mzl5OWt4IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMy5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjMzLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4xMDhaIiwicHVyIjoiYmxvYl9rZXkifX0=--802483849328099128badb09541b0461face79e8/WhatsApp%20Image%202025-11-07%20at%2016.42.33.jpeg
+Completed 302 Found in 82ms (ActiveRecord: 7.5ms (4 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJrZmxiMjdhbDZpenUxYWFyZXZrdmVqcnVqd21iIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMyAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMzMlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMC45OTNaIiwicHVyIjoiYmxvYl9rZXkifX0=--fd128e9a545422c92daab8bc8120ee825e605eb6/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+  ActiveStorage::Blob Load (1.8ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 232 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.4ms) Generated URL for file at key: um6z03sjw2nv8ume6f0p6hesc37e (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ1bTZ6MDNzancybnY4dW1lNmYwcDZoZXNjMzdlIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5ICUyODElMjkuanBlZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ1doYXRzQXBwJTIwSW1hZ2UlMjAyMDI1LTExLTA3JTIwYXQlMjAxNi40Mi4xMCUyMCUyODElMjklMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4xMTZaIiwicHVyIjoiYmxvYl9rZXkifX0=--1b3bd4ace23de8d3d2c3bcba004e6363bac3381a/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ1bTZ6MDNzancybnY4dW1lNmYwcDZoZXNjMzdlIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5ICUyODElMjkuanBlZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ1doYXRzQXBwJTIwSW1hZ2UlMjAyMDI1LTExLTA3JTIwYXQlMjAxNi40Mi4xMCUyMCUyODElMjklMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4xMTZaIiwicHVyIjoiYmxvYl9rZXkifX0=--1b3bd4ace23de8d3d2c3bcba004e6363bac3381a/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg
+Completed 302 Found in 85ms (ActiveRecord: 10.8ms (4 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ0OTNjN2s5dDllY3B5ZWFwdDJudXB1dHd6eG1qIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMTAlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4wMDhaIiwicHVyIjoiYmxvYl9rZXkifX0=--e945a3f84453af63efa888bd2e1d92fbbe0f7d44/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1) (1)"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.33 (1)"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1)"}
+Completed 200 OK in 50ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJibzh4Y3F1dm53YXk2dWZlMDM4a3U4bml4cTdpIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMC5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjEwLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4wNzdaIiwicHVyIjoiYmxvYl9rZXkifX0=--94176a973b0355390b9d7e980f2c7d457f6a547c/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+Completed 200 OK in 50ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJycDh1eGc4MXc0dDJrd2VmdXJ3emd1Mzl5OWt4IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMy5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjMzLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4xMDhaIiwicHVyIjoiYmxvYl9rZXkifX0=--802483849328099128badb09541b0461face79e8/WhatsApp%20Image%202025-11-07%20at%2016.42.33.jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+Completed 200 OK in 51ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ1bTZ6MDNzancybnY4dW1lNmYwcDZoZXNjMzdlIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5ICUyODElMjkuanBlZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ1doYXRzQXBwJTIwSW1hZ2UlMjAyMDI1LTExLTA3JTIwYXQlMjAxNi40Mi4xMCUyMCUyODElMjklMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4xMTZaIiwicHVyIjoiYmxvYl9rZXkifX0=--1b3bd4ace23de8d3d2c3bcba004e6363bac3381a/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1)%20(1).jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.33"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1) (1)"}
+Completed 200 OK in 40ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTkwLCJwdXIiOiJibG9iX2lkIn19--7607d735e2d627f797408689918e9da116bfd69f/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+Completed 200 OK in 42ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTkxLCJwdXIiOiJibG9iX2lkIn19--5bc7cd805833786ccfc04b31c9e732022c510909/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+Completed 200 OK in 49ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 5.2ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTkyLCJwdXIiOiJibG9iX2lkIn19--c12bc30f193b66ff3ee78554ee7a2bb004136fb7/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTkwLCJwdXIiOiJibG9iX2lkIn19--7607d735e2d627f797408689918e9da116bfd69f", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.33 (1)"}
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTkxLCJwdXIiOiJibG9iX2lkIn19--5bc7cd805833786ccfc04b31c9e732022c510909", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1)"}
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTkyLCJwdXIiOiJibG9iX2lkIn19--c12bc30f193b66ff3ee78554ee7a2bb004136fb7", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10"}
+  ActiveStorage::Blob Load (0.5ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 190 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.5ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 190 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.4ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 129 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.6ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 231 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.3ms) Generated URL for file at key: ectmr9yrc2qbfm9wtt4zv6vu2u0k (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJlY3Rtcjl5cmMycWJmbTl3dHQ0enY2dnUydTBrIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMyAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMzMlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4zMjFaIiwicHVyIjoiYmxvYl9rZXkifX0=--7210cad6d016a2f609f1f3b66cb5da6074219551/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJlY3Rtcjl5cmMycWJmbTl3dHQ0enY2dnUydTBrIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMyAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMzMlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4zMjFaIiwicHVyIjoiYmxvYl9rZXkifX0=--7210cad6d016a2f609f1f3b66cb5da6074219551/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg
+Completed 302 Found in 52ms (ActiveRecord: 1.8ms (4 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTkzLCJwdXIiOiJibG9iX2lkIn19--7045152ab9af6d46d05dd588e0a4478acd5e3ad3/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--f8cf7b37f403a20e67a0f360b670584d0c6ea258/WhatsApp%20Image%202025-11-07%20at%2016.42.33.jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+  ActiveStorage::Blob Load (0.9ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 191 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (4.5ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 192 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.8ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 191 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (2.7ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 192 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (2.7ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 131 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (1.9ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 132 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.4ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 233 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (1.1ms) Generated URL for file at key: vs38mb288a0nezn3zrua4myaekt7 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ2czM4bWIyODhhMG5lem4zenJ1YTRteWFla3Q3IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMTAlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4zNTRaIiwicHVyIjoiYmxvYl9rZXkifX0=--abd5a925232362646e00ccf270410dc29930490b/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ2czM4bWIyODhhMG5lem4zenJ1YTRteWFla3Q3IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMTAlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4zNTRaIiwicHVyIjoiYmxvYl9rZXkifX0=--abd5a925232362646e00ccf270410dc29930490b/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg
+Completed 302 Found in 72ms (ActiveRecord: 4.7ms (4 queries, 0 cached) | GC: 2.0ms)
+
+
+  ActiveStorage::Blob Load (2.8ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 234 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.4ms) Generated URL for file at key: dngrkfap53837ax0gyy1md9wkjwx (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJkbmdya2ZhcDUzODM3YXgwZ3l5MW1kOXdrand4IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMC5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjEwLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4zNThaIiwicHVyIjoiYmxvYl9rZXkifX0=--da71ca9a1bcdd59814d96435c736c43dbdba9e76/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg)
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTg3LCJwdXIiOiJibG9iX2lkIn19--dce32ceb02080e5f90f6e94eebad293bf4f4987b/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsMzAwXX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--407d64aa25ced272bfdbfced0421dd18cd0ddf6d/women-3051614_1280.jpg" for ::1 at 2025-12-10 17:17:01 +0000
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJkbmdya2ZhcDUzODM3YXgwZ3l5MW1kOXdrand4IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMC5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjEwLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4zNThaIiwicHVyIjoiYmxvYl9rZXkifX0=--da71ca9a1bcdd59814d96435c736c43dbdba9e76/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg
+Completed 302 Found in 75ms (ActiveRecord: 12.0ms (4 queries, 0 cached) | GC: 2.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJlY3Rtcjl5cmMycWJmbTl3dHQ0enY2dnUydTBrIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMyAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMzMlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4zMjFaIiwicHVyIjoiYmxvYl9rZXkifX0=--7210cad6d016a2f609f1f3b66cb5da6074219551/WhatsApp%20Image%202025-11-07%20at%2016.42.33%20(1).jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTkzLCJwdXIiOiJibG9iX2lkIn19--7045152ab9af6d46d05dd588e0a4478acd5e3ad3", "variation_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.33"}
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MTg3LCJwdXIiOiJibG9iX2lkIn19--dce32ceb02080e5f90f6e94eebad293bf4f4987b", "variation_key"=>"[FILTERED]", "filename"=>"women-3051614_1280"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.33 (1)"}
+  ActiveStorage::Blob Load (0.5ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 193 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::VariantRecord Load (0.6ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 193 AND "active_storage_variant_records"."variation_digest" = 'MUVfVmXwyOrg6iHMvyWWcrJC8oE=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.8ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 133 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.4ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 235 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.3ms) Generated URL for file at key: 4k9aqxu400rv5ra1jp59wm0jzrw3 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI0azlhcXh1NDAwcnY1cmExanA1OXdtMGp6cnczIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMy5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjMzLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS40MThaIiwicHVyIjoiYmxvYl9rZXkifX0=--3596bc1791954e43576806c72f26435fc3f56dba/WhatsApp%20Image%202025-11-07%20at%2016.42.33.jpeg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI0azlhcXh1NDAwcnY1cmExanA1OXdtMGp6cnczIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMy5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjMzLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS40MThaIiwicHVyIjoiYmxvYl9rZXkifX0=--3596bc1791954e43576806c72f26435fc3f56dba/WhatsApp%20Image%202025-11-07%20at%2016.42.33.jpeg
+Completed 302 Found in 51ms (ActiveRecord: 2.2ms (4 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ2czM4bWIyODhhMG5lem4zenJ1YTRteWFla3Q3IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMCAlMjgxJTI5LmpwZWdcIjsgZmlsZW5hbWUqPVVURi04JydXaGF0c0FwcCUyMEltYWdlJTIwMjAyNS0xMS0wNyUyMGF0JTIwMTYuNDIuMTAlMjAlMjgxJTI5LmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4zNTRaIiwicHVyIjoiYmxvYl9rZXkifX0=--abd5a925232362646e00ccf270410dc29930490b/WhatsApp%20Image%202025-11-07%20at%2016.42.10%20(1).jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+Completed 200 OK in 48ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.1ms)
+
+
+  ActiveStorage::Blob Load (0.9ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 187 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJkbmdya2ZhcDUzODM3YXgwZ3l5MW1kOXdrand4IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4xMC5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjEwLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS4zNThaIiwicHVyIjoiYmxvYl9rZXkifX0=--da71ca9a1bcdd59814d96435c736c43dbdba9e76/WhatsApp%20Image%202025-11-07%20at%2016.42.10.jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+  ActiveStorage::VariantRecord Load (1.5ms)  SELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 187 AND "active_storage_variant_records"."variation_digest" = 'LtoSAYL4ZrQTjS8XJDwiSZvW12s=' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Attachment Load (0.4ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 110 AND "active_storage_attachments"."record_type" = 'ActiveStorage::VariantRecord' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  ActiveStorage::Blob Load (0.4ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 188 LIMIT 1 /*action='show',application='Odinbook',controller='redirect'*/
+  Disk Storage (0.3ms) Generated URL for file at key: mgytq9o0jx9zha0fhjg4fl0p3vbz (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJtZ3l0cTlvMGp4OXpoYTBmaGpnNGZsMHAzdmJ6IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwid29tZW4tMzA1MTYxNF8xMjgwLmpwZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ3dvbWVuLTMwNTE2MTRfMTI4MC5qcGciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS40NDJaIiwicHVyIjoiYmxvYl9rZXkifX0=--bca1fc205a587afa319ee310910f7b68df3eff5a/women-3051614_1280.jpg)
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJtZ3l0cTlvMGp4OXpoYTBmaGpnNGZsMHAzdmJ6IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwid29tZW4tMzA1MTYxNF8xMjgwLmpwZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ3dvbWVuLTMwNTE2MTRfMTI4MC5qcGciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS40NDJaIiwicHVyIjoiYmxvYl9rZXkifX0=--bca1fc205a587afa319ee310910f7b68df3eff5a/women-3051614_1280.jpg
+Completed 302 Found in 61ms (ActiveRecord: 3.1ms (4 queries, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI0azlhcXh1NDAwcnY1cmExanA1OXdtMGp6cnczIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiV2hhdHNBcHAgSW1hZ2UgMjAyNS0xMS0wNyBhdCAxNi40Mi4zMy5qcGVnXCI7IGZpbGVuYW1lKj1VVEYtOCcnV2hhdHNBcHAlMjBJbWFnZSUyMDIwMjUtMTEtMDclMjBhdCUyMDE2LjQyLjMzLmpwZWciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS40MThaIiwicHVyIjoiYmxvYl9rZXkifX0=--3596bc1791954e43576806c72f26435fc3f56dba/WhatsApp%20Image%202025-11-07%20at%2016.42.33.jpeg" for ::1 at 2025-12-10 17:17:01 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10 (1)"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.10"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"WhatsApp Image 2025-11-07 at 16.42.33"}
+Completed 200 OK in 45ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJtZ3l0cTlvMGp4OXpoYTBmaGpnNGZsMHAzdmJ6IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwid29tZW4tMzA1MTYxNF8xMjgwLmpwZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJ3dvbWVuLTMwNTE2MTRfMTI4MC5qcGciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9qcGVnIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0xMi0xMFQxNzoyMjowMS40NDJaIiwicHVyIjoiYmxvYl9rZXkifX0=--bca1fc205a587afa319ee310910f7b68df3eff5a/women-3051614_1280.jpg" for ::1 at 2025-12-10 17:17:01 +0000
+Completed 200 OK in 45ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Completed 200 OK in 45ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"women-3051614_1280"}
+Completed 200 OK in 9ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+^C- Gracefully stopping, waiting for requests to finish
+=== puma shutdown: 2025-12-10 17:17:12 +0000 ===
+- Goodbye!
+Exiting

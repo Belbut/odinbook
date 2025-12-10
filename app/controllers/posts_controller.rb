@@ -1,7 +1,28 @@
 class PostsController < ApplicationController
   before_action :limit_deleted_usage, only: %i[edit update destroy]
   def index
-    author = User.find(user_params)
+    author = case params[:strategy]
+             when "no-eager"
+               User
+             when "just-post"
+               User.includes(:posts)
+             when "light"
+               User.includes(posts: [:author, { attachments: :annexable }])
+             when "full"
+               User.includes(posts: [:author, { attachments: { annexable: %i[attachments blob] } }])
+             when "profile-full"
+               User.includes(:profile, posts: [:author, { attachments: { annexable: %i[attachments blob] } }])
+             when "profile-light"
+               User.includes(:profile, posts: [:author, { attachments: :annexable }])
+             when "profile-image-full"
+               User.includes(profile: [:avatar_photo],
+                             posts: [:author,
+                                     { attachments: { annexable: %i[attachments blob] } }])
+             when "profile-image-light"
+               User.includes(profile: [:avatar_photo], posts: [:author, { attachments: :annexable }])
+
+             end.find(user_params)
+
     @posts = author.posts.active.order(created_at: :desc)
   end
 
