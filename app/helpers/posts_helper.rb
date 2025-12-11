@@ -10,10 +10,7 @@ module PostsHelper
 
   def render_first_attachments_preview(post)
     attachments_preview = post.attachments.first(PREVIEW_SIZE).map do |attachment|
-      if attachment.annexable.present? && attachment.annexable.file.representable?
-        active_storage_record = attachment.annexable.file.representation(resize_to_limit: [300, 300])
-        image_tag(active_storage_record)
-      end
+      render_attachment_image(attachment)
     end
     # TODO: handle render of more than PREVIEW_SIZE 5 photos
     safe_join(attachments_preview)
