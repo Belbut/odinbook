@@ -70,15 +70,10 @@
             <%= link_to "View all photos" %>
         </div>
         <div>
-            <img src="" alt="1" id="img1">
-            <img src="" alt="2" id="img2">
-            <img src="" alt="3" id="img3">
-            <img src="" alt="4" id="img4">
-            <img src="" alt="5" id="img5">
-            <img src="" alt="6" id="img6">
-            <img src="" alt="7" id="img7">
-            <img src="" alt="8" id="img8">
-            <img src="" alt="9" id="img9">
+            <%# insert photos here  %>
+            <% @attachments.each do |attachment| %>
+                <%= render_attachment_image(attachment) %>
+            <% end %>
         </div>
     </section>
     <section>

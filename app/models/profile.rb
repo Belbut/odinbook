@@ -16,6 +16,7 @@ class Profile < ApplicationRecord
   end
 
   private
+
   def avatar_or_default
     record = avatar_photo || ::Default::Image.find_by(kind: "avatar")
     record.file
