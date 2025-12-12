@@ -1,0 +1,9 @@
+<h1>Attachment#index</h1>
+<p>Find me in app/views/attachments/index.html.erb</p>
+
+<div>
+    <% @attachments.each do |attachment| %>
+        <%= render_attachment_image(attachment) %>
+        <%# link_to "Delete", post_attachment_path(@post, attachment), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+    <% end %>
+</div>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index] do
     resource :profile, only: %i[show]
     resources :posts, only: %i[index]
+    resources :attachments, only: [:index], path: "photos"
   end
 
   resource :profile, only: %i[edit update]
