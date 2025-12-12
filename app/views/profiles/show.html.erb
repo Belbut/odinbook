@@ -71,7 +71,7 @@
         </div>
         <div>
             <% @attachments.each do |attachment| %>
-                <%= render_attachment_image(attachment) %>
+                <%= link_to(render_attachment_image(attachment), attachment.post ) %>
             <% end %>
         </div>
     </section>
