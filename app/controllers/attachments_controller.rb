@@ -5,11 +5,15 @@ class AttachmentsController < ApplicationController
   end
 
   def destroy
-    post = current_user.posts.find(params[:post_id])
-    attachment = post.attachments.find(params[:id])
+    attachment = Attachment.includes(post: :author).find(params[:id])
 
-    attachment.delete
+    if attachment.post.author != current_user
+      redirect_back_or_to post, alert: "You don't have permission to do that"
+      return
+    end
 
-    redirect_back_or_to post
+    attachment.destroy
+
+    redirect_back_or_to attachment.post, notice: "Attachment deleted"
   end
 end

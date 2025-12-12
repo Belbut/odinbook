@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   end
 
   resource :profile, only: %i[edit update]
+  resources :attachments, only: %i[destroy]
 
   resources :posts, only: %i[show new create edit update destroy] do
-    resources :attachments, only: %i[destroy]
     resources :comments, only: [:new], as: "reply"
   end
 

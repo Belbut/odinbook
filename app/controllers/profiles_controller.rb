@@ -3,7 +3,10 @@ class ProfilesController < ApplicationController
   def show
     @user = User.find(profile_params)
     @profile = @user.profile
-    @attachments = Attachment.joins(post: :author).where(users: { id: params[:user_id] }).limit(9)
+    @attachments = Attachment.joins(post: :author)
+                             .where(users: { id: params[:user_id] })
+                             .order(created_at: :desc)
+                             .limit(9)
   end
 
   def edit; end
