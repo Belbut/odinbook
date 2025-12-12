@@ -3,7 +3,7 @@
 
 <div>
     <% @attachments.each do |attachment| %>
-        <%= render_attachment_image(attachment) %>
+        <%= link_to(render_attachment_image(attachment), attachment.post ) %>
         <%# link_to "Delete", post_attachment_path(@post, attachment), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
     <% end %>
 </div>
