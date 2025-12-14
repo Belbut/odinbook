@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :load_profile, only: %i[edit update]
+
   def show
     @user = User.find(profile_params)
     @profile = @user.profile
@@ -7,6 +8,8 @@ class ProfilesController < ApplicationController
                              .where(users: { id: params[:user_id] })
                              .order(created_at: :desc)
                              .limit(9)
+    @posts = Post.includes(:author, :attachments).where(author: @user).order(created_at: :desc).limit(25)
+    # TODO: use stimulus to load post in batches
   end
 
   def edit; end

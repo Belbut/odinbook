@@ -31,15 +31,18 @@
 
         <%= link_to image_tag("edit_icon.svg") + "Edit Profile", edit_profile_path %>
     </section>
-    <div>
-        <nav>
-            <ul>
-                <li><%= link_to "Publications", user_posts_path(@user) %></li>
-                <li><%= link_to "Friends" %></li>
-                <li><%= link_to "Photos" %></li>
-            </ul>
-        </nav>
-    </div>
+
+    <section>
+        <div>
+            <nav>
+                <ul>
+                    <li><%= link_to "Publications", user_posts_path(@user) %></li>
+                    <li><%= link_to "Friends" %></li>
+                    <li><%= link_to "Photos" %></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
 
     <section>
         <h2>Biography</h2>
@@ -48,20 +51,6 @@
             <%= image_tag("calendar_icon.svg") + "Birthday #{@profile.birthday}" if @profile.birthday %>
             <%= image_tag("date_icon.svg") + "Joined #{@profile.created_at.to_date.to_fs(:short)}" if @profile.created_at %>
         </ul>
-    </section>
-
-    <section>
-        <h2>Post</h2>
-        <div>
-            <%= render partial: "avatar_link", locals: {user: current_user} %>
-            <input type="txt" name="" id="">
-        </div>
-        <div>
-            <%= button_to image_tag "attach_icon.svg" %>
-            <%= button_to image_tag "tag_icon.svg" %>
-            <%= button_to "Post" %>
-
-        </div>
     </section>
 
     <section>
@@ -75,9 +64,27 @@
             <% end %>
         </div>
     </section>
-    <section>
-        <h2>Feed</h2>
-    </section>
-</main>
 
-<footer>Created by <%= link_to "André Belbut", "https://github.com/Belbut" %></footer>
+    <section class="posts feed">
+        <div class="create_form">
+            <div>
+                <%= render partial: "avatar_link", locals: {user: current_user} %>
+                <input type="txt" name="" id="">
+            </div>
+            <div>
+                <%= button_to image_tag "attach_icon.svg" %>
+                <%= button_to image_tag "tag_icon.svg" %>
+                <%= button_to "Post" %>
+            </div>
+        </div>
+        <div class="feed">
+            <h2>Publications</h2>
+            <% @posts.each do |post| %>
+                <%= render post %>
+            <% end %>
+        </div>
+    </section>
+
+    <footer>Created by <%= link_to "André Belbut", "https://github.com/Belbut" %></footer>
+
+</main>
