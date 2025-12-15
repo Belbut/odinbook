@@ -85,8 +85,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_15_142353) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "deleted", default: false
+<<<<<<< Updated upstream
     t.string "category", default: "feed", null: false
     t.index ["category"], name: "index_posts_on_category"
+=======
+>>>>>>> Stashed changes
     t.index ["created_at"], name: "index_posts_on_created_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

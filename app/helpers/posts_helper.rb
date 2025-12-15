@@ -4,6 +4,10 @@ module PostsHelper
     content_tag(:div, attachments, class: "attachments")
   end
 
+  def render_category_caption(post)
+    content_tag(:span, category_description(post), class: "caption")
+  end
+
   private
 
   PREVIEW_SIZE = 5
@@ -18,5 +22,24 @@ module PostsHelper
 
   def render_amount_not_previewed(post)
     content_tag(:span, "#{post.attachments.size - PREVIEW_SIZE} More") if post.attachments.size > PREVIEW_SIZE
+  end
+
+  def category_description(post)
+    case post.category.to_sym
+    when :feed
+      "posted"
+    when :avatar_update
+      "updated his avatar photo"
+    when :background_photo
+      "updated his background photo"
+    when :interaction
+      "> #{post.id}" # TODO: add other user interacted
+    when :tagged
+      "was tagged by"
+    when :repost_own
+      "is sharing a past memory"
+    when :repost_other
+      "is reposted from "
+    end
   end
 end

@@ -3,7 +3,7 @@
 <section class="heading">
     <div>
         <%= render "profiles/user_identity_header", user: content.author %>
-        <%= content_tag(:span, content.title) if content.respond_to?(:title) %> <%# TODO: add title to contents %>
+        <%= render_category_caption(content) if content.is_a?(Post) %>
     </div>
     <div><%= content.updated_at.to_date.to_fs(:long_ordinal) %></div>
 </section>

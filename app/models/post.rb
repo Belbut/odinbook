@@ -1,8 +1,9 @@
 class Post < ApplicationRecord
   enum :category, {
-    feed: "feed", avatar_update: "avatar_update",
-    background_update: "background_update", tagged: "tagged",
-    repost: "repost"
+    feed: "feed",
+    avatar_update: "avatar_update", background_update: "background_update",
+    tagged: "tagged", interaction: "interaction",
+    repost_own: "repost_own", repost_other: "repost_other"
   }, prefix: true
 
   validates :body, length: { maximum: 500 }
