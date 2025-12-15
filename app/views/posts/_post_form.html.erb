@@ -1,6 +1,13 @@
-<%= form_with model: @post do |post_form| %>
-    <%= post_form.hidden_field :title, value: "Type of Post" %>
+<%# partial parameters: nil ; optional: nil %>
+
+<%= render "profiles/user_identity_header", user: current_user %>
+
+<%= form_with model: Post do |post_form| %>
+    <%= post_form.hidden_field :title, value: "Type of Post" %> <%# TODO: add post title that depends where te form was created %>
+
     <div><%= post_form.textarea :body, size: "100x10", placeholder: "What do you want to share?" %></div>
     <div><%= post_form.file_field :added_files, multiple: true, include_hidden: false %></div>
     <div><%= post_form.submit "Publish" %></div>
 <% end %>
+
+<%# TODO: add friends tags  %>

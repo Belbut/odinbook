@@ -1,3 +1,5 @@
+<%# partial parameters: user:[User] ; optional: nil %>
+
 <div class="user_identity">
     <span><%= render  partial: "profiles/avatar_link", locals: { user: user } %></span>
     <span><%= link_to(user.profile.name, user_profile_path(user)) %></span>
