@@ -38,7 +38,7 @@
                 <ul>
                     <li><%= link_to "Publications", user_posts_path(@user) %></li>
                     <li><%= link_to "Friends" %></li>
-                    <li><%= link_to "Photos" %></li>
+                    <li><%= link_to "Photos", user_attachments_path(@user) %></li>
                 </ul>
             </nav>
         </div>
@@ -67,15 +67,8 @@
 
     <section class="posts feed">
         <div class="create_form">
-            <div>
-                <%= render partial: "avatar_link", locals: {user: current_user} %>
-                <input type="txt" name="" id="">
-            </div>
-            <div>
-                <%= button_to image_tag "attach_icon.svg" %>
-                <%= button_to image_tag "tag_icon.svg" %>
-                <%= button_to "Post" %>
-            </div>
+            <%= render "posts/post_form" %>
+            <%# TODO: possibility to create a post on other people feed by tagging %>
         </div>
         <div class="feed">
             <h2>Publications</h2>
