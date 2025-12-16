@@ -28,9 +28,9 @@ module PostsHelper
     case post.category.to_sym
     when :feed
       "posted"
-    when :avatar_update
+    when :avatar_selection
       "updated his avatar photo"
-    when :background_photo
+    when :background_selection
       "updated his background photo"
     when :interaction
       "> #{post.id}" # TODO: add other user interacted

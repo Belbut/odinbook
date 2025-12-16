@@ -13,16 +13,22 @@ class PostsController < ApplicationController
 
   def new; end
 
-  def create
+  def create # TODO: refactor this method
     @post = current_user.posts.new(post_params)
 
     added_files = params[:post][:added_files]
     @post.attach_files(added_files)
 
     if @post.save
-      redirect_to @post
+      case params[:post][:category].to_sym
+      when :feed
+        redirect_to @post
+      when :avatar_selection
+        current_user.profile.avatar_photo = @post.attachments.first.annexable
+        redirect_to user_profile_path(current_user)
+      end
     else
-      render :new, status: :unprocessable_entity
+      redirect_back status: :unprocessable_entity
     end
   end
 
@@ -67,6 +73,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.expect(post: %i[body])
+    params.expect(post: %i[category body])
   end
 end
