@@ -23,6 +23,13 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def change_avatar
+    @avatar_attachments = Attachment.includes(post: :author).where(users: { id: current_user },
+                                                                   post: { category: :avatar_selection })
+  end
+
+  def update_avatar; end
+
   private
 
   def profile_params

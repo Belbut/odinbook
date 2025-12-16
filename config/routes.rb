@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:index] do
-    resource :profile, only: %i[show]
+    resource :profile, only: %i[show] do
+      get "change_avatar"
+      patch "update_avatar"
+    end
     resources :posts, only: %i[index]
     resources :attachments, only: [:index], path: "photos"
   end

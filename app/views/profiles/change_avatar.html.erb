@@ -1,0 +1,12 @@
+<h1>Profiles#change_avatar</h1>
+<p>Find me in app/views/profiles/change_avatar.html.erb</p>
+
+<section class="older_avatars">
+    <% @avatar_attachments.each do |attachment| %>
+        <%= render_attachment_image(attachment) %>
+    <% end %>
+</section>
+
+<section class="new_avatar_form">
+    <%= render "posts/post_form", category: :avatar_selection %>
+</section>
