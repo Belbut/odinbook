@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_15_142353) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_17_164755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -85,11 +85,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_15_142353) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "deleted", default: false
-<<<<<<< Updated upstream
     t.string "category", default: "feed", null: false
     t.index ["category"], name: "index_posts_on_category"
-=======
->>>>>>> Stashed changes
     t.index ["created_at"], name: "index_posts_on_created_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -97,8 +94,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_15_142353) do
   create_table "profiles", force: :cascade do |t|
     t.string "name", null: false
     t.date "birthday"
-    t.string "avatar_photo"
-    t.string "background_photo"
     t.string "location"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
