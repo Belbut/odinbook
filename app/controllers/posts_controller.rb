@@ -24,7 +24,10 @@ class PostsController < ApplicationController
       when :feed
         redirect_to @post
       when :avatar_selection
-        current_user.profile.avatar_photo = @post.attachments.first.annexable
+        avatar_image = @post.attachments.first.annexable
+        avatar_image.update(category: :avatar)
+        current_user.profile.avatar_photo = avatar_image
+
         redirect_to user_profile_path(current_user)
       end
     else
