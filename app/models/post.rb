@@ -9,7 +9,9 @@ class Post < ApplicationRecord
   validates :body, length: { maximum: 500 }
 
   belongs_to :author, class_name: "User", foreign_key: "user_id"
+
   has_many :attachments, dependent: :destroy
+  validate :attachments_cardinality_by_category
 
   has_many :comments, as: :commentable
   # Alias used only for polymorphic abstractions. use replies comments when post is the only type.
@@ -17,7 +19,6 @@ class Post < ApplicationRecord
 
   scope :active, -> { unscope(where: :deleted).where(deleted: false) }
   scope :deleted, -> { unscope(where: :deleted).where(deleted: true) }
-
   default_scope { where(deleted: false) }
 
   def attach_files(files_params)
@@ -27,5 +28,13 @@ class Post < ApplicationRecord
       img = Image.new(file: file)
       attachments.build(annexable: img)
     end
+  end
+
+  def attachments_cardinality_by_category
+    return unless %i[avatar_selection background_selection].include?(category)
+
+    return unless attachments.size != 1
+
+    errors.add(:attachments, "For the post #{category} there needs to be one and ony one attachment")
   end
 end
