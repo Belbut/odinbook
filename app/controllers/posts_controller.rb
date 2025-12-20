@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.unscoped.find(params[:id])
     @comment = Comment.new(commentable: @post, author: current_user)
   end
 
