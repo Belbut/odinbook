@@ -6,7 +6,7 @@ class Post < ApplicationRecord
     repost_own: "repost_own", repost_other: "repost_other"
   }, prefix: true
 
-  after_commit :update_profile
+  after_commit :update_profile, on: :create
 
   validates :body, length: { maximum: 500 }
 
@@ -45,8 +45,11 @@ class Post < ApplicationRecord
   def update_profile
     case category.to_sym
     when :avatar_selection
+      attachments.first.annexable.update(category: :avatar)
       author.profile.avatar_photo = attachments.first.annexable
     when :background_selection
+      attachments.first.annexable.update(category: :background)
+      author.profile.background_photo = attachments.first.annexable
     end
   end
 end

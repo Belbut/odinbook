@@ -5,6 +5,8 @@ class Image < ApplicationRecord
   belongs_to :imageable, polymorphic: true, optional: true
   has_one :attachment, as: :annexable
 
+  enum :category, { avatar: "avatar", background: "background" }
+
   private
 
   def file_must_be_image
