@@ -6,6 +6,8 @@ class Post < ApplicationRecord
     repost_own: "repost_own", repost_other: "repost_other"
   }, prefix: true
 
+  after_commit :update_profile
+
   validates :body, length: { maximum: 500 }
 
   belongs_to :author, class_name: "User", foreign_key: "user_id"
@@ -36,5 +38,15 @@ class Post < ApplicationRecord
     return unless attachments.size != 1
 
     errors.add(:attachments, "For the post #{category} there needs to be one and ony one attachment")
+  end
+
+  private
+
+  def update_profile
+    case category.to_sym
+    when :avatar_selection
+      author.profile.avatar_photo = attachments.first.annexable
+    when :background_selection
+    end
   end
 end
