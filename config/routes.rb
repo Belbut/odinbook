@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index] do
     resource :profile, only: %i[show] do
       get "change_avatar"
-      patch "update_avatar"
+      get "change_background"
     end
     resources :posts, only: %i[index]
     resources :attachments, only: [:index], path: "photos"

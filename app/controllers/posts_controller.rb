@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
   def new; end
 
-  def create # TODO: refactor this method
+  def create
     @post = current_user.posts.new(post_params)
 
     post_category = params[:post][:category]
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
       case params[:post][:category].to_sym
       when :feed
         redirect_to @post
-      when :avatar_selection
+      when :avatar_selection, :background_selection
         redirect_to user_profile_path(current_user)
       end
     else

@@ -17,7 +17,7 @@
     <section class="display">
         <div class="background">
             <%= image_tag @profile.background.representation(resize_to_fill:[1250,600]) %>
-            <%= link_to (image_tag("camera_icon.svg")+"Edit background") if @user == current_user %>
+            <%= link_to((image_tag("camera_icon.svg")+"Edit background"), change_background_user_profile_path(current_user)) if @user == current_user %>
         </div>
         <div class="avatar">
             <div>

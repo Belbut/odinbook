@@ -23,7 +23,7 @@ class Post < ApplicationRecord
   scope :deleted, -> { unscope(where: :deleted).where(deleted: true) }
   default_scope { where(deleted: false) }
 
-  def attach_files(files_params, post_category)
+  def attach_files(files_params, post_category = nil)
     return if files_params.nil?
 
     files_params.each do |file|

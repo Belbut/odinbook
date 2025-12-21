@@ -3,7 +3,7 @@
 <%= render "profiles/user_identity_header", user: current_user %>
 
 <%= form_with model: Post do |form| %>
-    <%= form.hidden_field :category, value: category %> <%# TODO: add post title that depends where te form was created %>
+    <%= form.hidden_field :category, value: category %>
     <div><%= form.textarea :body, size: "100x10", placeholder: "What do you want to share?" %></div>
     <div><%= form.file_field :added_files, multiple: true, include_hidden: false %></div>
     <div><%= form.submit "Publish" %></div>

@@ -1,2 +1,12 @@
 <h1>Profiles#change_background</h1>
 <p>Find me in app/views/profiles/change_background.html.erb</p>
+
+<section class="older_background">
+    <% @background_attachments.each do |attachment| %>
+        <%= render_attachment_image(attachment) %>
+    <% end %>
+</section>
+
+<section class="new_background_form">
+    <%= render "posts/post_form", category: :background_selection %>
+</section>

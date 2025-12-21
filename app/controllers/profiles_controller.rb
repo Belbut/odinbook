@@ -28,7 +28,10 @@ class ProfilesController < ApplicationController
                                                                    post: { category: :avatar_selection })
   end
 
-  def update_avatar; end
+  def change_background
+    @background_attachments = Attachment.includes(post: :author).where(users: { id: current_user },
+                                                                       post: { category: :background_selection })
+  end
 
   private
 
