@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.unscoped.find(params[:id])
+    @post = Post.find(params[:id])
     @comment = Comment.new(commentable: @post, author: current_user)
   end
 
@@ -16,8 +16,10 @@ class PostsController < ApplicationController
   def create # TODO: refactor this method
     @post = current_user.posts.new(post_params)
 
+    post_category = params[:post][:category]
     added_files = params[:post][:added_files]
-    @post.attach_files(added_files)
+
+    @post.attach_files(added_files, post_category)
 
     if @post.save
       case params[:post][:category].to_sym

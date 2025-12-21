@@ -23,14 +23,16 @@ class Post < ApplicationRecord
   scope :deleted, -> { unscope(where: :deleted).where(deleted: true) }
   default_scope { where(deleted: false) }
 
-  def attach_files(files_params)
+  def attach_files(files_params, post_category)
     return if files_params.nil?
 
     files_params.each do |file|
-      img = Image.new(file: file)
+      img = Image.new(file: file, category: image_category(post_category))
       attachments.build(annexable: img)
     end
   end
+
+  private
 
   def attachments_cardinality_by_category
     return unless %i[avatar_selection background_selection].include?(category)
@@ -40,16 +42,27 @@ class Post < ApplicationRecord
     errors.add(:attachments, "For the post #{category} there needs to be one and ony one attachment")
   end
 
-  private
+  def image_category(post_category)
+    case post_category.to_sym
+    when :avatar_selection then :avatar
+    when :background_selection then :background
+    end
+  end
+
+  def avatar_image
+    attachments.find { |a| a.annexable.avatar? }.annexable
+  end
+
+  def background_image
+    attachments.find { |a| a.annexable.background? }.annexable
+  end
 
   def update_profile
     case category.to_sym
     when :avatar_selection
-      attachments.first.annexable.update(category: :avatar)
-      author.profile.avatar_photo = attachments.first.annexable
+      author.profile.avatar_photo = avatar_image
     when :background_selection
-      attachments.first.annexable.update(category: :background)
-      author.profile.background_photo = attachments.first.annexable
+      author.profile.background_photo = background_image
     end
   end
 end
