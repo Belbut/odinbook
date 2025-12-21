@@ -9,15 +9,14 @@ class CommentsController < ApplicationController
   end
 
   def create
-    # TODO: create comment with a parent comment
-    post = Post.find(params[:comment][:post_id])
-    @comment = post.comments.new(comment_params)
+    parent_content = parent_content(params[:comment])
+    @comment = parent_content.replies.new(comment_params)
     @comment.author = current_user
 
     if @comment.save # TODO: filter if the user doesnt have rights to comment
-      redirect_to post
+      redirect_to parent_content
     else
-      render post, status: :unprocessable_entity # TODO: warning message and keep body
+      render parent_content, status: :unprocessable_entity # TODO: warning message and keep body
     end
   end
 
@@ -54,14 +53,21 @@ class CommentsController < ApplicationController
 
     return unless @comment.deleted?
 
-    redirect_to @comment
+    redirect_to @comment, status: :unprocessable_entity
   end
 
-  def parent_content
+  # def parent_content
+  #   return Comment.find(params[:comment_id]) if params.dig(:comment_id)
+  #   return Comment.find(params[:comment][:comment_id]) if params.dig(:comment, :comment_id)
+  #   return Post.find(params[:post_id]) if params.dig(:post_id)
+  #   return Post.find(params[:comment][:post_id]) if params.dig(:comment, :post_id)
+
+  #   raise "error"
+  # end
+
+  def parent_content(params = request.params)
     return Comment.find(params[:comment_id]) if params[:comment_id]
     return Post.find(params[:post_id]) if params[:post_id]
-
-    # return Post.find(params[:comments][:post_id]) if params[:comments][:post_id]
 
     raise "error"
   end

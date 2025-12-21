@@ -1,4 +1,11 @@
 module CommentableHelper
+  def reply_path(content)
+    case content
+    when Post then new_post_reply_path(content)
+    when Comment then new_comment_reply_path(content)
+    end
+  end
+
   def render_deleted_content(content)
     content_tag(:div, "This is a fragment of time, this #{content.model_name} was deleted")
   end
