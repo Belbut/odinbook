@@ -1,6 +1,6 @@
-class CreateRelationships < ActiveRecord::Migration[8.0]
+class CreateFriendRequests < ActiveRecord::Migration[8.0]
   def change
-    create_table :relationships do |t|
+    create_table :friend_requests do |t|
       t.references :sender, null: false, foreign_key: { to_table: :users }
       t.references :receiver, null: false, foreign_key: { to_table: :users }
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_23_140113) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_23_181446) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -71,6 +71,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_23_140113) do
     t.index ["kind"], name: "index_default_images_on_kind"
   end
 
+  create_table "friend_requests", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_friend_requests_on_receiver_id"
+    t.index ["sender_id"], name: "index_friend_requests_on_sender_id"
+  end
+
   create_table "images", force: :cascade do |t|
     t.string "imageable_type"
     t.bigint "imageable_id"
@@ -101,15 +110,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_23_140113) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
-  end
-
-  create_table "relationships", force: :cascade do |t|
-    t.bigint "sender_id", null: false
-    t.bigint "receiver_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["receiver_id"], name: "index_relationships_on_receiver_id"
-    t.index ["sender_id"], name: "index_relationships_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -143,8 +143,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_23_140113) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "attachments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "friend_requests", "users", column: "receiver_id"
+  add_foreign_key "friend_requests", "users", column: "sender_id"
   add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"
-  add_foreign_key "relationships", "users", column: "receiver_id"
-  add_foreign_key "relationships", "users", column: "sender_id"
 end
