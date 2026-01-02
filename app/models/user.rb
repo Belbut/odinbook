@@ -17,4 +17,10 @@ class User < ApplicationRecord
 
   has_many :friend_requests_sent, class_name: "FriendRequest", foreign_key: "sender_id"
   has_many :requested_friends, through: :friend_requests_sent, source: :receiver
+
+  def friends
+    pending = pending_friends.target
+    requested = requested_friends.target
+    requested.intersection(pending)
+  end
 end
