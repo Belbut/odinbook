@@ -7,10 +7,10 @@ class FriendRequestsController < ApplicationController
 
     if friend_request.save
       flash[:notice] = "Friend Request Sended"
-      redirect_back_or_to(user_profile_path(receiver)) # TODO: change the fall back to friendships?
     else
-      flash.now[:alert] = friend_request.errors.full_message
+      flash[:alert] = friend_request.errors.full_messages
     end
+    redirect_back_or_to(user_profile_path(receiver)) # TODO: change the fall back to friendships?
   end
 
   def destroy
@@ -21,10 +21,10 @@ class FriendRequestsController < ApplicationController
 
     if friend_request.destroy
       flash[:notice] = "Friend Request Destroyed"
-      redirect_back_or_to(user_profile_path(receiver)) # TODO: change the fall back to friendships?
     else
-      flash.now[:alert] = friend_request.errors.full_message
+      flash[:alert] = friend_request.errors.full_messages
     end
+    redirect_back_or_to(user_profile_path(receiver)) # TODO: change the fall back to friendships?
   end
 
   private
