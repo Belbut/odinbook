@@ -13,7 +13,7 @@ module FriendRequestHelper
       link_to("Unfriend") # TODO: decline friend requests
 
     when ONLY_CURRENT_USER_SENDED_REQUEST
-      link_to("Send Friend Request", user_friend_request_path(target_user), data: { turbo_method: :destroy })
+      link_to("Cancel Friend Request", user_friend_request_path(target_user), data: { turbo_method: :delete })
 
     when ONLY_TARGET_USER_SENDED_REQUEST
       link_to("Accept Friend Request", user_friend_request_path(target_user), data: { turbo_method: :post })
