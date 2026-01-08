@@ -5,8 +5,6 @@ class FriendRequestsController < ApplicationController
 
     friend_request = FriendRequest.new(sender: sender, receiver: receiver)
 
-    require "pry-byebug"
-    binding.pry
     if friend_request.save
       flash[:notice] = "Friend Request Sended"
       redirect_back_or_to(user_profile_path(receiver)) # TODO: change the fall back to friendships?

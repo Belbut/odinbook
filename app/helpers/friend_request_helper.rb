@@ -16,9 +16,10 @@ module FriendRequestHelper
       link_to("Cancel Friend Request", user_friend_request_path(target_user), data: { turbo_method: :delete })
 
     when ONLY_TARGET_USER_SENDED_REQUEST
-      link_to("Accept Friend Request", user_friend_request_path(target_user), data: { turbo_method: :post })
-      link_to("Decline Friend Request") # TODO: decline friend requests
+      accept = link_to("Accept Friend Request", user_friend_request_path(target_user), data: { turbo_method: :post })
+      decline = link_to("Decline Friend Request") # TODO: decline friend requests
 
+      accept + " / " + decline
     when NO_USER_SENDED_REQUEST
       link_to("Send Friend Request", user_friend_request_path(target_user), data: { turbo_method: :post })
     end
