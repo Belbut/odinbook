@@ -1,10 +1,12 @@
-class FriendRequestController < ApplicationController
+class FriendRequestsController < ApplicationController
   def create
     sender = current_user
     receiver = User.find(recipient_params)
 
     friend_request = FriendRequest.new(sender: sender, receiver: receiver)
 
+    require "pry-byebug"
+    binding.pry
     if friend_request.save
       flash.now[:notice] = "Friend Request Sended"
     else

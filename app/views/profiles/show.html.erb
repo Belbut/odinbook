@@ -26,7 +26,7 @@
             </div>
             <div>
                 <h1><%= @profile.name %></h1>
-                <a><%= %>Friends</a>
+                <a><%= render_user_friend_request_action(current_user, @user) unless @user == current_user %>Friend tags</a>
             </div>
         </div>
 
