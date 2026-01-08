@@ -4,6 +4,7 @@ class FriendRequestController < ApplicationController
     receiver = User.find(recipient_params)
 
     friend_request = FriendRequest.new(sender: sender, receiver: receiver)
+
     if friend_request.save
       flash.now[:notice] = "Friend Request Sended"
     else
