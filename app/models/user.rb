@@ -19,11 +19,6 @@ class User < ApplicationRecord
   has_many :requested_friends, through: :friend_requests_sent, source: :receiver
 
   # scope :friends, requested_friends.merge(pending_friends)
-  # def friends
-  #   pending = pending_friends.target
-  #   requested = requested_friends.target
-  #   requested.intersection(pending)
-  # end
   def friends
     requested_friends.merge(pending_friends)
   end
