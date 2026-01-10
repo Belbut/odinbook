@@ -13,16 +13,21 @@ class FriendRequestsController < ApplicationController
   end
 
   def cancel
-    destroy_friend_request(sender: @initiator, receiver: @receiver)
+    destroy_friend_request(sender: @initiator, receiver: @target)
   end
 
   def reject
-    destroy_friend_request(sender: @receiver, receiver: @initiator)
+    destroy_friend_request(sender: @target, receiver: @initiator)
   end
 
   def destroy
     established_friendship_requests = FriendRequest.where(sender: [@initiator, @target],
                                                           receiver: [@target, @initiator])
+
+    if established_friendship_requests.nil?
+      return redirect_back_or_to(user_profile_path(@target),
+                                 notice: "There was no Friend Request to destroy")
+    end
 
     if established_friendship_requests.destroy_all
       flash[:notice] = "You ended the friendship"
@@ -45,6 +50,11 @@ class FriendRequestsController < ApplicationController
 
   def destroy_friend_request(sender:, receiver:)
     friend_request = FriendRequest.find_by(sender: sender, receiver: receiver)
+
+    if friend_request.nil?
+      return redirect_back_or_to(user_profile_path(@target),
+                                 notice: "There was no Friend Request to destroy")
+    end
 
     if friend_request.destroy
       flash[:notice] = "Friend Request Destroyed"
