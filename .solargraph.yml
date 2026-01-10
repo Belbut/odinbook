@@ -6,6 +6,13 @@ exclude:
   - test/**/*
   - vendor/**/*
   - ".bundle/**/*"
+  - "tmp/**/*"
+  - "log/**/*"
+  - "node_modules/**/*"
+  - "coverage/**/*"
+  - ".git/**/*"
+  - "storage/**/*"
+  - "public/**/*"
 require:
   - actioncable
   - actionmailer
@@ -18,14 +25,7 @@ require:
   - activesupport
 domains: []
 reporters:
-  - rubocop
   - require_not_found
-formatter:
-  rubocop:
-    cops: safe
-    except: []
-    only: []
-    extra_args: []
 require_paths: []
 plugins:
   - solargraph-rails
