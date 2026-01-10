@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:index] do
-    resource :friend_request, only: %i[create destroy]
+    resource :friend_request, only: %i[create destroy] do
+      delete "cancel"
+      delete "reject"
+    end
     resource :profile, only: %i[show] do
       get "change_avatar"
       get "change_background"
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
     resources :posts, only: %i[index]
     resources :attachments, only: [:index], path: "photos"
   end
-  
+
   resource :profile, only: %i[edit update]
   resources :attachments, only: %i[destroy]
 

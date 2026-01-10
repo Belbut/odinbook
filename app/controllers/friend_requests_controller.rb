@@ -1,22 +1,49 @@
 class FriendRequestsController < ApplicationController
+  before_action :set_users_involved
+
   def create
-    sender = current_user
-    receiver = User.find(recipient_params)
+    new_friend_request = FriendRequest.new(sender: @initiator, receiver: @target)
 
-    friend_request = FriendRequest.new(sender: sender, receiver: receiver)
-
-    if friend_request.save
+    if new_friend_request.save
       flash[:notice] = "Friend Request Sended"
     else
-      flash[:alert] = friend_request.errors.full_messages
+      flash[:alert] = new_friend_request.errors.full_messages
     end
-    redirect_back_or_to(user_profile_path(receiver)) # TODO: change the fall back to friendships?
+    redirect_back_or_to(user_profile_path(@target)) # TODO: change the fall back to friendships?
+  end
+
+  def cancel
+    destroy_friend_request(sender: @initiator, receiver: @receiver)
+  end
+
+  def reject
+    destroy_friend_request(sender: @receiver, receiver: @initiator)
   end
 
   def destroy
-    sender = current_user
-    receiver = User.find(recipient_params)
+    established_friendship_requests = FriendRequest.where(sender: [@initiator, @target],
+                                                          receiver: [@target, @initiator])
 
+    if established_friendship_requests.destroy_all
+      flash[:notice] = "You ended the friendship"
+    else
+      flash[:alert] = established_friendship_requests.errors.full_messages
+    end
+    redirect_back_or_to(user_profile_path(@target)) # TODO: change the fall back to friendships?
+  end
+
+  private
+
+  def target_params
+    params.expect(:user_id)
+  end
+
+  def set_users_involved
+    @initiator = current_user
+    @target = User.find(target_params)
+  end
+
+  def destroy_friend_request(sender:, receiver:)
     friend_request = FriendRequest.find_by(sender: sender, receiver: receiver)
 
     if friend_request.destroy
@@ -24,12 +51,6 @@ class FriendRequestsController < ApplicationController
     else
       flash[:alert] = friend_request.errors.full_messages
     end
-    redirect_back_or_to(user_profile_path(receiver)) # TODO: change the fall back to friendships?
-  end
-
-  private
-
-  def recipient_params
-    params.expect(:user_id)
+    redirect_back_or_to(user_profile_path(@target)) # TODO: change the fall back to friendships?
   end
 end
