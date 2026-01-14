@@ -13,13 +13,27 @@ class User < ApplicationRecord
   has_many :comments
 
   has_many :friend_requests_received, class_name: "FriendRequest", foreign_key: "receiver_id"
-  has_many :pending_friends, through: :friend_requests_received, source: :sender
-
   has_many :friend_requests_sent, class_name: "FriendRequest", foreign_key: "sender_id"
-  has_many :requested_friends, through: :friend_requests_sent, source: :receiver
 
-  # scope :friends, requested_friends.merge(pending_friends)
   def friends
-    requested_friends.merge(pending_friends)
+    User.where(id: inbound_requests_user_ids).where(id: outbound_requests_user_ids)
+  end
+
+  def pending_incoming_friend_request_users
+    User.where(id: inbound_requests_user_ids).where.not(id: outbound_requests_user_ids)
+  end
+
+  def pending_outgoing_friend_request_users
+    User.where(id: outbound_requests_user_ids).where.not(id: inbound_requests_user_ids)
+  end
+
+  private
+
+  def inbound_request_user_ids
+    friend_requests_received.select(:sender_id)
+  end
+
+  def outbound_requests_user_ids
+    friend_requests_sent.select(:receiver_id)
   end
 end
