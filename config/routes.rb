@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :attachments, only: [:index], path: "photos"
   end
 
-  resources :users, only: [] do
+  resources :users, param: :target_id, only: [] do
     resource :friend_request, only: %i[create destroy] do
       delete "cancel"
       delete "reject"

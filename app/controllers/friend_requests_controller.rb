@@ -39,7 +39,7 @@ class FriendRequestsController < ApplicationController
   private
 
   def target_params
-    params.expect(:user_id)
+    params.expect(:user_target_id)
   end
 
   def set_users_involved
