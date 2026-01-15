@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
   private
 
-  def inbound_request_user_ids
+  def inbound_requests_user_ids
     friend_requests_received.select(:sender_id)
   end
 
