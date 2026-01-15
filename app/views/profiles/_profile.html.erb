@@ -1,0 +1,9 @@
+<%# partial parameters: profile:[profile] ; optional: nil %>
+
+<div class="profile">
+    <%# <span><%= render %>
+    <span><%= link_to(profile.name, user_profile_path(profile.user)) %></span>
+    <span><%= image_tag profile.avatar.representation(resize_to_fill: [100, 100]) %></span>
+    <span>Friends in common</span> <%# TODO: add function that shows friends in common%>
+    <span><%= render_user_friend_request_action(current_user, profile.user) %></span>
+</div>

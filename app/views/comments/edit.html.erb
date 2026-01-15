@@ -5,7 +5,7 @@
     <%= render "commentable/parent_thread", thread_node: @comment.parent %>
 </section>
 
-<span><%= render  partial: "profiles/avatar_link", locals: { user: current_user } %></span>
+<span><%= render  partial: "avatar_linked_photo", locals: { user: current_user } %></span>
 <span>Comment</span>
 <div>
     <%= form_with model: @comment do |form| %>
