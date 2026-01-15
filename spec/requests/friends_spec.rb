@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "FriendRequests", type: :request do
-  describe "GET /show" do
+RSpec.describe "Friends", type: :request do
+  describe "GET /index" do
     it "returns http success" do
-      get "/friend_request/show"
+      get "/friends/index"
       expect(response).to have_http_status(:success)
     end
   end

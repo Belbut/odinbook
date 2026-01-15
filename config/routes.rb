@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get "change_avatar"
       get "change_background"
     end
+    resources :friends, only: %i[index]
     resources :posts, only: %i[index]
     resources :attachments, only: [:index], path: "photos"
   end
