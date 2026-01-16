@@ -2,17 +2,8 @@
 <p>Find me in app/views/friends/index.html.erb</p>
 
 <% if current_user == @user %>
-    <h2>Friends Requests</h2>
-    <% @pending_incoming_fr_users.each do |user| %>
-        <%= render user.profile %>
-    <% end %>
-    <h2>Friends Pending</h2>
-    <% @pending_outgoing_fr_users.each do |user| %>
-        <%= render user.profile %>
-    <% end %>
+    <%= render_users_relationships(@pending_incoming_fr_users, section_heading:"Friends Invitations") %>
+    <%= render_users_relationships(@pending_outgoing_fr_users, section_heading:"Friends Pending") %>
 <% end %>
 
-<h2>Friends with <%= @user_friends.size %></h2>
-<% @user_friends.each do |friend| %>
-    <%= render friend.profile %>
-<% end %>
+<%= render_users_relationships(@user_friends, section_heading: "Friends") %>
