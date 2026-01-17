@@ -27,6 +27,10 @@ class User < ApplicationRecord
     User.where(id: outbound_requests_user_ids).where.not(id: inbound_requests_user_ids)
   end
 
+  def common_friends_with(target_user)
+    User.where(id: friends).where(id: target_user.friends)
+  end
+
   private
 
   def inbound_requests_user_ids
