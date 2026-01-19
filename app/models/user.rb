@@ -31,6 +31,16 @@ class User < ApplicationRecord
     User.where(id: friends).where(id: target_user.friends)
   end
 
+  def mutual_friends_count(*target_users)
+    hash = {}
+    current_user_friends = friends
+
+    target_users.flatten.each do |target_user|
+      hash[target_user.id] = current_user_friends.where(id: target_user.friends).size
+    end
+    hash
+  end
+
   private
 
   def inbound_requests_user_ids

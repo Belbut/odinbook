@@ -2,8 +2,8 @@
 <p>Find me in app/views/friends/index.html.erb</p>
 
 <% if current_user == @user %>
-    <%= render_users_relationships(@pending_incoming_fr_users,@common_friends_memoization, section_heading:"Friends Invitations") %>
-    <%= render_users_relationships(@pending_outgoing_fr_users,@common_friends_memoization, section_heading:"Friends Pending") %>
+    <%= render_users_relationships(@pending_incoming_fr_users,@common_friends_precomputed, section_heading:"Friends Invitations") %>
+    <%= render_users_relationships(@pending_outgoing_fr_users,@common_friends_precomputed, section_heading:"Friends Pending") %>
 <% end %>
 
-<%= render_users_relationships(@user_friends, @common_friends_memoization,section_heading: "Friends") %>
+<%= render_users_relationships(@user_friends, @common_friends_precomputed,section_heading: "Friends") %>
