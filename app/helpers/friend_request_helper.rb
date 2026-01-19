@@ -4,7 +4,7 @@ module FriendRequestHelper
   ONLY_TARGET_USER_SENDED_REQUEST = [false, true].freeze
   NO_USER_SENDED_REQUEST = [false, false].freeze
 
-  def render_user_friend_request_action(current_user, target_user)
+  def render_user_friend_request_action(current_user, target_user) #TODO: refactor the friendsRequest logic so that it doesnt make new queries
     current_user_interacted = FriendRequest.exists?(sender: current_user, receiver: target_user)
     target_user_interacted = FriendRequest.exists?(sender: target_user, receiver: current_user)
 

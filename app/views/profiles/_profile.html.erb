@@ -1,9 +1,9 @@
-<%# partial parameters: profile:[profile] ; optional: nil %>
+<%# partial parameters: profile:[profile] ; optional:common_friends_memoization  %>
 
 <div class="profile">
     <%# <div><%= render %>
     <div><%= link_to(profile.name, user_profile_path(profile.user)) %></div>
     <div><%= image_tag profile.avatar.representation(resize_to_fill: [100, 100]) %></div>
-    <div><%= current_user.common_friends_with(profile.user).size %> friends in common</div> <%# TODO: add function that shows friends in common%>
+    <div><%= common_friends_memoization[profile.user.id] || current_user.common_friends_with(profile.user).size %> friends in common</div>
     <div><%= render_user_friend_request_action(current_user, profile.user) %></div>
 </div>
