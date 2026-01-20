@@ -1,6 +1,7 @@
 module FriendRequestHelper
-  def render_user_friend_request_action(current_user, target_user) # TODO: refactor the friendsRequest logic so that it doesnt make new queries
-    friend_request_status = FriendRequest.status_between(current_user, target_user)
+  def render_user_friend_request_action(current_user, target_user, precomputed_status: nil)
+    friend_request_status = precomputed_status[target_user.id] || FriendRequest.status_between(current_user,
+                                                                                               target_user)
 
     case friend_request_status
     when :BOTH_USERS_SENDED_REQUEST
