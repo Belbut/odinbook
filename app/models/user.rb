@@ -41,6 +41,21 @@ class User < ApplicationRecord
     hash
   end
 
+  def users_interactions_status(*target_users)
+    hash = {}
+    current_user_friends = friends
+    pending_incoming_fr_users = pending_incoming_friend_request_users
+    pending_outgoing_fr_users = pending_outgoing_friend_request_users
+
+    target_users.flatten.each do |target_user|
+      hash[target_user.id] = FriendRequest.status_between(self, target_user,
+                                                          preprocessed_friends: current_user_friends,
+                                                          preprocessed_outgoing_users: pending_outgoing_fr_users,
+                                                          preprocessed_incoming_users: pending_incoming_fr_users)
+    end
+    hash
+  end
+
   private
 
   def inbound_requests_user_ids

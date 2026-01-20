@@ -12,5 +12,6 @@ class FriendsController < ApplicationController
                                                                     @pending_incoming_fr_users,
                                                                     @pending_outgoing_fr_users)
 
+    @interactions_precomputed = current_user.users_interactions_status
   end
 end
