@@ -11,5 +11,6 @@ class FriendsController < ApplicationController
     @common_friends_precomputed = current_user.mutual_friends_count(@user_friends,
                                                                     @pending_incoming_fr_users,
                                                                     @pending_outgoing_fr_users)
+
   end
 end
