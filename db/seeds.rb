@@ -26,7 +26,7 @@ test_user = User.new(
   password: "123456",
   password_confirmation: "123456",
   profile_attributes: {
-    name: "Andre Belbut"
+    name: "John dos Passes"
   }
 )
 test_user.skip_confirmation!
@@ -40,8 +40,8 @@ test_user.save!
     profile_attributes: {
       name: Faker::FunnyName.name,
       birthday: Faker::Date.birthday(min_age: 0, max_age: 110),
-      # t.string :profile_photo TODO
-      # t.string :background_photo TODO
+      # t.string :profile_photo
+      # t.string :background_photo
       location: Faker::Address.city
     }
   )
