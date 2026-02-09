@@ -1,5 +1,5 @@
 module FriendRequestHelper
-  def render_user_friend_request_action(current_user, target_user, precomputed_status: nil)
+  def render_user_friend_request_action(current_user, target_user, precomputed_status: {})
     friend_request_status = precomputed_status[target_user.id] || FriendRequest.status_between(current_user,
                                                                                                target_user)
 
@@ -22,5 +22,11 @@ module FriendRequestHelper
     when :NO_USER_SENDED_REQUEST
       link_to("Send Friend Request", user_friend_request_path(target_user), data: { turbo_method: :post })
     end
+  end
+
+  def render_common_friends_count(current_user, target_user, precomputed_common_friends: {})
+    common_friends_count = precomputed_common_friends[target_user.id] || current_user.common_friends_with(target_user).size
+
+    tag.div("#{common_friends_count} friends in common")
   end
 end

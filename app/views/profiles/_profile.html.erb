@@ -4,6 +4,6 @@
     <%# <div><%= render %>
     <div><%= link_to(profile.name, user_profile_path(profile.user)) %></div>
     <div><%= image_tag profile.avatar.representation(resize_to_fill: [100, 100]) %></div>
-    <div><%= common_friends_precomputed[profile.user.id] %> friends in common</div>
+    <div><%= render_common_friends_count(current_user, @user, precomputed_common_friends: common_friends_precomputed) %></div>
     <div><%= render_user_friend_request_action(current_user, profile.user, precomputed_status: interactions_precomputed) %></div>
 </div>

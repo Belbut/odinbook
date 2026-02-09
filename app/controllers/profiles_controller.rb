@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
     # TODO: use stimulus to load post in batches
   end
 
-  def edit; end
+  def edit; end # TODO: complete profile#edit
 
   def update
     if @profile.update(update_form_params)
