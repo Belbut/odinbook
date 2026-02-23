@@ -1,22 +1,36 @@
-
-
 <header>
     <nav>
-    <% if user_signed_in? %>
-        <ul>
-            <li><%= link_to image_tag "feed_icon.svg" %></li>
+        <% if user_signed_in? %>
+            <ul>
+                <li><%= link_to image_tag "feed_icon.svg" %></li>
                 <%= form_with url: "/search", method: :get do |form| %>
                     <%= form.search_field :query %>
                     <%= image_submit_tag "search_icon.svg" %>
                 <% end %>
-            <li><%= link_to image_tag "message_icon.svg" %></li>
-            <li><%= link_to image_tag "notification_icon.svg" %></li>
-            <li><%= render "profiles/avatar_linked_photo" %></li>
-        </ul>
-    <% else %>
-        <ul>
-<%# TODO: add sign in option %>
-        </ul>
-    <% end %>
+                <li><%= link_to image_tag "message_icon.svg" %></li>
+                <li><%= link_to image_tag "notification_icon.svg" %></li>
+                <li><%= render "profiles/avatar_linked_photo" %></li>
+            </ul>
+        <% else %>
+            <% unless current_page?(controller:"devise/sessions",action: "new") %>
+                <ul>
+                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                        <li class="field">
+                            <%= f.label :email %><br>
+                            <%= f.email_field :email, value:"test@test.com", autofocus: true, autocomplete: "email" %>
+                        </li>
+
+                        <li class="field">
+                            <%= f.label :password %><br>
+                            <%= f.password_field :password, value: "123456", autocomplete: "current-password" %>
+                        </li>
+
+                        <li class="actions">
+                            <%= f.submit "Log in" %>
+                        </li>
+                    <% end %>
+                </ul>
+            <% end %>
+        <% end %>
     </nav>
 </header>
