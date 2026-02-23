@@ -1,18 +1,6 @@
 <h1>Profiles#show</h1>
 <p>Find me in app/views/profiles/show.html.erb</p>
 
-<header>
-    <nav>
-        <ul>
-            <li><%= link_to image_tag "feed_icon.svg" %></li>
-            <li><input type="text" name="profile_search" id="search_bar"></li>
-            <li><%= link_to image_tag "message_icon.svg" %></li>
-            <li><%= link_to image_tag "notification_icon.svg" %></li>
-            <li><%= render partial: "avatar_linked_photo", locals: {user: current_user} %></li>
-        </ul>
-    </nav>
-</header>
-
 <main>
     <section class="display">
         <div class="background">
