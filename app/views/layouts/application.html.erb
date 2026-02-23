@@ -23,22 +23,7 @@
   </head>
 
   <body>
-    <header>
-        <nav>
-            <ul>
-                <li><%= link_to image_tag "feed_icon.svg" %></li>
-                <%= form_with url: "/search", method: :get do |form| %>
-                  <%= form.search_field :query %>
-                  <%= image_submit_tag "search_icon.svg" %>
-                <% end %>
-                <li><%= link_to image_tag "message_icon.svg" %></li>
-                <li><%= link_to image_tag "notification_icon.svg" %></li>
-                <li><%= render partial: "avatar_linked_photo", locals: {user: current_user} %></li>
-            </ul>
-        </nav>
-    </header>
-
-    <%= debug(params) %>
+    <%= render "application/navigation_bar" %>
     <nav>
       <% if user_signed_in? %>
         <%= link_to "My Profile", user_profile_path(current_user) %>
