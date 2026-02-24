@@ -25,7 +25,7 @@ class ProfilesController < ApplicationController
 
   def search
     sanitized_input = Profile.sanitize_sql_like(params[:search][:query])
-    @profiles = Profile.where("name iLIKE ?", "%#{sanitized_input}%")
+    @profiles = Profile.name_search(sanitized_input)
   end
 
   def change_avatar

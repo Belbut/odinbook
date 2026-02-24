@@ -248,6 +248,9 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.6.2-x86_64-linux)
+    pg_search (2.3.7)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -494,6 +497,7 @@ DEPENDENCIES
   omniauth-github (~> 1.0)
   omniauth-rails_csrf_protection (~> 0.1.2)
   pg (~> 1.1)
+  pg_search (~> 2.3)
   propshaft
   pry-byebug (~> 3.11)
   puma (>= 5.0)

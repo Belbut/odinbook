@@ -1,4 +1,10 @@
 class Profile < ApplicationRecord
+  include PgSearch::Model
+
+  pg_search_scope :name_search, against: :name,
+                                ignoring: :accents,
+                                using: { trigram: { word_similarity: true } }
+
   belongs_to :user
   has_one :avatar_photo, -> { where category: :avatar }, as: :imageable, class_name: "Image"
   has_one :background_photo, -> { where category: :background }, as: :imageable, class_name: "Image"
