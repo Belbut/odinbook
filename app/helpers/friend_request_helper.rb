@@ -1,7 +1,8 @@
 module FriendRequestHelper
   def render_user_friend_request_action(current_user, target_user, precomputed_status: {})
-    friend_request_status = precomputed_status[target_user.id] || FriendRequest.status_between(current_user,
-                                                                                               target_user)
+    friend_request_status = precomputed_status[target_user.id] if precomputed_status
+    friend_request_status ||= FriendRequest.status_between(current_user,
+                                                           target_user)
 
     case friend_request_status
     when :BOTH_USERS_SENDED_REQUEST
@@ -25,7 +26,8 @@ module FriendRequestHelper
   end
 
   def render_common_friends_count(current_user, target_user, precomputed_common_friends: {})
-    common_friends_count = precomputed_common_friends[target_user.id] || current_user.common_friends_with(target_user).size
+    common_friends_count = precomputed_common_friends[target_user.id] if precomputed_common_friends
+    common_friends_count ||= current_user.common_friends_with(target_user).size
 
     tag.div("#{common_friends_count} friends in common")
   end
