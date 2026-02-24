@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # TODO: refactor routes with concerns. maybe write a personal blog post about it.
 
   devise_for :users
+
   resources :users, only: [:index] do
     resource :profile, only: %i[show] do
       get "change_avatar"
@@ -24,6 +25,13 @@ Rails.application.routes.draw do
   end
 
   resource :profile, only: %i[edit update]
+
+  resources :profiles, only: [] do
+    collection do
+      get "search"
+    end
+  end
+
   resources :attachments, only: %i[destroy]
 
   resources :posts, only: %i[show new create edit update destroy] do

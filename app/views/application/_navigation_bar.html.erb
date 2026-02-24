@@ -3,7 +3,7 @@
         <% if user_signed_in? %>
             <ul>
                 <li><%= link_to image_tag "feed_icon.svg" %></li>
-                <%= form_with url: "/search", method: :get do |form| %>
+                <%= form_with model: Profile.new, url: search_profiles_path, scope: :search, method: :get do |form| %>
                     <%= form.search_field :query %>
                     <%= image_submit_tag "search_icon.svg" %>
                 <% end %>

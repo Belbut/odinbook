@@ -23,6 +23,11 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def search
+    sanitized_input = Profile.sanitize_sql_like(params[:search][:query])
+    @profiles = Profile.where("name iLIKE ?", "%#{sanitized_input}%")
+  end
+
   def change_avatar
     @avatar_attachments = Attachment.includes(post: :author).where(users: { id: current_user },
                                                                    post: { category: :avatar_selection })
