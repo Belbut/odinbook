@@ -29,7 +29,7 @@ class PostsController < ApplicationController
         redirect_to user_profile_path(current_user)
       end
     else
-      redirect_back status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, notice: @post.errors.full_messages
     end
   end
 
