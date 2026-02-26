@@ -4,7 +4,7 @@ class Post < ApplicationRecord
     avatar_selection: "avatar_selection", background_selection: "background_selection",
     tagged: "tagged", interaction: "interaction",
     repost_own: "repost_own", repost_other: "repost_other"
-  }, prefix: true
+  }, prefix: true # TODO: cover rest of the options.
 
   after_commit :update_profile, on: :create
 

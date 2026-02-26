@@ -11,7 +11,9 @@ class PostsController < ApplicationController
     @comment = Comment.new(commentable: @post, author: current_user)
   end
 
-  def new; end
+  def new
+    @post = current_user.posts.new(category: :feed) # default post is feed
+  end
 
   def create
     @post = current_user.posts.new(post_params)
