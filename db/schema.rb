@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_24_173337) do
+ActiveRecord::Schema[8.0].define(version: 2026_03_02_145704) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_trgm"
@@ -102,6 +102,11 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_24_173337) do
     t.index ["category"], name: "index_posts_on_category"
     t.index ["created_at"], name: "index_posts_on_created_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "posts_users", id: false, force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "user_id", null: false
   end
 
   create_table "profiles", force: :cascade do |t|

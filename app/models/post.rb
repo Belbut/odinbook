@@ -19,6 +19,8 @@ class Post < ApplicationRecord
   # Alias used only for polymorphic abstractions. use replies comments when post is the only type.
   alias replies comments
 
+  has_and_belongs_to_many :likes, class_name: "User", foreign_key: "user_id"
+
   scope :active, -> { unscope(where: :deleted).where(deleted: false) }
   scope :deleted, -> { unscope(where: :deleted).where(deleted: true) }
   default_scope { where(deleted: false) }
