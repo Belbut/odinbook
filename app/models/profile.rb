@@ -10,8 +10,8 @@ class Profile < ApplicationRecord
   has_one :background_photo, -> { where category: :background }, as: :imageable, class_name: "Image"
 
   validates :name, presence: true, allow_blank: false
-  normalizes :birthday, with: ->(birthday) { birthday.empty? ? nil : birthday }
-  normalizes :location, with: ->(location) { location.empty? ? nil : location }
+  normalizes :birthday, with: ->(birthday) { birthday == "" ? nil : birthday }
+  normalizes :location, with: ->(location) { location == "" ? nil : location }
 
   def avatar
     avatar_or_default
