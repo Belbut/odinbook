@@ -107,6 +107,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_02_150921) do
   create_table "posts_users", id: false, force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
+    t.index ["post_id", "user_id"], name: "index_posts_users_on_post_id_and_user_id", unique: true
   end
 
   create_table "profiles", force: :cascade do |t|

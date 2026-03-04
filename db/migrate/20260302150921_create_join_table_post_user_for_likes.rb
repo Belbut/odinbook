@@ -4,5 +4,6 @@ class CreateJoinTablePostUserForLikes < ActiveRecord::Migration[8.0]
       # t.index [:post_id, :user_id]
       # t.index [:user_id, :post_id]
     end
+    add_index(:posts_users, %i[post_id user_id], unique: true)
   end
 end
