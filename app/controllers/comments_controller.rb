@@ -56,19 +56,10 @@ class CommentsController < ApplicationController
     redirect_to @comment, status: :unprocessable_entity
   end
 
-  # def parent_content
-  #   return Comment.find(params[:comment_id]) if params.dig(:comment_id)
-  #   return Comment.find(params[:comment][:comment_id]) if params.dig(:comment, :comment_id)
-  #   return Post.find(params[:post_id]) if params.dig(:post_id)
-  #   return Post.find(params[:comment][:post_id]) if params.dig(:comment, :post_id)
-
-  #   raise "error"
-  # end
-
   def parent_content(params = request.params)
     return Comment.find(params[:comment_id]) if params[:comment_id]
     return Post.find(params[:post_id]) if params[:post_id]
 
-    raise "error"
+    raise "error- parent content is not a post/comment"
   end
 end

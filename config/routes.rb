@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   resources :posts, only: %i[show new create edit update destroy] do
     resources :comments, only: [:new], as: "reply"
+    resource :like, only: %i[create destroy]
   end
 
   resources :comments, except: %i[new index] do
