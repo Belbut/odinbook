@@ -7,6 +7,8 @@ class Comment < ApplicationRecord
 
   has_many :replies, class_name: "Comment", as: :commentable
 
+  has_and_belongs_to_many :likes, class_name: "User", foreign_key: "comment_id"
+
   def deleted?
     deleted == true
   end
