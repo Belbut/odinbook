@@ -37,12 +37,14 @@ Rails.application.routes.draw do
   resources :posts, only: %i[show new create edit update destroy] do
     resources :comments, only: [:new], as: "reply"
     resource :likes, only: %i[create destroy]
+    resources :likes, only: %i[index]
   end
   # TODO: dry this routes- looks like an abstraction can be made?
 
   resources :comments, except: %i[new index] do
     resources :comments, only: [:new], as: "reply"
     resource :likes, only: %i[create destroy]
+    resources :likes, only: %i[index]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

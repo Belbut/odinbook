@@ -1,0 +1,11 @@
+<h1>Likes#index</h1>
+<p>Find me in app/views/likes/index.html.erb</p>
+
+<%# TODO: make this a widget and not a full page  %>
+<p><%= link_to "See content", @content %></p>
+
+<p>There are <%= @likes_users.size %> likes</p>
+
+<% @likes_users.each do |user| %>
+    <%= render user.profile %>
+<% end %>

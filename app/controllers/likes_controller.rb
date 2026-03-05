@@ -11,6 +11,11 @@ class LikesController < ApplicationController
     # TODO: good use case for turbo upgrade
   end
 
+  def index
+    @content = parent_content
+    @likes_users = parent_content.likes.includes(:profile)
+  end
+
   private
 
   def parent_content
