@@ -3,7 +3,7 @@
 <section class="interactions">
     <span>Number of reactions <%= content.likes.size %></span><%#TODO: after creating model for reactions bind this%>
     <div>
-        <%= like_toggle content %>
+        <%= render_like_toggle content %>
         <%= link_to "Reply", reply_path(content) %>
         <%= button_to "Share" %>
         <%= edit_link_for content %>
