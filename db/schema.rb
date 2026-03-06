@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_03_05_165211) do
+ActiveRecord::Schema[8.0].define(version: 2026_03_06_163455) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_trgm"
@@ -70,6 +70,17 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_05_165211) do
     t.bigint "comment_id", null: false
     t.bigint "user_id", null: false
     t.index ["comment_id", "user_id"], name: "index_comments_users_on_comment_id_and_user_id", unique: true
+  end
+
+  create_table "contents", force: :cascade do |t|
+    t.string "contentable_type"
+    t.integer "contentable_id"
+    t.bigint "user_id", null: false
+    t.string "body"
+    t.boolean "deleted", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_contents_on_user_id"
   end
 
   create_table "default_images", force: :cascade do |t|
@@ -157,6 +168,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_05_165211) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "attachments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "contents", "users"
   add_foreign_key "friend_requests", "users", column: "receiver_id"
   add_foreign_key "friend_requests", "users", column: "sender_id"
   add_foreign_key "posts", "users"
