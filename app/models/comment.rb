@@ -1,4 +1,6 @@
 class Comment < ApplicationRecord
+  include Contentable
+
   validates :body, presence: true, length: { maximum: 500 }
   belongs_to :author, class_name: "User", foreign_key: "user_id"
 

@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  include Contentable
+
   enum :category, {
     feed: "feed",
     avatar_selection: "avatar_selection", background_selection: "background_selection",
@@ -41,8 +43,6 @@ class Post < ApplicationRecord
       attachments.build(annexable: img)
     end
   end
-
-  private
 
   def attachments_cardinality_by_category
     return unless %i[avatar_selection background_selection].include?(category)

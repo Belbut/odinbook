@@ -18,12 +18,8 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
 
-    post_category = params[:post][:category]
-    added_files = params[:post][:added_files]
-
-    @post.attach_files(added_files, post_category)
-
-    if @post.save
+    @content = Content.new(contentable: @post, author: current_user, **content_params)
+    if @content.save
       case params[:post][:category].to_sym
       when :feed
         redirect_to @post
@@ -76,6 +72,10 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.expect(post: %i[category body])
+    params.expect(post: [:category, :body, { added_files: [] }])
+  end
+
+  def content_params
+    params.expect(post: :body)
   end
 end
