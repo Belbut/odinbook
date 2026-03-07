@@ -25,11 +25,19 @@ class Post < ApplicationRecord
   scope :deleted, -> { unscope(where: :deleted).where(deleted: true) }
   default_scope { where(deleted: false) }
 
-  def attach_files(files_params, post_category = nil)
+  def initialize(args)
+    files = args.delete(:added_files) unless args.nil?
+    super # so that there is already the category attribute on post, before attach_files
+    attach_files(files)
+  end
+
+  private
+
+  def attach_files(files_params)
     return if files_params.nil?
 
     files_params.each do |file|
-      img = Image.new(file: file, category: image_category(post_category))
+      img = Image.new(file: file, category: image_category(category))
       attachments.build(annexable: img)
     end
   end
