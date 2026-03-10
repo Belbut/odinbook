@@ -1,12 +1,17 @@
 <%# partial parameters: category ; optional: nil %>
 
+<p> This post category is: <%= @content.post.category %>
 <%= render "profiles/user_identity_header", user: current_user %>
 
-<%= form_with model: @post do |form| %>
-    <%= form.hidden_field :category, value: @post.category %>
-    <div><%= form.textarea :body, size: "100x10", placeholder: "What do you want to share?" %></div>
-    <div><%= form.file_field :added_files, multiple: true, include_hidden: false %></div>
-    <div><%= form.submit "Publish" %></div>
+<%= form_with model: @content, url: posts_path do |form| %>
+    <%= form.textarea :body, size: "100x10", placeholder: "What do you want to share?" %>
+    <%= form.hidden_field :contentable_type, value: @content.contentable %>
+    <%= form.fields_for :contentable_attributes do |post| %>
+        <%= post.hidden_field :category, value: @content.contentable.category %>
+        <%= post.file_field :added_files, multiple: true, include_hidden: false %>
+    <% end %>
+
+    <%= form.submit "Publish" %>
 <% end %>
 
 <%# TODO: add friends tags  %>
