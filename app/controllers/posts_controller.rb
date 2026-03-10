@@ -12,22 +12,21 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = current_user.posts.new(category: :feed) # default post is feed
+    @content = Content.new_with_post(author: current_user, category: :feed)
   end
 
   def create
-    @post = current_user.posts.new(post_params)
+    @content = Content.new_with_post(author: current_user, **post_content_params)
 
-    @content = Content.new(contentable: @post, author: current_user, **content_params)
     if @content.save
-      case params[:post][:category].to_sym
+      case @content.post.category.to_sym
       when :feed
-        redirect_to @post
+        redirect_to @content.post
       when :avatar_selection, :background_selection
         redirect_to user_profile_path(current_user)
       end
     else
-      render :new, status: :unprocessable_entity, notice: @post.errors.full_messages
+      render :new, status: :unprocessable_entity, notice: @content.post.errors.full_messages
     end
   end
 
@@ -37,11 +36,12 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
+    @content = @post.content
 
-    added_files = params[:post][:added_files]
-    @post.attach_files(added_files)
+    require "pry-byebug"
+    binding.pry
 
-    @post.update(post_params)
+    @content.update!(post_params)
     redirect_to @post
   end
 
@@ -75,7 +75,17 @@ class PostsController < ApplicationController
     params.expect(post: [:category, :body, { added_files: [] }])
   end
 
-  def content_params
+  def content_params2
     params.expect(post: :body)
+  end
+
+  def content_params
+    params.expect(:author, :body, :deleted, contentable: { post: [:category, { added_files: [] }] })
+  end
+
+  #  Parameters: {"authenticity_token"=>"[FILTERED]", "body"=>"test", "post"=>{"category"=>"feed"}, "commit"=>"Publish"}
+
+  def post_content_params
+    params.expect(content: [:body, { contentable_attributes: [:category, { added_files: [] }] }])
   end
 end
