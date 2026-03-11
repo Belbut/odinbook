@@ -27,33 +27,27 @@ class Post < ApplicationRecord
   scope :deleted, -> { unscope(where: :deleted).where(deleted: true) }
   default_scope { where(deleted: false) }
 
-  def initialize(args)
-    files = args.delete(:added_files) unless args.nil?
-    super # so that there is already the category attribute on post, before attach_files
-    attach_files(files)
-  end
-
-  private
-
   def attach_files(files_params)
     return if files_params.nil?
 
     files_params.each do |file|
-      img = Image.new(file: file, category: image_category(category))
+      img = Image.new(file: file, category: image_category)
       attachments.build(annexable: img)
     end
   end
+
+  private
 
   def attachments_cardinality_by_category
     return unless %i[avatar_selection background_selection].include?(category)
 
     return unless attachments.size != 1
 
-    errors.add(:attachments, "For the post #{category} there needs to be one and ony one attachment")
+    errors.add(:attachments, "For the post #{category} there needs to be one and only one attachment")
   end
 
-  def image_category(post_category)
-    case post_category.to_sym
+  def image_category
+    case category.to_sym
     when :avatar_selection then :avatar
     when :background_selection then :background
     end
