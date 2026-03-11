@@ -9,7 +9,8 @@ class ProfilesController < ApplicationController
                              .order(created_at: :desc)
                              .limit(9)
     @posts = Post.includes(:author, :attachments).where(author: @user).order(created_at: :desc).limit(25)
-    @post = Post.new
+
+    @content = Content.new_with_post(author: current_user, category: :feed)
     # TODO: use stimulus to load post in batches
   end
 
