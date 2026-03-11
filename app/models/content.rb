@@ -10,8 +10,9 @@ class Content < ApplicationRecord
   scope :deleted, -> { unscope(deleted: false).where(deleted: true) }
 
   def self.new_with_post(author:, category: nil, **attrs)
-    new(contentable: Post.new(category: category), author: author, **attrs)
+    # new(contentable: Post.new(category: category), author: author, **attrs)
 
     green_refactor = new(contentable: Post.new(category: category, author: author), author: author, **attrs)
+    # TODO: remove green refactor after changing the schema
   end
 end

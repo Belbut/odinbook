@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
   def create
     @content = Content.new_with_post(author: current_user, **post_content_params)
+    @content.post.attach_files(attachments_params)
 
     if @content.save
       case @content.post.category.to_sym
@@ -32,6 +33,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = current_user.posts.find(params[:id])
+    @content = @post.content
   end
 
   def update
@@ -71,21 +73,12 @@ class PostsController < ApplicationController
     params.expect(:user_id)
   end
 
-  def post_params
-    params.expect(post: [:category, :body, { added_files: [] }])
+  def attachments_params
+    params.expect(content: [contentable_attributes: [attachments: []]])
+          .dig(:contentable_attributes, :attachments)
   end
-
-  def content_params2
-    params.expect(post: :body)
-  end
-
-  def content_params
-    params.expect(:author, :body, :deleted, contentable: { post: [:category, { added_files: [] }] })
-  end
-
-  #  Parameters: {"authenticity_token"=>"[FILTERED]", "body"=>"test", "post"=>{"category"=>"feed"}, "commit"=>"Publish"}
 
   def post_content_params
-    params.expect(content: [:body, { contentable_attributes: [:category, { added_files: [] }] }])
+    params.expect(content: [:body, { contentable_attributes: [:category] }])
   end
 end
