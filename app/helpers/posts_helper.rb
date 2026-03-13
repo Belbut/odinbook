@@ -8,6 +8,17 @@ module PostsHelper
     content_tag(:span, category_description(post), class: "caption")
   end
 
+  def render_attachment_delete_option(post)
+    render = post.attachments.map do |attachment|
+      delete_link = link_to("Delete", attachment_path(attachment),
+                            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" })
+
+      tag.div { safe_join [render_attachment_image(attachment), delete_link] }
+    end
+
+    safe_join render
+  end
+
   private
 
   PREVIEW_SIZE = 5

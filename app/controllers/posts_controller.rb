@@ -32,8 +32,9 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = current_user.posts.find(params[:id])
-    @content = @post.content
+    # @post = current_user.posts.find(params[:id])
+    # @content = @post.content
+    @content = Content.posts.find_by(contentable_id: params[:id])
   end
 
   def update

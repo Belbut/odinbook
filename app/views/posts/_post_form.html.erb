@@ -1,4 +1,4 @@
-<%# partial parameters:  ; optional: edit %>
+<%# partial parameters:content  ; optional:  %>
 
 <p> This post category is: <%= @content.post.category %>
 <%= render "profiles/user_identity_header", user: current_user %>
@@ -8,13 +8,13 @@
 
     <%= form.hidden_field :contentable_type, value: @content.contentable %>
     <%= form.fields_for :contentable_attributes do |post_attribute| %>
-        <%= render_attachment_delete_option(@content.post) if local_assigns[:edit] %>
+        <%= render_attachment_delete_option(@content.post) if current_page?(action: :edit) %>
         <%= post_attribute.hidden_field :category, value: @content.contentable.category %>
         <%= post_attribute.file_field :attachments, multiple: true, include_hidden: false %>
     <% end %>
 
     <%= form.submit "Publish" %>
-    <%# <%= link_to "Delete Post", @content, data: {turbo_method: :delete, turbo_confirm: "Sure you want to delete your post?"} if edit %>
+    <%= link_to "Delete Post", @content.post, data: {turbo_method: :delete, turbo_confirm: "Sure you want to delete your post?"} if current_page?(action: :edit) %>
 <% end %>
 
 <%# TODO: add friends tags  %>
