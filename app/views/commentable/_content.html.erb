@@ -1,6 +1,7 @@
 <%# partial parameters: content[Post,Comment]%>
 
 <section class="content">
-    <div class="body"> <%= content.body %> </div>
+    <%# TODO: change this hack create a content abstraction for post and comment %>
+    <div class="body"> <%= content.content.body %> </div>
     <%= render_attachments_preview(content) if content.respond_to?(:attachments) %>
 </section>

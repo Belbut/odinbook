@@ -32,20 +32,18 @@ class PostsController < ApplicationController
   end
 
   def edit
-    # @post = current_user.posts.find(params[:id])
-    # @content = @post.content
     @content = Content.posts.find_by(contentable_id: params[:id])
   end
 
   def update
-    @post = current_user.posts.find(params[:id])
-    @content = @post.content
+    @content = Content.posts.find_by(contentable_id: params[:id])
 
+    @content.post.attach_files(attachments_params)
     require "pry-byebug"
     binding.pry
 
-    @content.update!(post_params)
-    redirect_to @post
+    @content.update!(post_content_params)
+    redirect_to @content.post
   end
 
   def destroy
