@@ -3,18 +3,12 @@
 
 <main>
     <section class="display">
-        <div class="background">
-            <%= image_tag @profile.background.representation(resize_to_fill:[1250,600]) %>
-            <%= link_to((image_tag("camera_icon.svg")+"Edit background"), change_background_user_profile_path(current_user)) if @user == current_user %>
-        </div>
-        <div class="avatar">
-            <div>
-                <%= image_tag @profile.avatar.representation(resize_to_fill: [170, 170]) %>
-                <%= link_to(image_tag("camera_icon.svg"), change_avatar_user_profile_path(current_user)) if @user== current_user %>
-            </div>
-            <div>
-                <h1><%= @profile.name %></h1>
-            </div>
+        <%= render "background_photo_section" %>
+
+        <%= render "avatar_photo_section" %>
+
+        <div class="name">
+            <h1><%= @profile.name %></h1>
         </div>
 
         <%= link_to(image_tag("edit_icon.svg") + "Edit Profile", edit_profile_path) if @user== current_user %>

@@ -1,0 +1,6 @@
+<div class="avatar">
+    <div>
+        <%= image_tag @profile.avatar.representation(resize_to_fill: [170, 170]) %>
+        <%= link_to(image_tag("camera_icon.svg"), change_avatar_user_profile_path(current_user)) if @user== current_user %>
+    </div>
+</div>

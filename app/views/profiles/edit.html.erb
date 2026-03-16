@@ -8,10 +8,12 @@
     <%= form_with model: @profile do |form| %>
     <section>
         <h2>Profile photo</h2>
+        <%= render "avatar_photo_section" %>
     </section>
 
     <section>
         <h2>Background photo</h2>
+        <%= render "background_photo_section" %>
     </section>
 
     <section>
