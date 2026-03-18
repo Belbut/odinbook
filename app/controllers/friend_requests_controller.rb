@@ -10,7 +10,7 @@ class FriendRequestsController < ApplicationController
                 { alert: new_friend_request.errors.full_messages }
               end
 
-    redirect_back_or_to(user_profile_path(@target), **message) # TODO: change the fall back to friendships?
+    redirect_back_or_to(user_profile_path(@target), **message)
   end
 
   def cancel
@@ -58,6 +58,6 @@ class FriendRequestsController < ApplicationController
                 { alert: friend_request.errors.full_messages }
               end
 
-    redirect_back_or_to(user_profile_path(@target), **message) # TODO: change the fall back to friendships?
+    redirect_back_or_to(user_profile_path(@target), **message)
   end
 end

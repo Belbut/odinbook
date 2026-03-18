@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :limit_deleted_usage, only: %i[edit update destroy]
+  before_action :friends_or_owner_of_thread, only: %i[show create]
+
   def show
     @comment = Comment.find(params[:id])
   end
@@ -9,7 +11,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    parent_content = parent_content(params[:comment])
+    thread_root_post = thread_root_post(parent_content)
+
     @comment = parent_content.replies.new(comment_params)
     @comment.author = current_user
 
@@ -56,10 +59,24 @@ class CommentsController < ApplicationController
     redirect_to @comment, status: :unprocessable_entity
   end
 
+  def friends_or_owner_of_thread
+    thread_owned = thread_root_post(parent_content).author
+
+    current_user == thread_owned || current_user.is_friends_with?(thread_owned)
+  end
+
+  # represents the content that will become the parent to the new comment that is being created
   def parent_content(params = request.params)
+    params = params[:comment] if params[:comment]
     return Comment.find(params[:comment_id]) if params[:comment_id]
     return Post.find(params[:post_id]) if params[:post_id]
 
     raise "error- parent content is not a post/comment"
+  end
+
+  def thread_root_post(content)
+    return content if content.is_a?(Post)
+
+    rood_post(content.commentable)
   end
 end

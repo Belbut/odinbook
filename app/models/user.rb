@@ -55,6 +55,20 @@ class User < ApplicationRecord
     end
   end
 
+  def is_friends_with?(target_user)
+    friends.include?(target_user)
+  end
+
+  def make_friendship_with(target)
+    fq1 = FriendRequest.new(sender: self, receiver: target)
+    fq2 = FriendRequest.new(sender: target, receiver: self)
+
+    fq1.save
+    fq2.save
+  end
+
+  def cancel_friendship_with(target); end
+
   private
 
   def inbound_requests_user_ids
