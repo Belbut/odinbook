@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :limit_deleted_usage, only: %i[edit update destroy]
+  include PreventDeletedContentAccess
+
   def index
     author = User.includes(:posts).find(user_params)
 
@@ -62,14 +63,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-  def limit_deleted_usage
-    @post = current_user.posts.find(params[:id])
-
-    return unless @post.deleted?
-
-    redirect_to @post
-  end
 
   def user_params
     params.expect(:user_id)

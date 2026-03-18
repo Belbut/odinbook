@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   include AuthorizesContentAccess
-
-  before_action :limit_deleted_usage, only: %i[edit update destroy]
+  include PreventDeletedContentAccess
 
   def show
     @comment = Comment.find(params[:id])
@@ -48,13 +47,5 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.expect(comment: [:body])
-  end
-
-  def limit_deleted_usage
-    @comment = current_user.comments.find(params[:id])
-
-    return unless @comment.deleted?
-
-    redirect_to @comment, status: :unprocessable_entity
   end
 end
