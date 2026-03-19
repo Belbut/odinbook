@@ -2,6 +2,9 @@ class CommentsController < ApplicationController
   include AuthorizesContentAccess
   include PreventDeletedContentAccess
 
+  before_action :authorizes_content_access, only: %i[show create]
+  before_action :prevent_deleted_content_access, only: %i[edit update destroy]
+
   def show
     @comment = Comment.find(params[:id])
   end
@@ -17,7 +20,7 @@ class CommentsController < ApplicationController
     if @comment.save # TODO: filter if the user doesnt have rights to comment
       redirect_to parent_content
     else
-      render parent_content, status: :unprocessable_entity # TODO: warning message and keep body
+      render parent_content, status: :unprocessable_entity
     end
   end
 

@@ -21,9 +21,8 @@ class Post < ApplicationRecord
 
   has_and_belongs_to_many :likes, class_name: "User", foreign_key: "post_id"
 
-  scope :active, -> { unscope(where: :deleted).where(deleted: false) }
-  scope :deleted, -> { unscope(where: :deleted).where(deleted: true) }
-  default_scope { where(deleted: false) }
+  scope :active, -> { where(deleted: false) }
+  scope :deleted, -> { where(deleted: true) }
 
   def attach_files(files_params, post_category = nil)
     return if files_params.nil?

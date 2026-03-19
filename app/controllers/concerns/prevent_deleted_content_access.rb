@@ -7,7 +7,7 @@ module PreventDeletedContentAccess
     before_action :limit_deleted_content_access, only: %i[edit update destroy]
   end
 
-  def limit_deleted_content_access
+  def prevent_deleted_content_access
     content = current_user_model.find(params[:id])
 
     return unless content.deleted?

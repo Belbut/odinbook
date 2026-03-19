@@ -3,11 +3,10 @@ require "active_support/concern"
 module AuthorizesContentAccess
   extend ActiveSupport::Concern
 
-  included do
-    before_action :friends_or_owner_of_thread, only: %i[show create]
-  end
+  def authorizes_content_access
+    # in case the relationship chages put the user already was envolved in the thread
+    return true if parent_content.author == current_user
 
-  def friends_or_owner_of_thread
     thread_owned = thread_root_post(parent_content).author
     current_user == thread_owned || current_user.is_friends_with?(thread_owned)
   end

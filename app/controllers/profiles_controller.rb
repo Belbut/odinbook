@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
                              .where(users: { id: params[:user_id] })
                              .order(created_at: :desc)
                              .limit(9)
-    @posts = Post.includes(:author, :attachments).where(author: @user).order(created_at: :desc).limit(25)
+    @posts = Post.active.includes(:author, :attachments).where(author: @user).order(created_at: :desc).limit(25)
     @post = Post.new
     # TODO: use stimulus to load post in batches
   end
