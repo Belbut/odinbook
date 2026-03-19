@@ -23,20 +23,14 @@
   </head>
 
   <body>
-    <%= render "application/navigation_bar" %>
-    <nav>
-      <% if user_signed_in? %>
-        <%= link_to "My Profile", user_profile_path(current_user) %>
-        <%= button_to "Sign Out", destroy_user_session_path, :method=>:delete %>
-      <% else %>
-        <%= link_to "Sign In", new_user_session_path %>
-      <% end %>
-    </nav>
+    <div class="container mt-5">
+      <%= render "application/navigation_bar" %>
 
-    <p class="notice" style="color:yellow;"><%= notice %></p>
-    <p class="alert" style="color:red"><%= alert %></p>
-    <%= debug(params) %>
+      <p class="notice" style="color:yellow;"><%= notice %></p>
+      <p class="alert" style="color:red"><%= alert %></p>
+      <%= debug(params) %>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>

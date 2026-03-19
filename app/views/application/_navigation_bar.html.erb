@@ -1,36 +1,44 @@
 <header>
-    <nav>
-        <% if user_signed_in? %>
-            <ul>
-                <li><%= link_to image_tag "feed_icon.svg" %></li>
-                <%= form_with model: Profile.new, url: search_profiles_path, scope: :search, method: :get do |form| %>
-                    <%= form.search_field :query %>
-                    <%= image_submit_tag "search_icon.svg" %>
-                <% end %>
-                <li><%= link_to image_tag "message_icon.svg" %></li>
-                <li><%= link_to image_tag "notification_icon.svg" %></li>
-                <li><%= render "profiles/avatar_linked_photo" %></li>
-            </ul>
-        <% else %>
-            <% unless current_page?(controller:"devise/sessions",action: "new") %>
-                <ul>
-                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                        <li class="field">
+    <nav class="navbar is-primary">
+            <% if user_signed_in? %>
+                    <div class="navbar-brand">
+                        <%# TODO: missing feed route and view %>
+                       <%= link_to image_tag("feed_icon.svg"), "", class:"navbar-item" %>
+                    </div>
+                    <div class="navbar-menu">
+                        <div class="navbar-start">
+                            <div class="navbar-item">
+                                <%= render "profiles/search_bar_form" %>
+                            </div>
+                        </div>
+                        <div class="navbar-end">
+                            <%= link_to image_tag("message_icon.svg"),"", class: "navbar-item" %>
+                            <%= link_to image_tag("notification_icon.svg"),"", class: "navbar-item" %>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <%# <a class="navbar-link"> %>
+                                    <%= render "profiles/avatar_linked_photo", class_option: "navbar-link" %>
+
+                                <div class="navbar-dropdown">
+                                    <%= link_to "My Profile", user_profile_path(current_user), class: "navbar-item" %>
+                                    <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "navbar-item" %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <% else %>
+                <%# <% unless current_page?(controller:"devise/sessions",action: "new") %> %>
+                <div class="navbar-menu">
+                    <div class="navbar-item">
                             <%= f.label :email %><br>
                             <%= f.email_field :email, value:"test@test.com", autofocus: true, autocomplete: "email" %>
-                        </li>
-
-                        <li class="field">
-                            <%= f.label :password %><br>
-                            <%= f.password_field :password, value: "123456", autocomplete: "current-password" %>
-                        </li>
-
-                        <li class="actions">
-                            <%= f.submit "Log in" %>
-                        </li>
-                    <% end %>
-                </ul>
+                    </div>
+                        <div class="navbar-item">
+                                <%= f.label :password %><br>
+                                <%= f.password_field :password, value: "123456", autocomplete: "current-password" %>
+                        </div>
+                            <div class="navbar-item"><%= f.submit "Log in" %></div>
+                </div>
+                   
             <% end %>
-        <% end %>
     </nav>
 </header>

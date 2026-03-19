@@ -1,0 +1,4 @@
+<%= form_with model: Profile.new, url: search_profiles_path, scope: :search, method: :get do |form| %>
+    <%= form.search_field :query %>
+    <%= image_submit_tag "search_icon.svg" %>
+<% end %>
