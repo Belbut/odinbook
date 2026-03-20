@@ -1,44 +1,63 @@
 <header>
     <nav class="navbar is-primary">
-            <% if user_signed_in? %>
-                    <div class="navbar-brand">
-                        <%# TODO: missing feed route and view %>
-                       <%= link_to image_tag("feed_icon.svg"), "", class:"navbar-item" %>
+        <div class="navbar-brand">
+            <%# TODO: missing feed route and view %>
+            <%= link_to image_tag("feed_icon.svg"), "", class:"navbar-item" %>
+        </div>
+        <% if user_signed_in? %>
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <div class="navbar-item">
+                        <%= render "profiles/search_bar_form" %>
                     </div>
-                    <div class="navbar-menu">
-                        <div class="navbar-start">
-                            <div class="navbar-item">
-                                <%= render "profiles/search_bar_form" %>
-                            </div>
-                        </div>
-                        <div class="navbar-end">
-                            <%= link_to image_tag("message_icon.svg"),"", class: "navbar-item" %>
-                            <%= link_to image_tag("notification_icon.svg"),"", class: "navbar-item" %>
-                            <div class="navbar-item has-dropdown is-hoverable">
-                                <%# <a class="navbar-link"> %>
-                                    <%= render "profiles/avatar_linked_photo", class_option: "navbar-link" %>
+                </div>
+                <div class="navbar-end">
+                    <%= link_to image_tag("message_icon.svg"),"", class: "navbar-item" %>
+                    <%= link_to image_tag("notification_icon.svg"),"", class: "navbar-item" %>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <%# <a class="navbar-link"> %>
+                        <%= render "profiles/avatar_linked_photo", class_option: "navbar-link" %>
 
-                                <div class="navbar-dropdown">
-                                    <%= link_to "My Profile", user_profile_path(current_user), class: "navbar-item" %>
-                                    <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "navbar-item" %>
-                                </div>
-                            </div>
+                        <div class="navbar-dropdown">
+                            <%= link_to "My Profile", user_profile_path(current_user), class: "navbar-item" %>
+                            <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete}, class: "navbar-item" %>
                         </div>
                     </div>
-            <% else %>
-                <%# <% unless current_page?(controller:"devise/sessions",action: "new") %> %>
+                </div>
+            </div>
+        <% else %>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                 <div class="navbar-menu">
                     <div class="navbar-item">
-                            <%= f.label :email %><br>
-                            <%= f.email_field :email, value:"test@test.com", autofocus: true, autocomplete: "email" %>
-                    </div>
-                        <div class="navbar-item">
-                                <%= f.label :password %><br>
-                                <%= f.password_field :password, value: "123456", autocomplete: "current-password" %>
+                        <div class="field">
+                            <div class="control has-icons-left">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <%= f.email_field :email, class:"input", value:"test@test.com", autofocus: true, autocomplete: "email" %>
+                            </div>
                         </div>
-                            <div class="navbar-item"><%= f.submit "Log in" %></div>
+                    </div>
+                    <div class="navbar-item">
+                        <div class="field">
+                            <div class="control has-icons-left">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <%= f.password_field :password, class:"input", value: "123456", autocomplete: "current-password" %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" navbar-item ">
+                        <div class="field">
+                            <div class="control">
+                                <%= f.submit "Log in", class: "button is-success" %>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                   
             <% end %>
+        <% end %>
     </nav>
 </header>
