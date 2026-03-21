@@ -16,14 +16,14 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <div class="container mt-5">
+  <body class="theme-page">
       <%= render "application/navigation_bar" %>
 
       <p class="notice" style="color:yellow;"><%= notice %></p>
@@ -31,6 +31,5 @@
       <%= debug(params) %>
 
       <%= yield %>
-    </div>
   </body>
 </html>
