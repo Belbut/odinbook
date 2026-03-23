@@ -23,3 +23,20 @@
 .is-flex-grow-1 {
   flex-grow: 1;
 }
+
+html, body {
+    height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content{
+    flex-grow:1;
+}
+
+.footer {
+    padding: 1rem;
+}

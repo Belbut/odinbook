@@ -30,6 +30,10 @@
       <p class="alert" style="color:red"><%= alert %></p>
       <%= debug(params) %>
 
-      <%= yield %>
+      <main class="main-content">
+        <%= yield %>
+      </main>
+
+      <%= render "application/footer" %>
   </body>
 </html>
