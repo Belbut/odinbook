@@ -1,0 +1,25 @@
+.navbar-item img {
+    max-height: 5rem;
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.navbar .container {
+    gap: 1.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .navbar-start{
+    flex: 0 1 500px;
+}
+
+.navbar .search-bar {
+    flex: 1 1 450px;
+}
+
+.is-flex-grow-1 {
+  flex-grow: 1;
+}

@@ -1,4 +1,10 @@
-<%= form_with model: Profile.new, url: search_profiles_path, scope: :search, method: :get do |form| %>
-    <%= form.search_field :query %>
-    <%= image_submit_tag "search_icon.svg" %>
+<%= form_with class: "is-flex-grow-1", model: Profile.new, url: search_profiles_path, scope: :search, method: :get do |form| %>
+    <div class="field">
+        <p class="control has-icons-right">
+            <%= form.search_field :query, class: "input" %>
+            <span class="icon is-small is-right">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+        </p>
+    </div>
 <% end %>

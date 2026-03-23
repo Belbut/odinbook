@@ -1,2 +1,4 @@
 <% class_option ||= nil %>
-<%= link_to (image_tag current_user.profile.avatar.representation(resize_to_fill: [40, 40])), user_profile_path(current_user), class: class_option || nil %>
+<% avatar_image= image_tag(current_user.profile.avatar.representation(resize_to_fill: [50, 50]),class: "avatar") %>
+
+<%= link_to avatar_image, user_profile_path(current_user), class: class_option %>
