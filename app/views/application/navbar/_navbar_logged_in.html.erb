@@ -1,0 +1,29 @@
+
+<div class="navbar-start">
+    <div class="navbar-item search-bar">
+        <%= render "profiles/search_bar_form" %>
+    </div>
+</div>
+<div class="navbar-menu">
+    <div class="navbar-end">
+        <%= link_to "", class: "navbar-item" do %> <%# TODO: messages%>
+            <span class="icon is-large">
+                <i class="fa-solid fa-2x fa-comment"></i>
+            </span>
+        <% end %>
+
+        <%= link_to "", class: "navbar-item" do %> <%# TODO: notification%>
+            <span class="icon is-large">
+                <i class="fa-solid fa-2x fa-bell"></i>
+            </span>
+        <% end %>
+
+    </div>
+</div>
+<div class="navbar-item has-dropdown is-hoverable">
+    <%= render "profiles/avatar_linked_photo", class_option: "navbar-link" %>
+    <div class="navbar-dropdown">
+        <%= link_to "My Profile", user_profile_path(current_user), class: "navbar-item" %>
+        <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete}, class: "navbar-item" %>
+    </div>
+</div>

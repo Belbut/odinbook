@@ -1,0 +1,31 @@
+<div class="navbar-end">
+    <%= form_for(resource,html: {class: "is-flex"}, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="navbar-item">
+            <div class="field">
+                <div class="control has-icons-left">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <%= f.email_field :email, class:"input", value:"test@test.com", autofocus: true, autocomplete: "email" %>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-item">
+            <div class="field">
+                <div class="control has-icons-left">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                    <%= f.password_field :password, class:"input", value: "123456", autocomplete: "current-password" %>
+                </div>
+            </div>
+        </div>
+        <div class=" navbar-item ">
+            <div class="field">
+                <div class="control">
+                    <%= f.submit "Log in", class: "button is-link" %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
