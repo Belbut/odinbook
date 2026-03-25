@@ -28,8 +28,8 @@ class ProfilesController < ApplicationController
   end
 
   def search
-    sanitized_input = Profile.sanitize_sql_like(params[:search][:query])
-    @profiles = Profile.name_search(sanitized_input)
+    @sanitized_input = Profile.sanitize_sql_like(params[:search][:query])
+    @searched_profiles = Profile.name_search(@sanitized_input)
   end
 
   def change_avatar

@@ -1,0 +1,12 @@
+<% precompute ||= {} %>
+
+<div>
+    <div class="fixed-grid has-3-cols">
+        <div class="grid">
+            <%= render_relationships_cards_with(collection,
+                                                common_friends_precomputed: precompute.dig(:common_friends),
+                                                interactions_precomputed: precompute.dig(:interactions)
+                                                ) %>
+        </div>
+    </div>
+</div>

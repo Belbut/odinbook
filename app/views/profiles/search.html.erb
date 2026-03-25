@@ -1,11 +1,5 @@
 <h1 class="tittle">Profile Search</h1>
 
-<div class="fixed-grid has-3-cols">
-    <div class="grid">
-        <% @profiles.each do |profile| %>
-            <div class="cell">
-                <%= render profile %>
-            </div>
-        <% end %>
-    </div>
-</div>
+<p>Found <%= pluralize(@searched_profiles.size, "profile") %> from query: "<%= @sanitized_input %>" </p>
+
+<%= render "shared/card_grid", collection: @searched_profiles %>
