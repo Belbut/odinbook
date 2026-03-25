@@ -30,13 +30,13 @@
         <% if notice || alert || show_debugging %>
           <%= tag.div class: "notification" do %>
             <%= tag.p debug(params), class: "container" if show_debugging %>
-            <%= tag.p notice, class: "notification is-danger container" if notice %>
-            <%= tag.p alert, class: "notification is-warning container" if alert %>
+            <%= tag.p notice, class: "notification is-warning container" if notice %>
+            <%= tag.p alert, class: "notification is-danger container" if alert %>
           <% end %>
         <% end %>
 
         <main class="main-content">
-            <%= yield %>
+            <div class="container content"><%= yield %></div>
         </main>
 
         <%= render "application/footer" %>

@@ -2,10 +2,25 @@
 <% common_friends_precomputed = common_friends_precomputed || nil %>
 <% interactions_precomputed = interactions_precomputed || nil %>
 
-<div class="profile">
-    <%# <div><%= render %>
-    <div><%= link_to(profile.name, user_profile_path(profile.user)) %></div>
-    <div><%= image_tag profile.avatar.representation(resize_to_fill: [100, 100]) %></div>
-    <div><%= render_common_friends_count(current_user, profile.user, precomputed_common_friends: common_friends_precomputed) %></div>
-    <div><%= render_user_friend_request_action(current_user, profile.user, precomputed_status: interactions_precomputed) %></div>
+<div class="card">
+    <div class="card-content align-content">
+        <article class="media">
+            <div class="media-left">
+                <%= image_tag profile.avatar.representation(resize_to_fill: [64, 64]), class: "avatar" %>
+            </div>
+            <div class="media-content">
+                <p class="title is-5 mb-1">
+                    <%= link_to(profile.name, user_profile_path(profile.user), class: "card-header-title") %>
+                </p>
+                <p class="subtitle is-6 has-text-grey">
+                    <%= render_common_friends_count(current_user, profile.user, precomputed_common_friends: common_friends_precomputed) %>
+                </p>
+            </div>
+        </article>
+    </div>
+    <div class="card-footer">
+        <div class="card-footer-item">
+            <%= render_user_friend_request_action(current_user, profile.user, precomputed_status: interactions_precomputed) %>
+        </div>
+    </div>
 </div>
