@@ -1,19 +1,13 @@
 <h1>Friends#index</h1>
 <p>Find me in app/views/friends/index.html.erb</p>
 
+<h2>Friends:</h2>
+<%= render "shared/card_grid", collection: @friends_profiles, precompute: @precompute %>
+
 <% if current_user == @user %>
-    <%= render_users_relationships(@pending_incoming_fr_users,
-    common_friends_precomputed:@common_friends_precomputed,
-    interactions_precomputed:@interactions_precomputed,
-    section_heading:"Friends Invitations") %>
+    <h2>Friends Invitations:</h2>
+    <%= render "shared/card_grid", collection: @pending_incoming_fr_profiles, precompute: @precompute %>
 
-    <%= render_users_relationships(@pending_outgoing_fr_users,
-    common_friends_precomputed:@common_friends_precomputed,
-    interactions_precomputed:@interactions_precomputed,
-    section_heading:"Friends Pending") %>
+    <h2>Friends Pending:</h2>
+    <%= render "shared/card_grid", collection: @pending_outgoing_fr_profiles, precompute: @precompute %>
 <% end %>
-
-<%= render_users_relationships(@user_friends,
-common_friends_precomputed:@common_friends_precomputed,
-interactions_precomputed:@interactions_precomputed,
-section_heading: "Friends") %>
