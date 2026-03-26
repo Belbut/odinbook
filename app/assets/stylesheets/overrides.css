@@ -46,3 +46,13 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
+.background{
+    position: relative;
+}
+
+.edit-bg-bn{
+    position:absolute;
+    bottom: 2rem;
+    right: 4rem;
+}

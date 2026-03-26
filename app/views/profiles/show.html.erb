@@ -1,6 +1,3 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
-
 <main>
     <section class="display">
         <%= render "background_photo_section" %>
@@ -16,7 +13,7 @@
 
     <section>
         <% unless @user == current_user %>
-            <div class="friendship_interation">
+            <div class="friendship_interactions">
                 <div><%= render_user_friend_request_action(current_user, @user) %></div>
             </div>
         <% end %>
