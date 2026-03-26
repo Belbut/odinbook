@@ -2,10 +2,6 @@
     max-height: 5rem;
 }
 
-.avatar {
-    border-radius: 50%;
-}
-
 .navbar .container {
     gap: 1.75rem;
     display: flex;
@@ -47,12 +43,29 @@ body {
     align-items: center;
 }
 
-.background{
+.background-container{
     position: relative;
 }
 
-.edit-bg-bn{
+.edit-btn-background{
     position:absolute;
-    bottom: 2rem;
-    right: 4rem;
+    bottom: 3rem;
+    right: 5rem;
 }
+
+.avatar-container{
+    position:relative;
+    display: inline-block;
+}
+
+.edit-btn-avatar{
+    position: absolute;
+    bottom: 2.5rem;
+    right: 2.25rem;
+}
+
+.avatar-container .image{
+    height: 200px;
+    width: 200px;
+}
+

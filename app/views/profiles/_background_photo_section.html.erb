@@ -1,9 +1,10 @@
-<div class="background container">
+
+<div class="background-container container">
     <figure class="image">
         <%= image_tag @profile.background.representation(resize_to_fill:[1250,600]) %>
     </figure>
 
     <% if @user == current_user %>
-            <%= link_to("Edit Background", change_background_user_profile_path(current_user), class: "button is-rounded edit-bg-bn") %>
+        <%= link_to("Edit Background", change_background_user_profile_path(current_user), class: "button is-rounded edit-btn-background") %>
     <% end %>
 </div>
