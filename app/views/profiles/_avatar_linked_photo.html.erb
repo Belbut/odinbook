@@ -1,4 +1,8 @@
-<% class_option ||= nil %>
-<% avatar_image= image_tag(current_user.profile.avatar.representation(resize_to_fill: [50, 50]),class: "avatar") %>
+<% link_option_class ||= nil %>
+<% img_option_class ||= nil %>
+<% resize_to_fill ||= [50, 50] %>
 
-<%= link_to avatar_image, user_profile_path(current_user), class: class_option %>
+<% avatar_image= image_tag(current_user.profile.avatar.representation(resize_to_fill: resize_to_fill),class: "avatar #{img_option_class}") %>
+<% avatar_figure = tag.figure(avatar_image, class: "image is-#{resize_to_fill[0]}x#{resize_to_fill[1]}") %>
+
+<%= link_to avatar_image, user_profile_path(current_user), class: link_option_class %>
