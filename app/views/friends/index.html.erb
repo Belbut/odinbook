@@ -2,12 +2,15 @@
 <p>Find me in app/views/friends/index.html.erb</p>
 
 <h2>Friends:</h2>
+<%= tag.blockquote("You don't have any friends yet!") if @friends_profiles.empty? %>
 <%= render "shared/card_grid", collection: @friends_profiles, precompute: @precompute %>
 
 <% if current_user == @user %>
     <h2>Friends Invitations:</h2>
+    <%= tag.blockquote("You have no pending invitations to respond.") if @pending_incoming_fr_profiles.empty? %>
     <%= render "shared/card_grid", collection: @pending_incoming_fr_profiles, precompute: @precompute %>
 
-    <h2>Friends Pending:</h2>
+    <h2>Invitations Sended:</h2>
+    <%= tag.blockquote("You aren't waiting on any.") if @pending_outgoing_fr_profiles.empty? %>
     <%= render "shared/card_grid", collection: @pending_outgoing_fr_profiles, precompute: @precompute %>
 <% end %>
