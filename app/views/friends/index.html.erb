@@ -1,5 +1,22 @@
-<h1>Friends#index</h1>
-<p>Find me in app/views/friends/index.html.erb</p>
+<div class="level">
+  <div class="level-left">
+    <div class="level-item">
+      <%= render "profiles/avatar_linked_photo", class: "is-64x64" %>
+    </div>
+
+    <div class="level-item">
+      <div>
+        <h1 class="title">
+          Friendships
+          <br>
+          <%= link_to(@user.profile.name, user_profile_path(@user)) %>
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
 
 <h2>Friends:</h2>
 <%= tag.blockquote("You don't have any friends yet!") if @friends_profiles.empty? %>
