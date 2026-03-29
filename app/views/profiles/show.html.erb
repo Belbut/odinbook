@@ -1,8 +1,13 @@
 <main>
     <section class="display">
-        <%= render "background_photo_section" %>
-
-        <%= render "avatar_photo_section" %>
+        <div class="profile-display-container">
+            <div class="background-element">
+                <%= render "background_photo_section" %>
+            </div>
+            <div class="avatar-element">
+                <%= render "avatar_photo_section" %>
+            </div>
+        </div>
 
         <div class="name">
             <h1><%= @profile.name %></h1>

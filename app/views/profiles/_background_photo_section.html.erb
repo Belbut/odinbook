@@ -1,7 +1,6 @@
-
-<div class="background-container container">
+<div class="background-container">
     <figure class="image">
-        <%= image_tag @profile.background.representation(resize_to_fill:[1250,600]) %>
+        <%= image_tag @profile.background.representation(resize_to_fill:[1250,400]) %>
     </figure>
 
     <% if @user == current_user %>
