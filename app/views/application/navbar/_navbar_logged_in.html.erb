@@ -21,7 +21,7 @@
     </div>
 </div>
 <div class="navbar-item has-dropdown is-hoverable">
-    <%= render "profiles/avatar_linked_photo", class_option: "navbar-link" %>
+    <%= render "profiles/avatar_linked_photo", link_option_class: "navbar-link", resize_to_fill: [72,72] %>
     <div class="navbar-dropdown">
         <%= link_to "My Profile", user_profile_path(current_user), class: "navbar-item" %>
         <%= link_to "My Friends", user_friends_path(current_user), class: "navbar-item" %>

@@ -69,13 +69,22 @@ body {
     width: 200px;
 }
 
-.profile-display-container{
+.profile .display-container{
     position: relative;
 }
 
-.profile-display-container .avatar-element{
+.profile .display-container .avatar-element{
     position: absolute;
-    bottom: -3.5rem;
-    left: 1rem;
+    bottom: -2.5rem;
+    left: 0rem;
 
+}
+
+.background-container figure{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.profile{
+    margin-top: -1.5rem;
 }
