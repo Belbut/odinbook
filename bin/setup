@@ -20,6 +20,22 @@ FileUtils.chdir APP_ROOT do
   #   FileUtils.cp "config/database.yml.sample", "config/database.yml"
   # end
 
+  puts "\n== Checking system dependencies =="
+  unless system("which psql > /dev/null 2>&1")
+    puts "ERROR: PostgreSQL client not found."
+    puts "Install it on your system"
+    missing_system_dependencies = true
+  end
+
+  unless system("which vips > /dev/null 2>&1")
+    puts "ERROR: libvips not found."
+    puts "Install it on your system"
+    missing_system_dependencies = true
+  end
+  
+  abort("\nPlease install the missing system packages and run bin/setup again.") if missing_system_dependencies
+
+
   puts "\n== Preparing database =="
   system! "bin/rails db:prepare"
 
