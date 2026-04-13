@@ -12,8 +12,8 @@ class Image < ApplicationRecord
   def file_must_be_image
     return unless file.attached?
 
-    return if file.blob.content_type.in?(%w[image/png image/jpeg image/jpg])
+    return if file.blob.content_type.in?(%w[image/png image/jpeg image/jpg image/avif])
 
-    errors.add(:file, "must be a PNG or JPEG")
+    errors.add(:file, "must be a image format (png/jpeg/jpg/avif)")
   end
 end
