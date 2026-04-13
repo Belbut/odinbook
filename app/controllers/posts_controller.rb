@@ -36,7 +36,13 @@ class PostsController < ApplicationController
         redirect_to user_profile_path(current_user)
       end
     else
-      render :new, status: :unprocessable_entity, notice: @post.errors.full_messages
+      # case params[:post][:category].to_sym
+      # when :avatar_selection
+      #   render :change_avatar, status: :unprocessable_entity, notice
+      # end
+
+      flash[:alert] = @post.all_errors.to_sentence
+      render :new, status: :unprocessable_entity
     end
   end
 

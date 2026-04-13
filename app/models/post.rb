@@ -33,6 +33,14 @@ class Post < ApplicationRecord
     end
   end
 
+  def all_errors
+    if self.errors[:attachments]
+      self.attachments.flat_map { |attachment| attachment.all_errors.full_messages }
+    else
+      self.errors.full_messages
+    end
+  end
+
   private
 
   def attachments_cardinality_by_category
