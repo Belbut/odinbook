@@ -4,6 +4,6 @@
         </figure>
 
     <% if @user == current_user %>
-        <%= link_to(image_tag("camera_icon.svg"), change_background_user_profile_path(current_user), class: "button is-rounded edit-btn-avatar") %>
+        <%= link_to(image_tag("camera_icon.svg"), change_avatar_user_profile_path(current_user), class: "button is-rounded edit-btn-avatar") %>
     <% end %>
 </div>
