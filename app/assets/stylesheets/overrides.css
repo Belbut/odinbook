@@ -1,90 +1,94 @@
 .navbar-item img {
-    max-height: 5rem;
+  max-height: 5rem;
 }
 
 .navbar .container {
-    gap: 1.75rem;
-    display: flex;
-    align-items: center;
+  gap: 1.75rem;
+  display: flex;
+  align-items: center;
 }
 
-.navbar .navbar-start{
-    flex: 0 1 500px;
+.navbar .navbar-start {
+  flex: 0 1 500px;
 }
 
 .navbar .search-bar {
-    flex: 1 1 450px;
+  flex: 1 1 450px;
 }
 
 .is-flex-grow-1 {
   flex-grow: 1;
 }
 
-html, body {
-    height: 100vh;
+html,
+body {
+  height: 100vh;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.main-content{
-    flex-grow:1;
+.main-content {
+  flex-grow: 1;
 }
 
 .footer {
-    padding: 1rem;
+  padding: 1rem;
 }
 
-.align-content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.align-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.background-container{
-    position: relative;
+.background-container {
+  position: relative;
 }
 
-.edit-btn-background{
-    position:absolute;
-    bottom: 3rem;
-    right: 5rem;
+.edit-btn-background {
+  position: absolute;
+  bottom: 3rem;
+  right: 5rem;
 }
 
-.avatar-container{
-    position:relative;
-    display: inline-block;
+.avatar-container {
+  position: relative;
+  display: inline-block;
 }
 
-.edit-btn-avatar{
-    position: absolute;
-    bottom: 2.5rem;
-    right: 2.25rem;
+.edit-btn-avatar {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 2.25rem;
 }
 
-.avatar-container .image{
-    height: 200px;
-    width: 200px;
+.avatar-container .image {
+  height: 200px;
+  width: 200px;
 }
 
-.profile .display-container{
-    position: relative;
+.profile .display-container {
+  position: relative;
 }
 
-.profile .display-container .avatar-element{
-    position: absolute;
-    bottom: -2.5rem;
-    left: 0rem;
-
+.profile .display-container .avatar-element {
+  position: absolute;
+  bottom: -2.5rem;
+  left: 0rem;
 }
 
-.background-container figure{
-    margin-left: 0px;
-    margin-right: 0px;
+.background-container figure {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
-.profile{
-    margin-top: -1.5rem;
+.profile {
+  margin-top: -1.5rem;
+}
+
+.tabs > ul {
+  margin: 0;
 }
