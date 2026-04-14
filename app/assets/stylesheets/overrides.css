@@ -89,6 +89,21 @@ body {
   margin-top: -1.5rem;
 }
 
-.tabs > ul {
-  margin: 0;
+.frame {
+  display: flex;
+  align-items: flex-end; /* aligns title with tabs baseline */
+  justify-content: space-between;
+  border-bottom: 1px solid #dbdbdb; /* full-width line */
+}
+
+.tabs {
+  margin-bottom: 0;
+}
+
+.tabs ul {
+  border-bottom: none;
+}
+
+.name h1 {
+  margin-bottom: 0.5rem;
 }
