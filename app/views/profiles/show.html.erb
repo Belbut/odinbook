@@ -16,11 +16,11 @@
       <div class="tabs is-right">
         <ul>
           <li>
-            <% if @user== current_user %>
-              <%= link_to(edit_profile_path) do %>
-                <span class="icon is-small"><i class="fa fa-user-pen"></i></span>
-                <span>Edit Profile</span>
-              <% end %>
+            <% if @user == current_user %>
+                <%= link_to(edit_profile_path) do %>
+                  <span class="icon is-small"><i class="fa fa-user-pen"></i></span>
+                  <span>Edit Profile</span>
+                <% end %>
             <% else %>
               <div class="friendship_interactions">
                 <div><%= render_user_friend_request_action(current_user, @user) %></div>
@@ -52,14 +52,24 @@
     </div>
   </section>
 
-  <section>
-    <h2>Biography</h2>
-    <ul>
-      <%= image_tag("local_icon.svg") + "From #{@profile.location}" if @profile.location %>
-      <%= image_tag("calendar_icon.svg") + "Birthday #{@profile.birthday}" if @profile.birthday %>
-      <%= image_tag("date_icon.svg") + "Joined #{@profile.created_at.to_date.to_fs(:short)}" if @profile.created_at %>
-    </ul>
-  </section>
+    <section class="section pt-4 pb-4">
+      <h2 class="title is-6 mb-2">Biography</h2>
+
+      <div class="content">
+        <% if @profile.location %>
+          <p class="mb-1">From: <%= @profile.location %></p>
+        <% end %>
+
+        <% if @profile.birthday %>
+          <p class="mb-1">Birthday: <%= @profile.birthday.to_date.to_fs(:long) %></p>
+          <p class="mb-1">Age: <%= ((Time.now - @profile.birthday.to_time)/1.year.seconds).floor %></p>
+        <% end %>
+
+        <% if @profile.created_at %>
+          <p>Joined: <%= @profile.created_at.to_date.to_fs(:long) %></p>
+        <% end %>
+      </div>
+    </section>
 
   <section>
     <div>
