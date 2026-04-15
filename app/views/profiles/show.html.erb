@@ -52,34 +52,37 @@
     </div>
   </section>
 
-    <section class="section pt-4 pb-4">
-      <h2 class="title is-6 mb-2">Biography</h2>
+  <section class="section pt-4 pb-4">
+    <h2 class="title is-4 mb-2">Biography</h2>
 
-      <div class="content">
-        <% if @profile.location %>
-          <p class="mb-1">From: <%= @profile.location %></p>
-        <% end %>
+    <div class="content">
+      <% if @profile.location %>
+        <p class="mb-1">From: <%= @profile.location %></p>
+      <% end %>
 
-        <% if @profile.birthday %>
-          <p class="mb-1">Birthday: <%= @profile.birthday.to_date.to_fs(:long) %></p>
-          <p class="mb-1">Age: <%= ((Time.now - @profile.birthday.to_time)/1.year.seconds).floor %></p>
-        <% end %>
+      <% if @profile.birthday %>
+        <p class="mb-1">Birthday: <%= @profile.birthday.to_date.to_fs(:long) %></p>
+        <p class="mb-1">Age: <%= ((Time.now - @profile.birthday.to_time)/1.year.seconds).floor %></p>
+      <% end %>
 
-        <% if @profile.created_at %>
-          <p>Joined: <%= @profile.created_at.to_date.to_fs(:long) %></p>
-        <% end %>
-      </div>
-    </section>
+      <% if @profile.created_at %>
+        <p>Joined: <%= @profile.created_at.to_date.to_fs(:long) %></p>
+      <% end %>
+    </div>
+  </section>
 
-  <section>
-    <div>
-      <h2>Photos</h2>
+  <section class="section pt-4 pb-4">
+    <div class="is-flex is-justify-content-space-between">
+      <h2 class="title is-4 mb-2">Photos</h2>
       <%= link_to "View all photos", user_attachments_path(@user) %>
     </div>
-    <div>
-      <% @attachments.each do |attachment| %>
-        <%= link_to(render_attachment_image(attachment), attachment.post ) %>
-      <% end %>
+
+    <div class="fixed-grid has-3-cols">
+      <div class="grid is-gap-0.5">
+        <% @attachments.each do |attachment| %>
+          <%= link_to(render_attachment_image(attachment, size: [175, 175]), attachment.post, class: "cell image-grid") %>
+        <% end %>
+      </div>
     </div>
   </section>
 

@@ -107,3 +107,10 @@ body {
 .name h1 {
   margin-bottom: 0.5rem;
 }
+
+/* .image-grid{
+  height: 150px;
+  width: 150px;
+  object-fit: contain;
+  background: #eee;
+} */
