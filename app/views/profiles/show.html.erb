@@ -52,50 +52,53 @@
     </div>
   </section>
 
-  <section class="section pt-4 pb-4">
-    <h2 class="title is-4 mb-2">Biography</h2>
+  <div class="columns mt-5">
+    <div class="column">
+      <section class="section box pt-4 pb-4">
+        <h2 class="title is-4 mb-2">Biography</h2>
+        <div class="content">
+          <% if @profile.location %>
+            <p class="mb-1">From: <%= @profile.location %></p>
+          <% end %>
+          <% if @profile.birthday %>
+            <p class="mb-1">Birthday: <%= @profile.birthday.to_date.to_fs(:long) %></p>
+            <p class="mb-1">Age: <%= ((Time.now - @profile.birthday.to_time)/1.year.seconds).floor %></p>
+          <% end %>
+          <% if @profile.created_at %>
+            <p>Joined: <%= @profile.created_at.to_date.to_fs(:long) %></p>
+          <% end %>
+        </div>
+      </section>
 
-    <div class="content">
-      <% if @profile.location %>
-        <p class="mb-1">From: <%= @profile.location %></p>
-      <% end %>
-
-      <% if @profile.birthday %>
-        <p class="mb-1">Birthday: <%= @profile.birthday.to_date.to_fs(:long) %></p>
-        <p class="mb-1">Age: <%= ((Time.now - @profile.birthday.to_time)/1.year.seconds).floor %></p>
-      <% end %>
-
-      <% if @profile.created_at %>
-        <p>Joined: <%= @profile.created_at.to_date.to_fs(:long) %></p>
-      <% end %>
+      <section class=" box pt-4 pb-4">
+        <div class="is-flex is-justify-content-space-between">
+          <h2 class="title is-4 mb-2">Photos</h2>
+          <%= link_to "View all photos", user_attachments_path(@user) %>
+        </div>
+        <div class="fixed-grid has-3-cols">
+          <div class="grid is-gap-0.5">
+            <% @attachments.each do |attachment| %>
+              <%= link_to(render_attachment_image(attachment, size: [175, 175]), attachment.post, class: "cell image-grid") %>
+            <% end %>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
 
-  <section class="section pt-4 pb-4">
-    <div class="is-flex is-justify-content-space-between">
-      <h2 class="title is-4 mb-2">Photos</h2>
-      <%= link_to "View all photos", user_attachments_path(@user) %>
-    </div>
+    <div class="column">
+      <section class=" box">
+        <div class="create_form">
+          <%= render "posts/post_form", category: :feed %>
+          <%# TODO: possibility to create a post on other people feed by tagging %>
+        </div>
+      </section>
 
-    <div class="fixed-grid has-3-cols">
-      <div class="grid is-gap-0.5">
-        <% @attachments.each do |attachment| %>
-          <%= link_to(render_attachment_image(attachment, size: [175, 175]), attachment.post, class: "cell image-grid") %>
-        <% end %>
-      </div>
+      <section class="section">
+          <h2>Publications</h2>
+          <% @posts.each do |post| %>
+            <%= render post %>
+          <% end %>
+      </section>
     </div>
-  </section>
-
-  <section class="posts feed">
-    <div class="create_form">
-      <%= render "posts/post_form", category: :feed %>
-      <%# TODO: possibility to create a post on other people feed by tagging %>
-    </div>
-    <div class="feed">
-      <h2>Publications</h2>
-      <% @posts.each do |post| %>
-        <%= render post %>
-      <% end %>
-    </div>
-  </section>
+  </div>
 </main>
