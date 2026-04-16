@@ -5,7 +5,7 @@
     <%= form_with model: post do |form| %>
         <%= form.hidden_field :category, value: post.category %>
         <div>
-            <%= form.textarea :body, class:"textarea", size: "100x10", placeholder: "What do you want to share?" %>
+            <%= form.textarea :body, class:"textarea", size: "100x8", placeholder: "What do you want to share?" %>
         </div>
 
         <div class="controls is-flex is-justify-content-space-between is-align-items-center mt-3">
@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div class="">
+            <div>
                 <%= form.submit "Publish" ,class:"button is-dark" %>
             </div>
         </div>

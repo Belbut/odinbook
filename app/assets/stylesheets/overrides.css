@@ -113,7 +113,7 @@ body {
 }
 
 .grid.custom-image-grid {
-  grid-template-columns: repeat(3, minmax(150px, 300px));
+  grid-template-columns: repeat(3, minmax(150px, 200px));
   justify-content: center;
 }
 
@@ -121,9 +121,10 @@ body {
   width: 100%;
   display: block;
 }
-/* .image-grid{
-  height: 150px;
-  width: 150px;
-  object-fit: contain;
-  background: #eee;
-} */
+
+.box , .column{
+  min-width: min-content;
+}
+
+.image-grid{
+}

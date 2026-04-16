@@ -52,8 +52,8 @@
     </div>
   </section>
 
-  <div class="columns mt-5">
-    <div class="column">
+  <div class="columns is-desktop mt-5">
+    <div class="column is-two-fifths-desktop">
       <section class="section box pt-4 pb-4">
         <h2 class="title is-4 mb-2">Biography</h2>
         <div class="content">
@@ -75,7 +75,7 @@
           <h2 class="title is-4 mb-2">Photos</h2>
           <%= link_to "View all photos", user_attachments_path(@user) %>
         </div>
-        <div class="">
+        <div>
           <div class="grid is-gap-0.5 custom-image-grid">
             <% @attachments.each do |attachment| %>
               <%= link_to(render_attachment_image(attachment, size: [175, 175]), attachment.post, class: "cell image-grid") %>
