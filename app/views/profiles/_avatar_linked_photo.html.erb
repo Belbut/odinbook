@@ -3,6 +3,6 @@
 <% resize_to_fill ||= [48,48] %>
 
 <% avatar_image= image_tag(current_user.profile.avatar.representation(resize_to_fill: resize_to_fill),class: "is-rounded #{img_option_class}") %>
-<% avatar_figure = tag.figure(avatar_image, class: "image is-#{resize_to_fill[0]}x#{resize_to_fill[1]}") %>
+<% avatar_figure = tag.figure(avatar_image, class: "ml-0 mr-2 image is-#{resize_to_fill[0]}x#{resize_to_fill[1]}") %>
 
 <%= link_to avatar_figure, user_profile_path(current_user), class: link_option_class %>

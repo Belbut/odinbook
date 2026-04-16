@@ -88,9 +88,12 @@
     <div class="column">
       <section class=" box">
         <div class="create_form">
-          <%= render "posts/post_form", category: :feed %>
+          <%= render "posts/post_form",post: @post, category: :feed %>
           <%# TODO: possibility to create a post on other people feed by tagging %>
         </div>
+      </section>
+
+      <section>
       </section>
 
       <section class="section">

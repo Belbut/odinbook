@@ -1,6 +1,13 @@
 <%# partial parameters: user:[User] ; optional: nil %>
 
-<div class="user_identity">
-    <span><%= render  partial: "profiles/avatar_linked_photo", locals: { user: user } %></span>
-    <span><%= link_to(user.profile.name, user_profile_path(user)) %></span>
+<div class="pb-4">
+    <div class="user_identity is-flex is-align-items-center">
+      <div class="mr-3">
+        <%= render partial: "profiles/avatar_linked_photo", locals: { user: user } %>
+      </div>
+
+      <div class="has-text-weight-semibold is-size-4">
+        <%= link_to user.profile.name, user_profile_path(user), class: "has-text-dark" %>
+      </div>
+    </div>
 </div>

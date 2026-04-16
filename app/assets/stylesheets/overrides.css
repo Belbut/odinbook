@@ -108,6 +108,10 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.input, .file-name{
+  color: #4a4a4a
+}
+
 /* .image-grid{
   height: 150px;
   width: 150px;
