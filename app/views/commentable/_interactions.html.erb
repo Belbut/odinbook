@@ -1,11 +1,32 @@
 <%# partial parameters: content[Content]; %>
 
-<section class="interactions">
-    <span>Number of reactions <%= link_to content.likes.size, post_likes_path(content) %></span>
-    <div>
-        <%= render_like_toggle content %>
-        <%= link_to "Reply", reply_path(content) %>
-        <%# <%= button_to "Share" %>
-        <%= edit_link_for content %>
-    </div>
+<section class="interactions has-text-grey">
+    <nav class="level">
+        <div class="level-left">
+            <div class="level-item">
+                <%= turbo_frame_tag dom_id(content, :like_toggle) do %>
+                    <div class="likes is-flex">
+                        <%= render_like_toggle content %>
+                        <%= link_to content.likes.size, post_likes_path(content) %>
+                    </div>
+                <% end %>
+            </div>
+            <div class="level-item">
+                <%= link_to reply_path(content) do %>
+                    <span class="icon is-small"><i class="fa fa-message"></i></span>
+                    <%= content.comments.size %>
+                <% end %>
+            </div>
+            <div class="level-item">
+                <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+            </div>
+        </div>
+        <% if content.author == current_user %>
+            <div class="level-right">
+                <div class="level-item">
+                    <%= edit_link_for content %>
+                </div>
+            </div>
+        <% end %>
+    </nav>
 </section>

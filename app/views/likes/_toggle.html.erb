@@ -1,0 +1,6 @@
+<%= turbo_frame_tag dom_id(content,:like_toggle) do %>
+    <div class="likes is-flex">
+        <%= render_like_toggle content %>
+        <%= link_to content.likes.size, post_likes_path(content) %>
+    </div>
+<% end %>

@@ -1,11 +1,9 @@
-<%# partial parameters: post[Post] ; optional: class_append[String]%>
+<%# partial parameters: post[Post] ; optional: class_append[String] %>
 
-*************************
-<div class="post <%= class_append if defined?(class_append) %>">
+<article class="post box <%= class_append if defined?(class_append) %>">
     <% if post.deleted? %>
         <%= render_deleted_content(post) %>
     <% else %>
         <%= render_visible_content(post) %>
     <% end %>
-</div>
-*************************
+</article>

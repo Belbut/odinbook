@@ -1,14 +1,14 @@
 class LikesController < ApplicationController
   def create
     parent_content.likes << current_user
-    redirect_back_or_to parent_content
     # TODO: good use case for turbo upgrade
+    render partial: "likes/toggle", locals: { content: parent_content }
   end
 
   def destroy
     parent_content.likes.delete(current_user)
-    redirect_back_or_to parent_content
     # TODO: good use case for turbo upgrade
+    render partial: "likes/toggle", locals: { content: parent_content }
   end
 
   def index

@@ -1,10 +1,25 @@
-<%# partial parameters: content[post,comment] ; optional: class_append[String]%>
+<%# partial parameters: content[post,comment] ; optional: class_append[String] %>
 
-<section class="heading">
-    <div>
-        <%= render "profiles/user_identity_header", user: content.author %>
-        <%= link_to image_tag("list_icon.svg"), content %>
-        <%= render_category_caption(content) if content.is_a?(Post) %>
+<section class="heading is-flex is-justify-content-space-between is-align-items-flex-start">
+  <div class="is-flex is-align-items-center">
+    <div class="mr-3">
+        <div class="user_identity">
+            <%= render partial: "profiles/avatar_linked_photo", locals: { user: content.author } %>
+        </div>
     </div>
-    <div><%= content.updated_at.to_date.to_fs(:long_ordinal) %></div>
+
+    <div>
+      <div class="has-text-weight-semibold is-size-5">
+        <%= link_to content.author.profile.name, user_profile_path(content.author), class: "has-text-dark" %>
+      </div>
+
+      <div class="caption is-size-7 has-text-grey">
+        <%= render_category_caption(content) if content.is_a?(Post) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-date is-size-7 has-text-grey">
+    <%= content.updated_at.to_date.to_fs(:long_ordinal) %>
+  </div>
 </section>

@@ -126,5 +126,31 @@ body {
   min-width: min-content;
 }
 
-.image-grid{
+.post.box {
+  border-radius: 10px;
+}
+
+.post .caption {
+  display: inline-block;
+  margin-top: 0.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.post .heading {
+  margin-bottom: 0.4rem;
+}
+
+.post .body {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.post .content{
+  border-top: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.post .interactions {
+  padding-top: 0.5rem;
 }

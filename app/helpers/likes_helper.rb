@@ -1,9 +1,12 @@
 module LikesHelper
   def render_like_toggle(content)
+    hearth = tag.span(tag.i(class: "fa fa-heart"), class: "icon is_small")
+
     if content.likes.include?(current_user)
-      button_to "Un-like", content_likes_path(content), method: :delete
+      button_to hearth, content_likes_path(content), method: :delete
     else
-      button_to "Like", content_likes_path(content), method: :post
+      button_to hearth, content_likes_path(content), method: :post
+
     end
   end
 

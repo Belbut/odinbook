@@ -27,7 +27,7 @@ module CommentableHelper
   def edit_link_for(content)
     return unless content.author == current_user
 
-    link_to "Edit #{content.model_name}", edit_polymorphic_path(content)
+    link_to "Edit", edit_polymorphic_path(content)
   end
 
   private
@@ -39,6 +39,6 @@ module CommentableHelper
       render_tree_from(reply, children_depth + 1)
     end
 
-    safe_join([current_node, children_nodes].compact)
+    safe_join([ current_node, children_nodes ].compact)
   end
 end

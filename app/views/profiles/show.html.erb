@@ -86,15 +86,16 @@
     </div>
 
     <div class="column">
-      <section class=" box">
+      <section class="box">
         <div class="create_form">
           <%= render "posts/post_form",post: @post, category: :feed %>
           <%# TODO: possibility to create a post on other people feed by tagging %>
         </div>
       </section>
 
-      <section class="section">
-          <h2>Publications</h2>
+      <section class="section box">
+          <h2 class="title is-4 mb-2">Publications</h2>
+
           <% @posts.each do |post| %>
             <%= render post %>
           <% end %>
