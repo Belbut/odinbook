@@ -13,7 +13,8 @@ class Post < ApplicationRecord
   belongs_to :author, class_name: "User", foreign_key: "user_id"
 
   has_many :attachments, dependent: :destroy
-  validate :attachments_cardinality_by_category
+
+  validate :content
 
   has_many :comments, as: :commentable
   # Alias used only for polymorphic abstractions. use replies comments when post is the only type.
@@ -39,12 +40,20 @@ class Post < ApplicationRecord
       self.errors.full_messages
     else
       self.attachments.flat_map { |attachment| attachment.all_errors.full_messages }
-    else
-      self.errors.full_messages
     end
   end
 
   private
+  def content
+    attachments_cardinality_by_category
+    content_not_empty
+  end
+
+  def content_not_empty
+    if self.body.empty? && self.attachments.empty?
+      errors.add(:content, "A post needs to have at least one content of body or attachment")
+    end
+  end
 
   def attachments_cardinality_by_category
     return unless %w[avatar_selection background_selection].include?(category)
