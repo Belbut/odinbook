@@ -34,7 +34,10 @@ class Post < ApplicationRecord
   end
 
   def all_errors
-    if self.errors[:attachments]
+    require "pry-byebug"; binding.pry
+    if self.errors[:attachments].empty?
+      self.errors.full_messages
+    else
       self.attachments.flat_map { |attachment| attachment.all_errors.full_messages }
     else
       self.errors.full_messages
@@ -44,11 +47,10 @@ class Post < ApplicationRecord
   private
 
   def attachments_cardinality_by_category
-    return unless %i[avatar_selection background_selection].include?(category)
+    return unless %w[avatar_selection background_selection].include?(category)
+    return if attachments.size == 1
 
-    return unless attachments.size != 1
-
-    errors.add(:attachments, "For the post #{category} there needs to be one and ony one attachment")
+    errors.add(:content, "For the post #{category} there needs to be one and only one attachment")
   end
 
   def image_category(post_category)
