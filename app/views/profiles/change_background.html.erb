@@ -1,12 +1,17 @@
-<h1>Profiles#change_background</h1>
-<p>Find me in app/views/profiles/change_background.html.erb</p>
+<h1 class="title is-3 mb-5">Post a new background for your profile</h1>
 
-<section class="older_background">
-    <% @background_attachments.each do |attachment| %>
-        <%= render_attachment_image(attachment) %>
-    <% end %>
+<section class="new_background_form box mb-6">
+  <%= render "posts/post_form", post: @post, category: :background_selection %>
 </section>
 
-<section class="new_background_form">
-    <%= render "posts/post_form",post: @post, category: :background_selection %>
+<section class="older_background">
+  <h2 class="title is-4 mb-4">Older backgrounds</h2>
+
+  <div class="background-grid">
+    <% @background_attachments.each do |attachment| %>
+      <%= link_to post_path(attachment.post), class: "background-item" do %>
+        <%= render_attachment_image(attachment) %>
+      <% end %>
+    <% end %>
+  </div>
 </section>
