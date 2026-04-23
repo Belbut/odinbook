@@ -28,32 +28,11 @@ class PostsController < ApplicationController
 
     @post.attach_files(added_files, post_category)
 
-    case post_category
-    when :feed
-      if @post.save
-        redirect_to @post
-      else
-        flash[:alert] = @post.all_errors.to_sentence
-        render :new, status: :unprocessable_entity
-      end
-    when :avatar_selection
-      if @post.save
-        redirect_to current_user.profile
-      else
-        @avatar_attachments = Attachment.includes(post: :author).where(users: { id: current_user },
-                                                                   post: { category: :avatar_selection })
-        flash[:alert] = @post.all_errors.to_sentence
-        render "profiles/change_avatar", status: :unprocessable_entity
-      end
-    when :background_selection
-      if @post.save
-        redirect_to current_user.profile
-      else
-        @background_attachments = Attachment.includes(post: :author).where(users: { id: current_user },
-                                                                       post: { category: :background_selection })
-        flash[:alert] = @post.all_errors.to_sentence
-        render "profiles/change_background", status: :unprocessable_entity
-      end
+    if @post.save
+      redirect_when_success(post_category)
+    else
+      flash[:alert] = @post.all_errors.to_sentence
+      render_when_failed(post_category)
     end
   end
 
@@ -84,12 +63,35 @@ class PostsController < ApplicationController
   end
 
   private
-
   def user_params
     params.expect(:user_id)
   end
 
   def post_params
     params.expect(post: %i[category body])
+  end
+
+  def redirect_when_success(category)
+    case category
+    when :feed
+      redirect_to @post
+    when :avatar_selection, :background_selection
+      redirect_to current_user.profile
+    end
+  end
+
+  def render_when_failed(category)
+    case category
+    when :feed
+      render :new, status: :unprocessable_entity
+    when :avatar_selection
+      render "profiles/change_avatar", status: :unprocessable_entity
+      @avatar_attachments = Attachment.includes(post: :author).where(users: { id: current_user },
+                                                                 post: { category: :avatar_selection })
+    when :background_selection
+      @background_attachments = Attachment.includes(post: :author).where(users: { id: current_user },
+      post: { category: :background_selection })
+      render "profiles/change_background", status: :unprocessable_entity
+    end
   end
 end
