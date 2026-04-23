@@ -18,7 +18,6 @@ module AuthorizesContentAccess
 
 # represents the content that will become the parent to the new comment that is being created
 def parent_content(params = request.params)
-  require "pry-byebug"; binding.pry
   source = params[:comment] || params
     return Comment.find(source[:comment_id]) if source[:comment_id]
     return Post.find(source[:post_id]) if source[:post_id]

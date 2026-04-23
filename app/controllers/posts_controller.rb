@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   before_action :authorizes_content_access, only: %i[index show]
   before_action :prevent_deleted_content_access, only: %i[edit update destroy]
-  
+
   def index
     author = User.includes(:posts).find(user_params)
 
@@ -23,26 +23,37 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
 
-    post_category = params[:post][:category]
+    post_category = params[:post][:category].to_sym
     added_files = params[:post][:added_files]
 
     @post.attach_files(added_files, post_category)
 
-    if @post.save
-      case params[:post][:category].to_sym
-      when :feed
+    case post_category
+    when :feed
+      if @post.save
         redirect_to @post
-      when :avatar_selection, :background_selection
-        redirect_to user_profile_path(current_user)
+      else
+        flash[:alert] = @post.all_errors.to_sentence
+        render :new, status: :unprocessable_entity
       end
-    else
-      # case params[:post][:category].to_sym
-      # when :avatar_selection
-      #   render :change_avatar, status: :unprocessable_entity, notice
-      # end
-
-      flash[:alert] = @post.all_errors.to_sentence
-      render :new, status: :unprocessable_entity
+    when :avatar_selection
+      if @post.save
+        redirect_to current_user.profile
+      else
+        @avatar_attachments = Attachment.includes(post: :author).where(users: { id: current_user },
+                                                                   post: { category: :avatar_selection })
+        flash[:alert] = @post.all_errors.to_sentence
+        render "profiles/change_avatar", status: :unprocessable_entity
+      end
+    when :background_selection
+      if @post.save
+        redirect_to current_user.profile
+      else
+        @background_attachments = Attachment.includes(post: :author).where(users: { id: current_user },
+                                                                       post: { category: :background_selection })
+        flash[:alert] = @post.all_errors.to_sentence
+        render "profiles/change_background", status: :unprocessable_entity
+      end
     end
   end
 

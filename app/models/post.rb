@@ -65,6 +65,7 @@ class Post < ApplicationRecord
     case post_category.to_sym
     when :avatar_selection then :avatar
     when :background_selection then :background
+    when :feed then :feed
     end
   end
 
