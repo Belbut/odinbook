@@ -1,0 +1,13 @@
+<%# required: category, attachments_records, post %>
+
+<section class="older-profile-image">
+  <h2 class="title is-4 mb-4">Older used photos</h2>
+
+  <div class="profile-image-grid">
+    <% attachments_records.each do |attachment| %>
+      <%= link_to post_path(attachment.post), class: "background-item" do %>
+        <%= render_attachment_image(attachment) %>
+      <% end %>
+    <% end %>
+  </div>
+</section>

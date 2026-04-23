@@ -35,7 +35,6 @@ class Post < ApplicationRecord
   end
 
   def all_errors
-    require "pry-byebug"; binding.pry
     if self.errors[:attachments].empty?
       self.errors.full_messages
     else

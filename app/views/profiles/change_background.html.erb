@@ -1,17 +1,7 @@
 <h1 class="title is-3 mb-5">Post a new background for your profile</h1>
 
-<section class="new_background_form box mb-6">
+<section class="new-profile-image-form box mb-6">
   <%= render "posts/post_form", post: @post, category: :background_selection %>
 </section>
 
-<section class="older_background">
-  <h2 class="title is-4 mb-4">Older backgrounds</h2>
-
-  <div class="background-grid">
-    <% @background_attachments.each do |attachment| %>
-      <%= link_to post_path(attachment.post), class: "background-item" do %>
-        <%= render_attachment_image(attachment) %>
-      <% end %>
-    <% end %>
-  </div>
-</section>
+<%= render "attachments_images_grid", attachments_records: @background_attachments %>
