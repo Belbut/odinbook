@@ -28,6 +28,7 @@ class PostsController < ApplicationController
 
     @post.attach_files(added_files, post_category)
 
+    # better alternative refactor, isolate the creation of different categories of posts in own controller
     if @post.save
       redirect_when_success(post_category)
     else
@@ -86,10 +87,10 @@ class PostsController < ApplicationController
       render :new, status: :unprocessable_entity
     when :avatar_selection
       render "profiles/change_avatar", status: :unprocessable_entity
-      @avatar_attachments = Attachment.includes(post: :author).where(users: { id: current_user },
+      @attachments = Attachment.includes(post: :author).where(users: { id: current_user },
                                                                  post: { category: :avatar_selection })
     when :background_selection
-      @background_attachments = Attachment.includes(post: :author).where(users: { id: current_user },
+      @attachments = Attachment.includes(post: :author).where(users: { id: current_user },
       post: { category: :background_selection })
       render "profiles/change_background", status: :unprocessable_entity
     end
