@@ -2,17 +2,16 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-document.addEventListener("DOMContentLoaded", () => {
-  const input = document.querySelector(".file-input");
+document.addEventListener("change", (event) => {
+  const input = event.target.closest(".file-input");
+  if (!input) return;
 
-  if (input) {
-    input.onchange = function () {
-      const name = this.closest(".file").querySelector(".file-name");
+  const file = input.closest(".file");
+  const name = file?.querySelector(".file-name");
+  if (!name) return;
 
-      name.textContent =
-        this.files.length > 1
-          ? this.files.length + " files selected"
-          : this.files[0]?.name || "No file selected";
-    };
-  }
+  name.textContent =
+    input.files.length > 1
+      ? `${input.files.length} files selected`
+      : input.files[0]?.name || "No file selected";
 });
