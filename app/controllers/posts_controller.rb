@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   before_action :authorizes_content_access, only: %i[index show]
   before_action :prevent_deleted_content_access, only: %i[edit update destroy]
-
+  
   def index
     author = User.includes(:posts).find(user_params)
 

@@ -1,4 +1,4 @@
-    <%# partial parameters: category post ; optional: nil %>
+    <%# partial parameters: post ; optional: nil %>
 
     <%= render "profiles/user_identity_header", user: current_user %>
 
@@ -29,7 +29,7 @@
             </div>
 
             <div>
-                <%= form.submit "Publish" ,class:"button is-dark" %>
+                <%= form.submit "Publish", class:"button is-dark" %>
             </div>
         </div>
 <% end %>
