@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   include PreventDeletedContentAccess
 
   before_action :authorizes_content_access, only: %i[show create]
-  before_action :prevent_deleted_content_access, only: %i[edit update destroy]
+  # before_action :prevent_deleted_content_access, only: %i[edit update destroy]
 
   def show
     @comment = Comment.find(params[:id])
@@ -49,6 +49,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.expect(comment: [:body])
+    params.expect(comment: [ :body ])
   end
 end

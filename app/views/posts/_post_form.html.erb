@@ -12,8 +12,8 @@
             <div class="field mb-0">
                 <div class="file has-name">
                     <label class="file-label">
-                        <input class="file-input" type="file" name="post[added_files][]" multiple>
                         <span class="file-cta">
+                        <%= form.file_field :added_files, multiple: true, include_hidden: false, class:"file-input" %>
                             <span class="file-icon">
                                 <i class="fa fa-upload"></i>
                             </span>

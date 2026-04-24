@@ -4,7 +4,7 @@ module PreventDeletedContentAccess
   extend ActiveSupport::Concern
 
   included do
-    before_action :limit_deleted_content_access, only: %i[edit update destroy]
+    before_action :prevent_deleted_content_access, only: %i[edit update destroy]
   end
 
   def prevent_deleted_content_access

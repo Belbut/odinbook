@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   include PreventDeletedContentAccess
 
   before_action :authorizes_content_access, only: %i[index show]
-  before_action :prevent_deleted_content_access, only: %i[edit update destroy]
+  # before_action :prevent_deleted_content_access, only: %i[edit update destroy]
 
   def index
     author = User.includes(:posts).find(user_params)
@@ -21,6 +21,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    require "pry-byebug"; binding.pry
     @post = current_user.posts.new(post_params)
 
     post_category = params[:post][:category].to_sym
