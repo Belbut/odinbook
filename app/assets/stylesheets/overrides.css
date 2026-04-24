@@ -112,6 +112,10 @@ body {
   color: #4a4a4a
 }
 
+img.attachment{
+  background-color: #dbdbdb;
+}
+
 .grid.custom-image-grid {
   grid-template-columns: repeat(3, minmax(150px, 200px));
   justify-content: center;

@@ -4,6 +4,8 @@ class Attachment < ApplicationRecord
 
   validates_associated :annexable
 
+  default_scope { order(created_at: :desc) }
+
   def all_errors
     puts "errors was called"
     self.annexable.errors
