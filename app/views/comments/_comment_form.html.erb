@@ -5,6 +5,7 @@
 
     <%= form_with model: new_comment do |form| %>
         <div>
+            <%= form.hidden_field id_param_for(new_comment.parent), value: new_comment.parent.id %>
             <%= form.textarea :body, class:"textarea", size: "100x8", placeholder: "Add your comment" %>
         </div>
 
