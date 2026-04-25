@@ -2,5 +2,7 @@
 
 <section class="content section">
     <div class="body"> <%= content.body %> </div>
-    <%= render_attachments_preview(content) if content.respond_to?(:attachments) %>
+    <div class="is-fle is-justify-content-center">
+        <div class=""><%= render_attachments_preview(content) if content.respond_to?(:attachments) %></div>
+    </div>
 </section>

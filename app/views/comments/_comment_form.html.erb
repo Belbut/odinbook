@@ -1,13 +1,17 @@
 <%# partial parameters: new_comment:[Comment] ; optional: nil %>
 
-<div class="comments">
-    <%= render "profiles/user_identity_header", user:current_user %>
-    <span>Comment</span>
-    <div>
-        <%= form_with model: new_comment do |form| %>
-            <%= form.hidden_field id_param_for(new_comment.parent), value: new_comment.parent.id %>
-            <%= form.textarea :body, size: "100x10", placeholder: "Add your comment" %>
-            <%= form.submit "Leave a comment" %>
-        <% end %>
-    </div>
+<div class="box">
+    <%= render "profiles/user_identity_header", user: current_user %>
+
+    <%= form_with model: new_comment do |form| %>
+        <div>
+            <%= form.textarea :body, class:"textarea", size: "100x8", placeholder: "Add your comment" %>
+        </div>
+
+        <div class="controls is-flex is-justify-content-end mt-3">
+            <%= form.submit "Publish Comment", class:"button is-dark" %>
+        </div>
+    <% end %>
 </div>
+
+<%# TODO: add friends tags %>
