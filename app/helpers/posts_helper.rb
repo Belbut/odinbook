@@ -16,7 +16,7 @@ module PostsHelper
 
   def render_first_attachments_preview(post)
     attachments_preview = post.attachments.first(PREVIEW_SIZE).map do |attachment|
-      render_attachment_image(attachment, size: [ 250, 250 ])
+      link_to(render_attachment_image(attachment), attachment.post)
     end
     # TODO: handle render of more than PREVIEW_SIZE 5 photos
     safe_join(attachments_preview)

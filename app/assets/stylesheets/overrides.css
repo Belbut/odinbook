@@ -168,7 +168,14 @@ img.attachment{
   grid-template-columns: repeat(2, 1fr);
 }
 
-.post .attachments img {
+.post .attachments > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.post .attachments > a > img {
   width: 100%;
   height: 100%;
   display: block;
@@ -178,29 +185,19 @@ img.attachment{
 }
 
 /* 1 image */
-.post .attachments img:only-child {
+.post .attachments > a:only-child {
   grid-column: 1 / -1;
   aspect-ratio: 4 / 5;
-  max-width: 380px;
 }
 
 /* 3 images: first wide */
-.post .attachments img:nth-child(1):nth-last-child(3) {
+.post .attachments > a:first-child:nth-last-child(3) {
   grid-column: 1 / -1;
   aspect-ratio: 16 / 10;
 }
 
-.post .attachments img:nth-child(n+2):nth-last-child(-n+2) {
-  aspect-ratio: 1 / 1;
-}
-
-/* default square behavior for 2,4,5+ */
-.post .attachments img:nth-child(n) {
-  aspect-ratio: 1 / 1;
-}
-
 /* 5+ images: first wide */
-.post .attachments img:first-child:nth-last-child(n+5) {
+.post .attachments > a:first-child:nth-last-child(n+5) {
   grid-column: 1 / -1;
   aspect-ratio: 16 / 10;
 }

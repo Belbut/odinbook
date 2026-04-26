@@ -21,7 +21,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    require "pry-byebug"; binding.pry
     @post = current_user.posts.new(post_params)
 
     post_category = params[:post][:category].to_sym
