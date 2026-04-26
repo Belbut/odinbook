@@ -246,3 +246,30 @@ img.attachment{
   height: 220px;
   object-fit: cover;
 }
+
+.replies.tree {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid #dbdbdb;
+}
+
+.comment.media {
+  display: block;
+  position: relative;
+  padding: 1rem 0 1rem 1rem;
+  margin: 0;
+  border-top: 1px solid rgba(10, 10, 10, 0.08);
+}
+
+.comment .content.section {
+  padding: 0.25rem 0 0.5rem 3.75rem;
+  margin: 0;
+}
+
+.comment .interactions {
+  padding-left: 3.75rem;
+}
+
+.replies.tree article.comment {
+  margin-left: calc(var(--depth) * 2rem);
+}
