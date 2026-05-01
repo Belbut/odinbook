@@ -1,6 +1,6 @@
 <%# partial parameters: content[Post,Comment] %>
 
-<section class="content section">
+<section class="content section pt-4 pb-4">
     <% if content.respond_to?(:attachments) %>
         <div class="is-flex is-justify-content-center">
                 <%= render_attachments_preview(content) %>
@@ -8,7 +8,7 @@
     <% end %>
 
     <% unless content.body.empty? %>
-        <div class="body">
+        <div class="body mt-4 box">
             <%= content.body %>
         </div>
     <% end %>
