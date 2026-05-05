@@ -86,3 +86,5 @@ gem "rails-controller-testing", "~> 1.0"
 gem "pg_search", "~> 2.3"
 
 gem "cssbundling-rails", "~> 1.4"
+
+gem "ruby-lsp", "~> 0.26.9"

@@ -38,4 +38,8 @@
 
 /*! bulmaswatch v0.8.1 | MIT License */
 /*! bulma.io v0.8.1 | MIT License | github.com/jgthms/bulma */
-@import "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css";
+// @import "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css";
+@import "bulmaswatch/lux/variables";
+@import "bulma/bulma";
+@import "bulmaswatch/lux/overrides";
+
