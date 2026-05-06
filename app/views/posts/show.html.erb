@@ -1,9 +1,15 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
 <section class="focused_content">
+    <h1 class="title is-3 mb-5">Post Details</h1>
     <%= render @post %>
 </section>
 
-<%= render_replies_tree(@post) %>
+<section class="mt-5">
+    <h1 class="title is-3 mb-5">Comments</h1>
+    <div class="box">
+        <%= render_replies_tree(@post) %>
+    </div>
+</section>
 
+<br>
+<h1 class="title is-5 mb-5">Add your thoughts</h1>
 <%= render "comments/comment_form", new_comment: @comment  unless @post.deleted? %>

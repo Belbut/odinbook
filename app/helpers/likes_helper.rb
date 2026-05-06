@@ -3,10 +3,10 @@ module LikesHelper
     hearth = tag.span(tag.i(class: "fa fa-heart"), class: "icon is_small")
 
     if content.likes.include?(current_user)
-      button_to hearth, content_likes_path(content), method: :delete
+      link_to hearth, content_likes_path(content), data:{"turbo-method": :delete}
     else
-      button_to hearth, content_likes_path(content), method: :post
-
+   
+      link_to hearth, content_likes_path(content), data: { "turbo-method": :post}
     end
   end
 

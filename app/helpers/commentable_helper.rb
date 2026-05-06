@@ -33,7 +33,7 @@ module CommentableHelper
   private
 
   def render_tree_from(commentable_node, children_depth = 0, render_first_node: true)
-    current_node = render(commentable_node, depth: children_depth)
+    current_node = render_first_node ? render(commentable_node, depth: children_depth) : nil
 
     children_nodes = commentable_node.replies.map do |reply|
       render_tree_from(reply, children_depth + 1)
