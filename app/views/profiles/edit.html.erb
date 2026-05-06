@@ -1,33 +1,47 @@
-<h1>Profiles#edit</h1>
-<p>Find me in app/views/profiles/edit.html.erb</p>
-
-<header></header>
 <main>
-    <h1>Edit Profile</h1>
+    <%= render "profile_header", profile: @profile, user: @user %>
 
-    <%= form_with model: @profile do |form| %>
-    <section>
-        <h2>Profile photo</h2>
-        <%= render "avatar_photo_section" %>
+    <section class="box">
+        <%= form_with model: @profile do |form| %>
+
+            <h1 class="title is-4">Bibliography</h1>
+
+            <div class="field">
+                <%= form.label :name, class: "label" %>
+
+                <div class="control">
+                <%= form.text_field :name,
+                        class: "input" %>
+                </div>
+            </div>
+
+            <div class="field">
+                <%= form.label :birthday, class: "label" %>
+
+                <div class="control">
+                <%= form.date_field :birthday,
+                        class: "input" %>
+                </div>
+            </div>
+
+            <div class="field">
+                <%= form.label :location, class: "label" %>
+
+                <div class="control">
+                <%= form.text_field :location,
+                        class: "input" %>
+                </div>
+            </div>
+
+            <div class="level mt-4">
+                <div class="level-right">
+                <div class="level-item">
+                    <%= form.submit "Publish",
+                        class: "button is-dark" %>
+                </div>
+                </div>
+            </div>
+
+        <% end %>
     </section>
-
-    <section>
-        <h2>Background photo</h2>
-        <%= render "background_photo_section" %>
-    </section>
-
-    <section>
-        <h2>Bibliography</h2>
-        <%= form.label :name %>
-        <%= form.text_field :name %>
-
-        <%= form.label :birthday %>
-        <%= form.date_field :birthday %>
-
-        <%= form.label :location %>
-        <%= form.text_field :location %>
-    </section>
-    <%= form.submit %>
-    <% end %>
 </main>
-<footer></footer>
