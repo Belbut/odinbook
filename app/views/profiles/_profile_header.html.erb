@@ -1,0 +1,53 @@
+
+  <section class="profile">
+    <div class="display-container">
+      <div class="background-element">
+        <%= render "background_photo_section" %>
+      </div>
+      <div class="avatar-element">
+        <%= render "avatar_photo_section" %>
+      </div>
+    </div>
+
+    <div class="frame">
+      <div class="name">
+        <h1 class="is-link"><%= profile.name %></h1>
+      </div>
+      <div class="tabs is-right">
+        <ul>
+          <li>
+            <% if user == current_user %>
+                <%= link_to(edit_profile_path) do %>
+                  <span class="icon is-small"><i class="fa fa-user-pen"></i></span>
+                  <span>Edit Profile</span>
+                <% end %>
+            <% else %>
+              <div class="friendship_interactions">
+                <div><%= render_user_friend_request_action(current_user, user) %></div>
+              </div>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to user_posts_path(user) do %> <%# TODO: link to posts form user %>
+              <span class="icon is-small"><i class="fa fa-newspaper"></i></span>
+              <span>Publications</span>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to user_friends_path(user) do %>
+              <span class="icon is-small"><i class="fa-solid fa-people-group"></i></span>
+              <span>Friends</span>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to user_attachments_path(user) do %>
+              <span class="icon is-small"><i class="fa fa-image"></i></span>
+              <span>Pictures</span>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
