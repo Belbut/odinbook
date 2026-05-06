@@ -1,13 +1,13 @@
 <%# partial parameters: content[Post,Comment] %>
 
 <section class="content section pt-4 pb-4">
-    <%= link_to content do %>
         <% if content.respond_to?(:attachments) %>
             <div class="is-flex is-justify-content-center">
                     <%= render_attachments_preview(content) %>
             </div>
         <% end %>
 
+    <%= link_to content, class: "content-link" do %>
         <% if content.respond_to?(:attachments) && !content.body.empty? %>
             <br>
         <% end %>

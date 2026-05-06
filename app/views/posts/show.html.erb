@@ -5,11 +5,14 @@
 
 <section class="mt-5">
     <h1 class="title is-3 mb-5">Comments</h1>
-    <div class="box">
-        <%= render_replies_tree(@post) %>
-    </div>
-</section>
+    <% unless @post.replies.empty? %>
+        <div class="box" >
+            <%= render_replies_tree(@post) %>
+        </div>
 
-<br>
-<h1 class="title is-5 mb-5">Add your thoughts</h1>
-<%= render "comments/comment_form", new_comment: @comment  unless @post.deleted? %>
+        <br>
+    <% end %>
+
+    <h1 class="title is-5 mb-5">Add your thoughts</h1>
+    <%= render "comments/comment_form", new_comment: @comment  unless @post.deleted? %>
+</section>
