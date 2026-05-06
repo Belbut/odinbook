@@ -1,0 +1,161 @@
+/* Bulma 1.0 Grid System — compiled from bulma@1.0.4/sass/grid/grid.scss */
+
+/* fixed-grid */
+.fixed-grid {
+  container-name: bulma-fixed-grid;
+  container-type: inline-size;
+}
+
+.fixed-grid > .grid {
+  --bulma-grid-column-count: 2;
+  grid-template-columns: repeat(var(--bulma-grid-column-count), 1fr);
+}
+
+.fixed-grid.has-1-cols  > .grid { --bulma-grid-column-count: 1; }
+.fixed-grid.has-2-cols  > .grid { --bulma-grid-column-count: 2; }
+.fixed-grid.has-3-cols  > .grid { --bulma-grid-column-count: 3; }
+.fixed-grid.has-4-cols  > .grid { --bulma-grid-column-count: 4; }
+.fixed-grid.has-5-cols  > .grid { --bulma-grid-column-count: 5; }
+.fixed-grid.has-6-cols  > .grid { --bulma-grid-column-count: 6; }
+.fixed-grid.has-7-cols  > .grid { --bulma-grid-column-count: 7; }
+.fixed-grid.has-8-cols  > .grid { --bulma-grid-column-count: 8; }
+.fixed-grid.has-9-cols  > .grid { --bulma-grid-column-count: 9; }
+.fixed-grid.has-10-cols > .grid { --bulma-grid-column-count: 10; }
+.fixed-grid.has-11-cols > .grid { --bulma-grid-column-count: 11; }
+.fixed-grid.has-12-cols > .grid { --bulma-grid-column-count: 12; }
+
+/* responsive has-N-cols via container queries */
+@container bulma-fixed-grid (max-width: 768px) {
+  .fixed-grid.has-1-cols-mobile  > .grid { --bulma-grid-column-count: 1; }
+  .fixed-grid.has-2-cols-mobile  > .grid { --bulma-grid-column-count: 2; }
+  .fixed-grid.has-3-cols-mobile  > .grid { --bulma-grid-column-count: 3; }
+  .fixed-grid.has-4-cols-mobile  > .grid { --bulma-grid-column-count: 4; }
+  .fixed-grid.has-5-cols-mobile  > .grid { --bulma-grid-column-count: 5; }
+  .fixed-grid.has-6-cols-mobile  > .grid { --bulma-grid-column-count: 6; }
+  .fixed-grid.has-7-cols-mobile  > .grid { --bulma-grid-column-count: 7; }
+  .fixed-grid.has-8-cols-mobile  > .grid { --bulma-grid-column-count: 8; }
+  .fixed-grid.has-9-cols-mobile  > .grid { --bulma-grid-column-count: 9; }
+  .fixed-grid.has-10-cols-mobile > .grid { --bulma-grid-column-count: 10; }
+  .fixed-grid.has-11-cols-mobile > .grid { --bulma-grid-column-count: 11; }
+  .fixed-grid.has-12-cols-mobile > .grid { --bulma-grid-column-count: 12; }
+}
+
+@container bulma-fixed-grid (min-width: 769px) {
+  .fixed-grid.has-1-cols-tablet  > .grid { --bulma-grid-column-count: 1; }
+  .fixed-grid.has-2-cols-tablet  > .grid { --bulma-grid-column-count: 2; }
+  .fixed-grid.has-3-cols-tablet  > .grid { --bulma-grid-column-count: 3; }
+  .fixed-grid.has-4-cols-tablet  > .grid { --bulma-grid-column-count: 4; }
+  .fixed-grid.has-5-cols-tablet  > .grid { --bulma-grid-column-count: 5; }
+  .fixed-grid.has-6-cols-tablet  > .grid { --bulma-grid-column-count: 6; }
+  .fixed-grid.has-7-cols-tablet  > .grid { --bulma-grid-column-count: 7; }
+  .fixed-grid.has-8-cols-tablet  > .grid { --bulma-grid-column-count: 8; }
+  .fixed-grid.has-9-cols-tablet  > .grid { --bulma-grid-column-count: 9; }
+  .fixed-grid.has-10-cols-tablet > .grid { --bulma-grid-column-count: 10; }
+  .fixed-grid.has-11-cols-tablet > .grid { --bulma-grid-column-count: 11; }
+  .fixed-grid.has-12-cols-tablet > .grid { --bulma-grid-column-count: 12; }
+}
+
+/* smart grid */
+.grid {
+  --bulma-grid-gap: 0.75rem;
+  --bulma-grid-column-min: 9rem;
+  --bulma-grid-cell-column-span: 1;
+  --bulma-grid-cell-row-span: 1;
+  display: grid;
+  gap: var(--bulma-grid-gap);
+  column-gap: var(--bulma-grid-column-gap, var(--bulma-grid-gap));
+  row-gap: var(--bulma-grid-row-gap, var(--bulma-grid-gap));
+  grid-template-columns: repeat(auto-fit, minmax(var(--bulma-grid-column-min), 1fr));
+  grid-template-rows: auto;
+}
+
+.grid.is-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(var(--bulma-grid-column-min), 1fr));
+}
+
+/* is-col-min-N (1.5rem base × N, up to 32) */
+.grid.is-col-min-1  { --bulma-grid-column-min: 1.5rem; }
+.grid.is-col-min-2  { --bulma-grid-column-min: 3rem; }
+.grid.is-col-min-3  { --bulma-grid-column-min: 4.5rem; }
+.grid.is-col-min-4  { --bulma-grid-column-min: 6rem; }
+.grid.is-col-min-5  { --bulma-grid-column-min: 7.5rem; }
+.grid.is-col-min-6  { --bulma-grid-column-min: 9rem; }
+.grid.is-col-min-7  { --bulma-grid-column-min: 10.5rem; }
+.grid.is-col-min-8  { --bulma-grid-column-min: 12rem; }
+.grid.is-col-min-9  { --bulma-grid-column-min: 13.5rem; }
+.grid.is-col-min-10 { --bulma-grid-column-min: 15rem; }
+.grid.is-col-min-11 { --bulma-grid-column-min: 16.5rem; }
+.grid.is-col-min-12 { --bulma-grid-column-min: 18rem; }
+.grid.is-col-min-16 { --bulma-grid-column-min: 24rem; }
+.grid.is-col-min-20 { --bulma-grid-column-min: 30rem; }
+.grid.is-col-min-24 { --bulma-grid-column-min: 36rem; }
+.grid.is-col-min-32 { --bulma-grid-column-min: 48rem; }
+
+/* gap utilities */
+.is-gap-0   { --bulma-grid-gap: 0rem; }
+.is-gap-1   { --bulma-grid-gap: 0.25rem; }
+.is-gap-2   { --bulma-grid-gap: 0.5rem; }
+.is-gap-3   { --bulma-grid-gap: 0.75rem; }
+.is-gap-4   { --bulma-grid-gap: 1rem; }
+.is-gap-5   { --bulma-grid-gap: 1.25rem; }
+.is-gap-6   { --bulma-grid-gap: 1.5rem; }
+.is-gap-7   { --bulma-grid-gap: 1.75rem; }
+.is-gap-8   { --bulma-grid-gap: 2rem; }
+
+.is-column-gap-0 { --bulma-grid-column-gap: 0rem; }
+.is-column-gap-1 { --bulma-grid-column-gap: 0.25rem; }
+.is-column-gap-2 { --bulma-grid-column-gap: 0.5rem; }
+.is-column-gap-3 { --bulma-grid-column-gap: 0.75rem; }
+.is-column-gap-4 { --bulma-grid-column-gap: 1rem; }
+.is-column-gap-5 { --bulma-grid-column-gap: 1.25rem; }
+.is-column-gap-6 { --bulma-grid-column-gap: 1.5rem; }
+.is-column-gap-7 { --bulma-grid-column-gap: 1.75rem; }
+.is-column-gap-8 { --bulma-grid-column-gap: 2rem; }
+
+.is-row-gap-0 { --bulma-grid-row-gap: 0rem; }
+.is-row-gap-1 { --bulma-grid-row-gap: 0.25rem; }
+.is-row-gap-2 { --bulma-grid-row-gap: 0.5rem; }
+.is-row-gap-3 { --bulma-grid-row-gap: 0.75rem; }
+.is-row-gap-4 { --bulma-grid-row-gap: 1rem; }
+.is-row-gap-5 { --bulma-grid-row-gap: 1.25rem; }
+.is-row-gap-6 { --bulma-grid-row-gap: 1.5rem; }
+.is-row-gap-7 { --bulma-grid-row-gap: 1.75rem; }
+.is-row-gap-8 { --bulma-grid-row-gap: 2rem; }
+
+/* cell */
+.cell {
+  grid-column-end: span var(--bulma-grid-cell-column-span, 1);
+  grid-column-start: var(--bulma-grid-cell-column-start);
+  grid-row-end: span var(--bulma-grid-cell-row-span, 1);
+  grid-row-start: var(--bulma-grid-cell-row-start);
+}
+
+.cell.is-col-start-end { --bulma-grid-cell-column-start: -1; }
+.cell.is-row-start-end { --bulma-grid-cell-row-start: -1; }
+
+/* cell col/row span and position */
+.cell.is-col-span-1  { --bulma-grid-cell-column-span: 1; }
+.cell.is-col-span-2  { --bulma-grid-cell-column-span: 2; }
+.cell.is-col-span-3  { --bulma-grid-cell-column-span: 3; }
+.cell.is-col-span-4  { --bulma-grid-cell-column-span: 4; }
+.cell.is-col-span-5  { --bulma-grid-cell-column-span: 5; }
+.cell.is-col-span-6  { --bulma-grid-cell-column-span: 6; }
+.cell.is-col-span-7  { --bulma-grid-cell-column-span: 7; }
+.cell.is-col-span-8  { --bulma-grid-cell-column-span: 8; }
+.cell.is-col-span-9  { --bulma-grid-cell-column-span: 9; }
+.cell.is-col-span-10 { --bulma-grid-cell-column-span: 10; }
+.cell.is-col-span-11 { --bulma-grid-cell-column-span: 11; }
+.cell.is-col-span-12 { --bulma-grid-cell-column-span: 12; }
+
+.cell.is-row-span-1  { --bulma-grid-cell-row-span: 1; }
+.cell.is-row-span-2  { --bulma-grid-cell-row-span: 2; }
+.cell.is-row-span-3  { --bulma-grid-cell-row-span: 3; }
+.cell.is-row-span-4  { --bulma-grid-cell-row-span: 4; }
+.cell.is-row-span-5  { --bulma-grid-cell-row-span: 5; }
+.cell.is-row-span-6  { --bulma-grid-cell-row-span: 6; }
+.cell.is-row-span-7  { --bulma-grid-cell-row-span: 7; }
+.cell.is-row-span-8  { --bulma-grid-cell-row-span: 8; }
+.cell.is-row-span-9  { --bulma-grid-cell-row-span: 9; }
+.cell.is-row-span-10 { --bulma-grid-cell-row-span: 10; }
+.cell.is-row-span-11 { --bulma-grid-cell-row-span: 11; }
+.cell.is-row-span-12 { --bulma-grid-cell-row-span: 12; }
