@@ -6,4 +6,8 @@ module AttachmentHelper
     image_tag(active_storage_record, class: "attachment")
   end
   # TODO: get a better method name
+  def render_avatar_image(user, size: [ 300, 300 ])
+    active_storage_record = user.profile.avatar.representation(resize_to_fill: size)
+    image_tag(active_storage_record, class: "avatar_image")
+  end
 end

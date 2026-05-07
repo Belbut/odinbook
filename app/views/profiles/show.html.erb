@@ -42,7 +42,7 @@
         <div>
           <div class="grid is-gap-0.5 custom-image-grid">
             <% @friends.each do |friend| %>
-                <%= image_tag friend.profile.avatar.representation(resize_to_fill: [175, 175]), class: "cell image-grid" %>
+              <%= link_to(render_avatar_image(friend, size: [175,175]), user_profile_path(friend), class: "cell image-grid") %>
             <% end %>
           </div>
         </div>
