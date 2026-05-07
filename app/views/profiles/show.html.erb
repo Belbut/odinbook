@@ -2,6 +2,7 @@
   <%= render "profile_header", profile: @profile, user: @user %>
 
   <div class="columns is-desktop mt-5">
+
     <div class="column is-two-fifths-desktop">
       <section class="section box pt-4 pb-4">
         <h2 class="title is-4 mb-2">Biography</h2>
@@ -32,6 +33,20 @@
           </div>
         </div>
       </section>
+
+      <section class=" box pt-4 pb-4">
+        <div class="is-flex is-justify-content-space-between">
+          <h2 class="title is-4 mb-2">Friends</h2>
+          <%= link_to "View all Friends", user_friends_path(@user) %>
+        </div>
+        <div>
+          <div class="grid is-gap-0.5 custom-image-grid">
+            <% @friends.each do |friend| %>
+                <%= image_tag friend.profile.avatar.representation(resize_to_fill: [175, 175]), class: "cell image-grid" %>
+            <% end %>
+          </div>
+        </div>
+      </section>
     </div>
 
     <div class="column">
@@ -51,4 +66,5 @@
       </section>
     </div>
   </div>
+
 </main>

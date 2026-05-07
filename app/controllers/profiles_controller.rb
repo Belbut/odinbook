@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
                              .limit(9)
     @posts = Post.active.includes(:author, :attachments).where(author: @user).order(created_at: :desc).limit(25)
     @post = Post.new(category: :feed)
+    @friends = @user.friends.limit(9).includes(:profile)
     # TODO: use stimulus to load post in batches
   end
 
