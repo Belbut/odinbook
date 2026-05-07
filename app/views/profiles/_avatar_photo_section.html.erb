@@ -1,9 +1,9 @@
 <div class="avatar-container">
         <figure class="image">
-            <%= image_tag @profile.avatar.representation(resize_to_fill: [200, 200]), class: "is-rounded" %>
+            <%= image_tag user.profile.avatar.representation(resize_to_fill: [200, 200]), class: "is-rounded" %>
         </figure>
 
-    <% if @user == current_user %>
+    <% if user == current_user %>
         <%= link_to(image_tag("camera_icon.svg"), change_avatar_user_profile_path(current_user), class: "button is-rounded edit-btn-avatar") %>
     <% end %>
 </div>

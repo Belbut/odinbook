@@ -2,16 +2,16 @@
   <section class="profile">
     <div class="display-container">
       <div class="background-element">
-        <%= render "background_photo_section" %>
+        <%= render "profiles/background_photo_section", user: user %>
       </div>
       <div class="avatar-element">
-        <%= render "avatar_photo_section" %>
+        <%= render "profiles/avatar_photo_section", user: user %>
       </div>
     </div>
 
     <div class="frame">
       <div class="name">
-        <h1 class="is-link"><%= profile.name %></h1>
+        <h1 class="is-link"><%= user.profile.name %></h1>
       </div>
       <div class="tabs is-right">
         <ul>
