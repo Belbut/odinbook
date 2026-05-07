@@ -3,7 +3,16 @@ require "active_support/concern"
 module AuthorizesContentAccess
   extend ActiveSupport::Concern
 
+
+
+  def authorizes_page_access
+    page_owner = User.find(params[:user_id])
+
+    current_user == page_owner || current_user.is_friends_with?(page_owner)
+  end
+
   def authorizes_content_access
+    return authorizes_page_access if action_name == "index"
     # in case the relationship changes put the user already was involved in the thread
     return true if parent_content.author == current_user
 
