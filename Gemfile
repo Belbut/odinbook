@@ -62,7 +62,6 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "erb_lint"
   gem "hotwire-livereload"
-  gem "ruby-lsp", "~> 0.26.9"
   gem "solargraph"
   gem "solargraph-rails"
   gem "web-console"
@@ -87,4 +86,3 @@ gem "rails-controller-testing", "~> 1.0"
 gem "pg_search", "~> 2.3"
 
 gem "cssbundling-rails", "~> 1.4"
-
