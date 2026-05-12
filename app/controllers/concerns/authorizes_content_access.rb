@@ -15,8 +15,9 @@ module AuthorizesContentAccess
   end
 
   def authorizes_thread_access(content = parent_content)
+    target_user = content.author
     return true if current_user == target_user
-    return authorized_to_see_from?(content.author) if content.is_a?(Post)
+    return authorized_to_see_from?(target_user) if content.is_a?(Post)
 
     authorizes_content_access(content.parent)
   end
