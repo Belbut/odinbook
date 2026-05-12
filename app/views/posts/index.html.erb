@@ -1,5 +1,7 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<%= render "profiles/profile_header", user: @author %>
+
+<br>
+<h1 class="title is-4">User Posts Feed:</h1>
 
 <% @posts.each do |post| %>
     <%= render post %>

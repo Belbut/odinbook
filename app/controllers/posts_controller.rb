@@ -6,9 +6,9 @@ class PostsController < ApplicationController
   # before_action :prevent_deleted_content_access, only: %i[edit update destroy]
 
   def index
-    author = User.includes(:posts).find(user_params)
+    @author = User.find(user_params)
 
-    @posts = author.posts.active.order(created_at: :desc)
+    @posts = @author.posts.includes(:comments, :likes, author: [ :profile ], attachments: [ :annexable ]).active.order(created_at: :desc)
   end
 
   def show
