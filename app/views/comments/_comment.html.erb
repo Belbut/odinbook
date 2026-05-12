@@ -1,6 +1,7 @@
 <%# partial parameters: comment[Comment] ; optional: class_append[String] %>
+<% depth = comment_depth(comment) %>
 
-<article class="comment media child_depth_<%= depth %>" style="--depth: <%= depth %>">
+<article class="comment media child_depth_<%= depth%>" style="--depth: <%= depth %>">
     <% if comment.deleted? %>
         <%= render_deleted_content(comment) %>
     <% else %>

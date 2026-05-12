@@ -1,14 +1,9 @@
-<h1>Comments#show</h1>
-<p>Find me in app/views/comments/show.html.erb</p>
-
 <section class="parent thread">
-    <%= render "commentable/parent_thread", thread_node: @comment.parent %>
+    <section class="replies tree">
+        <%= render "commentable/parent_thread", thread_node: @comment.parent %>
+        <section class="focused_content box">
+            <%= render @comment %>
+        </section>
+        <%= render_replies_tree(@comment) %>
+    </section>
 </section>
-
-<section class="focused_content">
-    ------------------------------
-    <%= render @comment %>
-    ------------------------------
-</section>
-
-<%= render_replies_tree(@comment) %>

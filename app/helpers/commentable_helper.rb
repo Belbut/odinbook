@@ -2,8 +2,16 @@ module CommentableHelper
   def reply_path(content)
     case content
     when Post then post_path(content)
-    when Comment then comment_path(content)
+    when Comment then new_comment_reply_path(content)
     end
+  end
+
+  def comment_depth(comment, depth = 1)
+    parent_content = comment.parent
+    return depth if parent_content.is_a?(Post)
+
+    depth++
+    comment_depth(parent_content, depth)
   end
 
   def render_deleted_content(content)

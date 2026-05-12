@@ -1,5 +1,6 @@
-<h1>Comments#new</h1>
-<p>Find me in app/views/comments/new.html.erb</p>
+<section class="replies tree">
+    <%= render "commentable/parent_thread", thread_node: @comment.parent %>
+</section>
+<br>
 
-<%= render "commentable/parent_thread", thread_node: @comment.parent %>
 <%= render "comment_form", new_comment: @comment %>
