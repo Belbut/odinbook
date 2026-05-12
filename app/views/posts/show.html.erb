@@ -4,6 +4,9 @@
 </section>
 
 <section class="mt-5">
+    <%# <h1 class="title is-5 mb-5">Add your thoughts</h1> %>
+    <%= render "comments/comment_form", new_comment: @comment  unless @post.deleted? %>
+
     <h1 class="title is-3 mb-5">Comments</h1>
     <% unless @post.replies.empty? %>
         <div class="box" >
@@ -13,6 +16,4 @@
         <br>
     <% end %>
 
-    <h1 class="title is-5 mb-5">Add your thoughts</h1>
-    <%= render "comments/comment_form", new_comment: @comment  unless @post.deleted? %>
 </section>

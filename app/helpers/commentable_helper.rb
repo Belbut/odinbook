@@ -1,8 +1,8 @@
 module CommentableHelper
   def reply_path(content)
     case content
-    when Post then new_post_reply_path(content)
-    when Comment then new_comment_reply_path(content)
+    when Post then post_path(content)
+    when Comment then comment_path(content)
     end
   end
 
