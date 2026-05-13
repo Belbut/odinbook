@@ -46,6 +46,7 @@ body {
 
 .background-container {
   position: relative;
+  margin-bottom: 2em;
 }
 
 .edit-btn-background {
@@ -68,6 +69,7 @@ body {
 .avatar-container .image {
   height: 200px;
   width: 200px;
+  margin-bottom: 2em;
 }
 
 .profile .display-container {
