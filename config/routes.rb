@@ -3,15 +3,18 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, only: [:index] do
+  resources :users, only: [ :index ] do
     resource :profile, only: %i[show] do
       get "change_avatar"
       get "change_background"
     end
     resources :friends, only: %i[index]
     resources :posts, only: %i[index]
-    resources :attachments, only: [:index], path: "photos"
+    resources :attachments, only: [ :index ], path: "photos"
   end
+
+
+
 
   resources :users, param: :target_id, only: [] do
     resource :friend_request, only: %i[create destroy] do
@@ -35,14 +38,15 @@ Rails.application.routes.draw do
   resources :attachments, only: %i[destroy]
 
   resources :posts, only: %i[show new create edit update destroy] do
-    resources :comments, only: [:new], as: "reply"
+    resources :comments, only: [ :new ], as: "reply"
     resource :likes, only: %i[create destroy]
     resources :likes, only: %i[index]
   end
   # TODO: dry this routes- looks like an abstraction can be made?
+  get "friends_feed", to: "posts#feed"
 
   resources :comments, except: %i[new index] do
-    resources :comments, only: [:new], as: "reply"
+    resources :comments, only: [ :new ], as: "reply"
     resource :likes, only: %i[create destroy]
     resources :likes, only: %i[index]
   end

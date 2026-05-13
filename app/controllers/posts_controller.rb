@@ -11,6 +11,12 @@ class PostsController < ApplicationController
     @posts = @author.posts.includes(:comments, :likes, author: [ :profile ], attachments: [ :annexable ]).active.order(created_at: :desc)
   end
 
+  def feed
+    friends_ids = current_user.friends
+
+    @posts = Post.where(user_id: friends_ids).includes(:comments, :likes, author: [ :profile ], attachments: [ :annexable ]).active.order(created_at: :desc)
+  end
+
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new(commentable: @post, author: current_user)
