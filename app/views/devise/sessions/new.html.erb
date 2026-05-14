@@ -3,12 +3,12 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.email_field :email, value:"test@test.com", autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, value: "crystal@odinbook.com", autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
     <%= f.label :password %><br>
-    <%= f.password_field :password, value: "123456", autocomplete: "current-password" %>
+    <%= f.password_field :password, value: "password123", autocomplete: "current-password" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -27,11 +27,36 @@
 
 <div>
   <h2>Demo logins</h2>
-  <p> You can test the social network by logging with one of the following accounts to see it in action</p>
+  <p>You can test the social network by logging in with any of the following accounts to see it in action. Every account shares the same password.</p>
 
-  <div>
-  <div><strong>Email:</strong> test@test.com</div>
-  <div><strong>Password:</strong> 123456</div>
-  </div>
+  <div><strong>Password (all accounts):</strong> password123</div>
+
+  <% demo_accounts = [
+       ["Chirpy Featherstone", "Bird",      "chirpy@odinbook.com"],
+       ["Mocha Fields",        "Cow",       "mocha@odinbook.com"],
+       ["Breezy Forrest",      "Deer",      "breezy@odinbook.com"],
+       ["Barkley Chase",       "Dog",       "barkley@odinbook.com"],
+       ["Ellie Trunkwood",     "Elephant",  "ellie@odinbook.com"],
+       ["Rusty Nightshade",    "Fox",       "rusty@odinbook.com"],
+       ["Crystal Glowsworth",  "Jellyfish", "crystal@odinbook.com"],
+       ["Otto Inkwell",        "Octopus",   "otto@odinbook.com"],
+       ["Terry Shellsworth",   "Turtle",    "terry@odinbook.com"],
+       ["Wally Deepson",       "Whale",     "wally@odinbook.com"]
+     ] %>
+
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Animal</th><th>Email</th></tr>
+    </thead>
+    <tbody>
+      <% demo_accounts.each do |name, animal, email| %>
+        <tr>
+          <td><%= name %></td>
+          <td><%= animal %></td>
+          <td><%= email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <%# TODO: when using stimulus add a click option to write the log in on the form and add another account to log in for testing %>
 </div>
