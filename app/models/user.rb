@@ -41,6 +41,12 @@ class User < ApplicationRecord
     end
   end
 
+  def tally_second_degree_friends
+    friends_relations = friends.map { |f| f.friends }
+
+    friends_relations.flatten.tally
+  end
+
   def users_interactions_status(*target_users)
     current_user_friends = friends
     pending_incoming_fr_users = pending_incoming_friend_request_users

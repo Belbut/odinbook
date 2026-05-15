@@ -23,6 +23,9 @@
 <%= render "shared/card_grid", collection: @friends_profiles, precompute: @precompute %>
 
 <% if current_user == @user %>
+    <h2> Recommended Friends:</h2>
+    <%= render "shared/card_grid", collection: @recommended_friends %>
+
     <h2>Friends Invitations:</h2>
     <%= tag.blockquote("You have no pending invitations to respond.") if @pending_incoming_fr_profiles.empty? %>
     <%= render "shared/card_grid", collection: @pending_incoming_fr_profiles, precompute: @precompute %>

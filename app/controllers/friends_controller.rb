@@ -20,6 +20,10 @@ class FriendsController < ApplicationController
                                                                       pending_incoming_fr_users,
                                                                       pending_outgoing_fr_users)
 
+
+    recommended_friends_tally = current_user.tally_second_degree_friends
+    @recommended_friends_profiles = recommended_friends_tally.sort_by { |k, v| -v }.map { |a| a[0].profile }.first(3)
+
     @precompute = { common_friends: common_friends_precomputed, interactions: interactions_precomputed }
   end
 end
