@@ -47,6 +47,11 @@ class User < ApplicationRecord
     friends_relations.flatten.tally
   end
 
+  def get_recommended_friends(amount)
+    recommended_friends_tally = self.tally_second_degree_friends
+    recommended_friends_tally.sort_by { |k, v| -v }.map { |a| a[0] }.first(amount)
+  end
+
   def users_interactions_status(*target_users)
     current_user_friends = friends
     pending_incoming_fr_users = pending_incoming_friend_request_users

@@ -5,11 +5,14 @@ class FriendsController < ApplicationController
     @friends_profiles = user_friends.map(&:profile)
 
     if current_user == @user
-      pending_incoming_fr_users = @user.pending_incoming_friend_request_users.includes(:profile)
+      pending_incoming_fr_users = current_user.pending_incoming_friend_request_users.includes(:profile)
       @pending_incoming_fr_profiles = pending_incoming_fr_users.map(&:profile)
 
-      pending_outgoing_fr_users = @user.pending_outgoing_friend_request_users.includes(:profile)
+      pending_outgoing_fr_users = current_user.pending_outgoing_friend_request_users.includes(:profile)
       @pending_outgoing_fr_profiles = pending_outgoing_fr_users.map(&:profile)
+
+      recommended_friends = current_user.get_recommended_friends(3)
+      @recommended_friends_profiles = recommended_friends.map(&:profile)
     end
 
     common_friends_precomputed = current_user.mutual_friends_count(user_friends,
@@ -20,9 +23,6 @@ class FriendsController < ApplicationController
                                                                       pending_incoming_fr_users,
                                                                       pending_outgoing_fr_users)
 
-
-    recommended_friends_tally = current_user.tally_second_degree_friends
-    @recommended_friends_profiles = recommended_friends_tally.sort_by { |k, v| -v }.map { |a| a[0].profile }.first(3)
 
     @precompute = { common_friends: common_friends_precomputed, interactions: interactions_precomputed }
   end

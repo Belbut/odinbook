@@ -24,7 +24,7 @@
 
 <% if current_user == @user %>
     <h2> Recommended Friends:</h2>
-    <%= render "shared/card_grid", collection: @recommended_friends %>
+    <%= render "shared/card_grid", collection: @recommended_friends_profiles %>
 
     <h2>Friends Invitations:</h2>
     <%= tag.blockquote("You have no pending invitations to respond.") if @pending_incoming_fr_profiles.empty? %>
