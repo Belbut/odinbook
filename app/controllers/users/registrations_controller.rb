@@ -11,10 +11,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super do |resource|
+    super do |user|
       name_for_profile = params[:user][:profile_attributes][:name]
-require "pry-byebug"; binding.pry
-      resource.build_profile(name: name_for_profile)
+      user.create_profile!(name: name_for_profile)
     end
   end
   # GET /resource/edit
