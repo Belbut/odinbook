@@ -65,6 +65,7 @@ group :development do
   # gem "solargraph"
   # gem "solargraph-rails"
   gem "web-console"
+  gem "letter_opener"
 end
 
 group :test do
