@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   # TODO: refactor routes with concerns. maybe write a personal blog post about it.
 
-  devise_for :users, controllers: { registrations: "users/registrations" }
+  devise_for :users, controllers: { registrations: "users/registrations",
+                                    omniauth_callbacks: "users/omniauth_callbacks" }
 
   resources :users, only: [ :index ] do
     resource :profile, only: %i[show] do

@@ -17,6 +17,17 @@ class User < ApplicationRecord
   has_many :friend_requests_received, class_name: "FriendRequest", foreign_key: "receiver_id"
   has_many :friend_requests_sent, class_name: "FriendRequest", foreign_key: "sender_id"
 
+  def self.from_omniauth(auth)
+    find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
+      user.email = auth.info.email || "blank@email.com"
+      user.password = Devise.friendly_token[0, 20]
+      user.build_profile(name: auth.info.nickname)
+      # If you are using confirmable and the provider(s) you use validate emails,
+      # uncomment the line below to skip the confirmation emails.
+      user.skip_confirmation!
+    end
+  end
+
   def friends
     User.where(id: inbound_requests_user_ids).where(id: outbound_requests_user_ids)
   end
