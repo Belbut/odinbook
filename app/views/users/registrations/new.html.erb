@@ -1,36 +1,53 @@
-<h2>Sign up</h2>
+<section class="section">
+  <div class="container" style="max-width: 420px;">
+    <h2 class="title is-4">Create your account</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.fields_for :profile, Profile.new do |pf| %>
+        <div class="field">
+          <%= pf.label :name, class: "label" %>
+          <div class="control">
+            <%= pf.text_field :name, class: "input", autocomplete: "name", placeholder: "Jane Smith" %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :email, class: "label" %>
+        <div class="control">
+          <%= f.email_field :email, class: "input", autofocus: true, autocomplete: "email", placeholder: "jane@example.com" %>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="field">
+        <%= f.label :password, class: "label" do %>
+          Password
+          <% if @minimum_password_length %>
+            <span class="has-text-grey is-size-7">(<%= @minimum_password_length %> characters minimum)</span>
+          <% end %>
+        <% end %>
+        <div class="control">
+          <%= f.password_field :password, class: "input", autocomplete: "new-password", placeholder: "••••••••" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, class: "label" %>
+        <div class="control">
+          <%= f.password_field :password_confirmation, class: "input", autocomplete: "new-password", placeholder: "••••••••" %>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top: 1.5rem;">
+        <%= f.submit "Sign up", class: "button is-dark is-fullwidth" %>
+      </div>
+    <% end %>
+
+    <%= render "users/shared/links" %>
   </div>
+</section>
 
-  <%= f.fields_for :profile , Profile.new do |profile_form| %>
-    <div class="field">
-      <%= profile_form.label :name %><br>
-      <%= profile_form.text_field :name, autofocus: true, autocomplete: "name" %>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
