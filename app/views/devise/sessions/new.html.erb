@@ -1,62 +1,72 @@
-<h2>Log in</h2>
+<%# <section class="section"> %>
+  <div class="container">
+    <div class= "columns">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.email_field :email, value: "crystal@odinbook.com", autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="column">
+        <h2 class="title is-3">Log in</h2>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label :email, class: "label" %>
+            <div class="control">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input", value: "crystal@odinbook.com" %>
+            </div>
+          </div>
+          <div class="field">
+            <%= f.label :password, class: "label" %>
+            <div class="control">
+              <%= f.password_field :password, autocomplete: "current-password", class: "input", value: "password123" %>
+            </div>
+          </div>
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <label class="checkbox has-text-grey">
+                <%= f.check_box :remember_me %>
+                Remember me
+              </label>
+            </div>
+          <% end %>
+          <div class="field mt-5">
+            <%= f.submit "Log in", class: "button is-dark is-fullwidth" %>
+          </div>
+        <% end %>
+        <%= render "users/shared/links" %>
+      </div>
+    
+      <div class= "column">
+        <h2 class= "title is-4">Demo logins</h2>
+        <p>You can test the social network by logging in with any of the following accounts to see it in action. Every account shares the same password.</p>
 
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password, value: "password123", autocomplete: "current-password" %>
-  </div>
+        <% demo_accounts = [
+            ["Chirpy Featherstone",  "password123",      "Bird",      "chirpy@odinbook.com"],
+            ["Mocha Fields",         "password123",      "Cow",       "mocha@odinbook.com"],
+            ["Breezy Forrest",       "password123",      "Deer",      "breezy@odinbook.com"],
+            ["Barkley Chase",        "password123",      "Dog",       "barkley@odinbook.com"],
+            ["Ellie Trunkwood",      "password123",      "Elephant",  "ellie@odinbook.com"],
+            ["Rusty Nightshade",     "password123",      "Fox",       "rusty@odinbook.com"],
+            ["Crystal Glowsworth",   "password123",      "Jellyfish", "crystal@odinbook.com"],
+            ["Otto Inkwell",         "password123",      "Octopus",   "otto@odinbook.com"],
+            ["Terry Shellsworth",    "password123",      "Turtle",    "terry@odinbook.com"],
+            ["Wally Deepson",        "password123",      "Whale",     "wally@odinbook.com"]
+          ] %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <table  class="table is-fullwidth is-hoverable ">
+          <thead>
+            <tr><th>Email</th><th>Password</th><th>Animal</th></tr>
+          </thead>
+          <tbody>
+            <% demo_accounts.each do |name,password, animal, email| %>
+              <tr>
+                <td><%= email %></td>
+                <td><%= password %></td>
+                <td><%= animal %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%# TODO: when using stimulus add a click option to write the log in on the form and add another account to log in for testing %>
+      </div>
+
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+<%# </section> %>
 
-<%= render "devise/shared/links" %>
-
-<div>
-  <h2>Demo logins</h2>
-  <p>You can test the social network by logging in with any of the following accounts to see it in action. Every account shares the same password.</p>
-
-  <div><strong>Password (all accounts):</strong> password123</div>
-
-  <% demo_accounts = [
-       ["Chirpy Featherstone", "Bird",      "chirpy@odinbook.com"],
-       ["Mocha Fields",        "Cow",       "mocha@odinbook.com"],
-       ["Breezy Forrest",      "Deer",      "breezy@odinbook.com"],
-       ["Barkley Chase",       "Dog",       "barkley@odinbook.com"],
-       ["Ellie Trunkwood",     "Elephant",  "ellie@odinbook.com"],
-       ["Rusty Nightshade",    "Fox",       "rusty@odinbook.com"],
-       ["Crystal Glowsworth",  "Jellyfish", "crystal@odinbook.com"],
-       ["Otto Inkwell",        "Octopus",   "otto@odinbook.com"],
-       ["Terry Shellsworth",   "Turtle",    "terry@odinbook.com"],
-       ["Wally Deepson",       "Whale",     "wally@odinbook.com"]
-     ] %>
-
-  <table>
-    <thead>
-      <tr><th>Name</th><th>Animal</th><th>Email</th></tr>
-    </thead>
-    <tbody>
-      <% demo_accounts.each do |name, animal, email| %>
-        <tr>
-          <td><%= name %></td>
-          <td><%= animal %></td>
-          <td><%= email %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<%# TODO: when using stimulus add a click option to write the log in on the form and add another account to log in for testing %>
-</div>
