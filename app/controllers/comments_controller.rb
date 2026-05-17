@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   include AuthorizesContentAccess
   include PreventDeletedContentAccess
 
+  before_action :authenticate_user!
   before_action :authorizes_content_access, only: %i[show create]
   # before_action :prevent_deleted_content_access, only: %i[edit update destroy]
 

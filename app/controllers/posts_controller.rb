@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   include AuthorizesContentAccess
   include PreventDeletedContentAccess
 
+  before_action :authenticate_user!
   before_action :authorizes_content_access, only: %i[index show]
   # before_action :prevent_deleted_content_access, only: %i[edit update destroy]
 

@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :load_profile, only: %i[edit update]
+  before_action :authenticate_user!
 
   def show
     @user = User.find(profile_params)

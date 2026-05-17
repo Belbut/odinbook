@@ -1,4 +1,5 @@
 class AttachmentsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @user = User.find(params[:user_id])
     @attachments = Attachment.joins(post: :author).where(users: { id: params[:user_id] }).order(created_at: :desc)
