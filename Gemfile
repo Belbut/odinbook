@@ -87,3 +87,7 @@ gem "rails-controller-testing", "~> 1.0"
 gem "pg_search", "~> 2.3"
 
 gem "cssbundling-rails", "~> 1.4"
+
+gem "aws-sdk-s3", "~> 1.222"
+
+gem "ruby-vips", "~> 2.3"
