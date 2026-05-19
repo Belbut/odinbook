@@ -1,5 +1,10 @@
 class Image < ApplicationRecord
-  has_one_attached :file
+  has_one_attached :file do |f|
+    f.variant :medium, resize_to_fill: [ 300, 300 ], preprocessed: true
+    f.variant :rectangular, resize_to_fill: [ 600, 300 ], preprocessed: true
+    f.variant :avatar, resize_to_fill: [ 48, 48 ], preprocessed: true
+  end
+
   validate :file_must_be_image
 
   belongs_to :imageable, polymorphic: true, optional: true

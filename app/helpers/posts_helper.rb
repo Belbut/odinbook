@@ -2,8 +2,6 @@ module PostsHelper
   def render_attachments_preview(post)
     attachments = safe_join([ render_first_attachments_preview(post), render_amount_not_previewed(post) ])
     content_tag(:div, attachments, class: "attachments")
-
-    # <%= link_to(render_attachment_image(attachment, size: [175, 175]), attachment.post, class: "cell image-grid") %>
   end
 
   def render_category_caption(post)
@@ -15,8 +13,11 @@ module PostsHelper
   PREVIEW_SIZE = 5
 
   def render_first_attachments_preview(post)
-    attachments_preview = post.attachments.first(PREVIEW_SIZE).map do |attachment|
-      link_to(render_attachment_image(attachment), attachment.post)
+    attachmets_size = post.attachments.size
+    attachments_preview = post.attachments.first(PREVIEW_SIZE).map.with_index do |attachment, i|
+      variant = i==0 && post.attachments.size.in?([ 3, 5 ]) ? :rectangular : :medium
+
+      link_to(render_attachment_image(attachment, variant: variant), attachment.post)
     end
     # TODO: handle render of more than PREVIEW_SIZE 5 photos
     safe_join(attachments_preview)

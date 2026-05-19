@@ -4,7 +4,6 @@ module AuthorizesContentAccess
   extend ActiveSupport::Concern
 
   def authorizes_content_access
-    # require "pry-byebug"; binding.pry
     return authorizes_page_access if action_name == "index"
     authorizes_thread_access(parent_content)
   end
