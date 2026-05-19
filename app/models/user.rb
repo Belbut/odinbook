@@ -55,7 +55,9 @@ class User < ApplicationRecord
   def tally_second_degree_friends
     friends_relations = friends.map { |f| f.friends }
 
-    friends_relations.flatten.tally
+    result = friends_relations.flatten.tally
+    result.delete(self)
+    result
   end
 
   def get_recommended_friends(amount)

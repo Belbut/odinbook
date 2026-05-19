@@ -6,7 +6,7 @@
     <div class="card-content align-content">
         <article class="media">
             <div class="media-left">
-                <%= image_tag profile.avatar.representation(resize_to_fill: [64, 64]), class: "avatar" %>
+                <%= render_avatar_image(profile.user, variant: :avatar)%>
             </div>
             <div class="media-content">
                 <p class="title is-5 mb-1">
