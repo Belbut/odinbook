@@ -3,6 +3,8 @@
 # Exit on error
 set -o errexit
 
+# apt-get install -y --no-install-recommends libjemalloc2
+
 bundle install
 yarn install 
 
