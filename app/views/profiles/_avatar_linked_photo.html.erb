@@ -1,9 +1,7 @@
 <% link_option_class ||= nil %>
-<% img_option_class ||= nil %>
-<% resize_to_fill ||= [48,48] %>
 <% user ||= current_user %>
 
-<% avatar_image= image_tag(user.profile.avatar.representation(resize_to_fill: resize_to_fill),class: "is-rounded #{img_option_class}") %>
-<% avatar_figure = tag.figure(avatar_image, class: "ml-0 mr-2 image is-#{resize_to_fill[0]}x#{resize_to_fill[1]}") %>
+<% avatar_image= render_avatar_image(user, variant: :avatar, optional_class: "is-rounded")%>
+<%# <% avatar_figure = tag.figure(avatar_image, class: "ml-0 mr-2 image is-48x48}") %> 
 
-<%= link_to avatar_figure, user_profile_path(user), class: link_option_class %>
+<%= link_to avatar_image, user_profile_path(user), class: link_option_class %>

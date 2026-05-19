@@ -1,8 +1,16 @@
 class Image < ApplicationRecord
+  MEDIUM = [ 300, 300 ]
+  RECTANGULAR = [ 600, 300 ]
+  AVATAR = [ 72, 72 ]
+
+  def self.image_size
+     { avatar: AVATAR, rectangular: RECTANGULAR, medium: MEDIUM }
+  end
+
   has_one_attached :file do |f|
-    f.variant :medium, resize_to_fill: [ 300, 300 ], preprocessed: true
-    f.variant :rectangular, resize_to_fill: [ 600, 300 ], preprocessed: true
-    f.variant :avatar, resize_to_fill: [ 48, 48 ], preprocessed: true
+    f.variant :medium, resize_to_fill: MEDIUM, preprocessed: true
+    f.variant :rectangular, resize_to_fill: RECTANGULAR, preprocessed: true
+    f.variant :avatar, resize_to_fill: AVATAR, preprocessed: true
   end
 
   validate :file_must_be_image
@@ -11,7 +19,6 @@ class Image < ApplicationRecord
   has_one :attachment, as: :annexable
 
   enum :category, { avatar: "avatar", background: "background", feed: "feed" }
-
   private
 
   def file_must_be_image

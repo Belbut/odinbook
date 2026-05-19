@@ -177,13 +177,8 @@ img.attachment{
   aspect-ratio: 1 / 1;
 }
 
-.post .attachments > a > img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.05);
+.post .attachments > a > figure > img {
+   border-radius: 12px; 
 }
 
 /* 1 image */
@@ -274,4 +269,8 @@ img.attachment{
 
 .replies.tree article.comment {
   margin-left: calc(var(--depth) * 2rem);
+}
+
+.is-rounded {
+ border-radius: 100%; 
 }
