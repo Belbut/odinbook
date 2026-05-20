@@ -6,9 +6,9 @@ class FriendRequestsController < ApplicationController
 
     message = if new_friend_request.save
                 { notice: "Friend Request Sended" }
-              else
+    else
                 { alert: new_friend_request.errors.full_messages }
-              end
+    end
 
     redirect_back_or_to(user_profile_path(@target), **message)
   end
@@ -22,16 +22,16 @@ class FriendRequestsController < ApplicationController
   end
 
   def destroy
-    established_friendship_requests = FriendRequest.where(sender: [@initiator, @target],
-                                                          receiver: [@target, @initiator])
+    established_friendship_requests = FriendRequest.where(sender: [ @initiator, @target ],
+                                                          receiver: [ @target, @initiator ])
 
     destroyed_records = established_friendship_requests.destroy_all
 
     message = if destroyed_records.empty?
                 { alert: "The were no relationship between the users to erase" }
-              else
+    else
                 { notice: "You ended the friendship" }
-              end
+    end
 
     redirect_back_or_to(user_profile_path(@target), **message)
   end
@@ -52,11 +52,11 @@ class FriendRequestsController < ApplicationController
 
     message = if friend_request.nil?
                 { notice: "The Friend Request that you referenced didn't exist" }
-              elsif friend_request.destroy
+    elsif friend_request.destroy
                 { notice: "Friend Request Destroyed" }
-              else
+    else
                 { alert: friend_request.errors.full_messages }
-              end
+    end
 
     redirect_back_or_to(user_profile_path(@target), **message)
   end

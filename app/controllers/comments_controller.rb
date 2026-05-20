@@ -8,6 +8,8 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
+    # still have a disguised n+1 situation here, but i think that the only way to solve it
+    # would be to add a thread identifier to the comment model
   end
 
   def new
