@@ -8,9 +8,9 @@ class Image < ApplicationRecord
   end
 
   has_one_attached :file do |f|
-    f.variant :medium, resize_to_fill: MEDIUM, preprocessed: true
-    f.variant :rectangular, resize_to_fill: RECTANGULAR, preprocessed: true
-    f.variant :avatar, resize_to_fill: AVATAR, preprocessed: true
+    f.variant :medium, resize_to_fill: MEDIUM# , preprocessed: true
+    f.variant :rectangular, resize_to_fill: RECTANGULAR# , preprocessed: true
+    f.variant :avatar, resize_to_fill: AVATAR# , preprocessed: true
   end
 
   validate :file_must_be_image

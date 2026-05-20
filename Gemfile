@@ -91,3 +91,6 @@ gem "cssbundling-rails", "~> 1.4"
 gem "aws-sdk-s3", "~> 1.222"
 
 gem "ruby-vips", "~> 2.3"
+
+gem "prosopite", "~> 2.2", group: :development
+gem "pg_query", "~> 6.2", group: :development

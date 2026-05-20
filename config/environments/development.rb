@@ -77,4 +77,9 @@ Rails.application.configure do
 
   config.hotwire_livereload.listen_paths << Rails.root.join("app/assets/stylesheets")
   config.hotwire_livereload.force_reload_paths << Rails.root.join("app/assets/stylesheets")
+
+  # Prosopite config
+  config.after_initialize do
+    Prosopite.rails_logger = true
+  end
 end
