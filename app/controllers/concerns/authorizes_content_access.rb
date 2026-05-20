@@ -14,12 +14,16 @@ module AuthorizesContentAccess
     current_user == page_owner || current_user.is_friends_with?(page_owner)
   end
 
-  def authorizes_thread_access(content = parent_content)
+  # who can see the thread of the content
+  # if the comment that we are targeting is authored by the current user
+  # we are the original post author or we are friends with the post author
+  # else see if any of the thread parent comments are mine
+  def authorizes_thread_access(content)
     target_user = content.author
     return true if current_user == target_user
     return authorized_to_see_from?(target_user) if content.is_a?(Post)
 
-    authorizes_content_access(content.parent)
+    authorizes_thread_access(content.parent)
   end
 
   ALLOWED_PARENT_CLASSES = {
