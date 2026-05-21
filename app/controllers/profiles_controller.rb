@@ -5,13 +5,21 @@ class ProfilesController < ApplicationController
   def show
     @user = User.find(profile_params)
     @profile = @user.profile
-    @attachments = Attachment.joins(post: :author)
+    @attachments = Attachment.preload(annexable: [ file_attachment: :blob ])
+                             .eager_load(post: :author)
                              .where(users: { id: params[:user_id] })
                              .order(created_at: :desc)
                              .limit(9)
-    @posts = Post.active.includes(:author, :attachments).where(author: @user).order(created_at: :desc).limit(25)
+
+    @posts = Post.includes(:author, :likes, :comments, attachments: [ annexable: [ file_attachment: :blob ] ])
+                 .active
+                 .where(author: @user)
+                 .order(created_at: :desc)
+                 .limit(25)
+
     @post = Post.new(category: :feed)
-    @friends = @user.friends.limit(9).includes(:profile)
+
+    @friends = @user.friends.limit(9).includes(profile: [ avatar_photo: [ file_attachment: :blob ] ])
     # TODO: use stimulus to load post in batches
   end
 
