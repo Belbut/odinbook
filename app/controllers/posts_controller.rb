@@ -9,17 +9,25 @@ class PostsController < ApplicationController
   def index
     @author = User.find(user_params)
 
-    @posts = @author.posts.includes(:comments, :likes, author: [ :profile ], attachments: [ :annexable ]).active.order(created_at: :desc)
+    @posts = @author.posts
+                    .includes(:comments, :likes, attachments: [ annexable: [ file_attachment: :blob ] ])
+                    .active.order(created_at: :desc)
   end
 
   def feed
     friends_ids = current_user.friends
 
-    @posts = Post.where(user_id: friends_ids).includes(:comments, :likes, author: [ :profile ], attachments: [ :annexable ]).active.order(created_at: :desc)
+    @posts = Post.includes(:comments,
+                           :likes,
+                           author: [ profile: [ avatar_photo: [ file_attachment: :blob ] ] ],
+                           attachments: [ annexable: [ file_attachment: :blob ] ])
+                 .where(user_id: friends_ids)
+                 .active
+                 .order(created_at: :desc)
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(attachments: [ annexable: [ file_attachment: :blob ] ]).find(params[:id])
     @comment = Comment.new(commentable: @post, author: current_user)
   end
 
