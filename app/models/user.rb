@@ -45,7 +45,7 @@ class User < ApplicationRecord
   end
 
   def mutual_friends_count(*target_users)
-    current_user_friends = friends
+    current_user_friends = self.friends
 
     target_users.flatten.compact.each_with_object({}) do |target_user, hash|
       hash[target_user.id] = current_user_friends.where(id: target_user.friends).size
@@ -65,17 +65,18 @@ class User < ApplicationRecord
     recommended_friends_tally.sort_by { |k, v| -v }.map { |a| a[0] }.first(amount)
   end
 
-  def users_interactions_status(*target_users)
-    current_user_friends = friends
-    pending_incoming_fr_users = pending_incoming_friend_request_users
-    pending_outgoing_fr_users = pending_outgoing_friend_request_users
+  def users_interactions_status(target_users, pending_incoming_fr_users, pending_outgoing_fr_users)
+    current_user_friends = self.friends.to_a
 
-    target_users.flatten.compact.each_with_object({}) do |target_user, hash|
+    result = target_users.compact.each_with_object({}) do |target_user, hash|
       hash[target_user.id] = FriendRequest.status_between(self, target_user,
-                                                          preprocessed_friends: current_user_friends,
-                                                          preprocessed_outgoing_users: pending_outgoing_fr_users,
-                                                          preprocessed_incoming_users: pending_incoming_fr_users)
+                                                          preprocessed: {
+                                                            friends: current_user_friends,
+                                                            outgoing_fr_users: pending_outgoing_fr_users,
+                                                            incoming_fr_users: pending_incoming_fr_users
+                                                          })
     end
+    result
   end
 
   def is_friends_with?(target_user)

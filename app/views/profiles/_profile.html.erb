@@ -1,6 +1,7 @@
 <%# partial parameters: profile:[profile] ; optional:common_friends_precomputed, interactions_precomputed  %>
-<% common_friends_precomputed = common_friends_precomputed || nil %>
-<% interactions_precomputed = interactions_precomputed || nil %>
+<% precompute = precompute || {}%>
+<% common_friends_precomputed = precompute[:common_friends] || nil %>
+<% interactions_precomputed = precompute[:interactions] || nil %>
 
 <div class="card">
     <div class="card-content align-content">

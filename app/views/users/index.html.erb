@@ -1,9 +1,10 @@
 <h2>All odinbook users</h2>
+
 <div class="fixed-grid has-3-cols">
     <div class="grid">
         <% @users.each do |user| %>
             <div class="cell">
-                <%= render user.profile %>
+                <%= render user.profile, precompute: @precompute %>
             </div>
         <% end %>
     </div>
