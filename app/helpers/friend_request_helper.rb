@@ -15,12 +15,12 @@ module FriendRequestHelper
               data: { turbo_method: :delete })
 
     when :ONLY_TARGET_USER_SENDED_REQUEST
-      accept = link_to("Accept Friend Request", user_friend_request_path(target_user), data: { turbo_method: :post })
-      decline = link_to("Decline Friend Request", reject_user_friend_request_path(target_user),
+      accept = link_to("Accept Request", user_friend_request_path(target_user), data: { turbo_method: :post })
+      decline = link_to("Decline Request", reject_user_friend_request_path(target_user),
                         data: { turbo_method: :delete,
                                 turbo_confirm: "Are you sure you want to decline the invitation?" })
 
-      safe_join([accept, tag.span("/"), decline])
+      safe_join([ accept, tag.span("/"), decline ])
     when :NO_USER_SENDED_REQUEST
       link_to("Send Friend Request", user_friend_request_path(target_user), data: { turbo_method: :post })
     end

@@ -1,7 +1,7 @@
 <div class="level">
   <div class="level-left">
     <div class="level-item">
-      <%= render "profiles/avatar_linked_photo", resize_to_fill: [70, 70] %>
+      <%= render "profiles/avatar_linked_photo", user: @user %>
     </div>
 
     <div class="level-item">
@@ -24,7 +24,7 @@
 
 <% if current_user == @user %>
     <h2> Recommended Friends:</h2>
-    <%= render "shared/card_grid", collection: @recommended_friends_profiles %>
+    <%= render "shared/card_grid", collection: @recommended_friends_profiles , precompute: @precompute%>
     <%= link_to "Find more users", users_path %>
 
     <h2>Friends Invitations:</h2>
