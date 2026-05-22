@@ -8,9 +8,9 @@ class FriendRequest < ApplicationRecord
   # preprocessed = {friends:[], outgoing_fr_users: [], incoming_fr_users: [] }
   def self.status_between(current_user, target_user, preprocessed: {})
     unless preprocessed.empty?
-      return :BOTH_USERS_SENDED_REQUEST if preprocessed[:friends].include?(target_user)
-      return :ONLY_CURRENT_USER_SENDED_REQUEST if preprocessed[:outgoing_fr_users].include?(target_user)
-      return :ONLY_TARGET_USER_SENDED_REQUEST if preprocessed[:incoming_fr_users].include?(target_user)
+      return :BOTH_USERS_SENDED_REQUEST if preprocessed[:friends]&.include?(target_user)
+      return :ONLY_CURRENT_USER_SENDED_REQUEST if preprocessed[:outgoing_fr_users]&.include?(target_user)
+      return :ONLY_TARGET_USER_SENDED_REQUEST if preprocessed[:incoming_fr_users]&.include?(target_user)
       :NO_USER_SENDED_REQUEST
     else
       status(current_user, target_user)
