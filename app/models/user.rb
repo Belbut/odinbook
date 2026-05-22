@@ -52,20 +52,22 @@ class User < ApplicationRecord
     end
   end
 
+  def get_recommended_friends(amount)
+    recommended_friends_tally = self.tally_second_degree_friends
+    ids = recommended_friends_tally.sort_by { |k, v| -v }.map { |user, _| user.id }.first(amount)
+
+    User.where(id: ids)
+  end
+
   def tally_second_degree_friends
-    friends_relations = friends.map { |f| f.friends }
+    friends_relations = self.friends.map { |f| f.friends }
 
     result = friends_relations.flatten.tally
     result.delete(self)
     result
   end
 
-  def get_recommended_friends(amount)
-    recommended_friends_tally = self.tally_second_degree_friends
-    recommended_friends_tally.sort_by { |k, v| -v }.map { |a| a[0] }.first(amount)
-  end
-
-  def users_interactions_status(target_users, pending_incoming_fr_users, pending_outgoing_fr_users)
+  def users_interactions_status(target_users, pending_incoming_fr_users, pending_outgoing_fr_users, recommended_friends = nil)
     current_user_friends = self.friends.to_a
 
     result = target_users.compact.each_with_object({}) do |target_user, hash|
@@ -73,7 +75,8 @@ class User < ApplicationRecord
                                                           preprocessed: {
                                                             friends: current_user_friends,
                                                             outgoing_fr_users: pending_outgoing_fr_users,
-                                                            incoming_fr_users: pending_incoming_fr_users
+                                                            incoming_fr_users: pending_incoming_fr_users,
+                                                            recommended_friends: recommended_friends
                                                           })
     end
     result
