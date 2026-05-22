@@ -94,3 +94,5 @@ gem "ruby-vips", "~> 2.3"
 
 gem "prosopite", "~> 2.2", group: :development
 gem "pg_query", "~> 6.2", group: :development
+
+gem "cloudinary", "~> 2.4"

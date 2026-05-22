@@ -212,7 +212,6 @@ dop << feed_post(dog,
   sp("Dog", "brayden-prato-MJ9gSUqshcc-unsplash.jpg"))
 dop << feed_post(dog,
   "Fetch is not just a game. It is a philosophy. You throw it, I bring it back. Loyalty and joy, every single time.",
-  sp("Dog", "martin-krchnacek-R63jNMzxMi8-unsplash.jpg"),
   sp("Dog", "pauline-loroy-U3aF7hgUSrk-unsplash.jpg"))
 dop << feed_post(dog,
   "Waiting by the door again. Not because anyone is coming. Just because waiting is its own kind of hope.",
@@ -348,8 +347,7 @@ op << feed_post(octopus,
   "Opened a jar today — purely for fun. There is a particular satisfaction in solving puzzles the ocean did not design for fingers.",
   sp("Octopus", "maximilian-schaffler-ZttSM8Zs1sw-unsplash.jpg"))
 op << feed_post(octopus,
-  "Each arm has its own mind and together we are thinking eight different things at once. This is normal. This is Wednesday.",
-  sp("Octopus", "nick-brice-AvXgxng4yTc-unsplash.jpg"))
+  "Each arm has its own mind and together we are thinking eight different things at once. This is normal. This is Wednesday.")
 op << feed_post(octopus,
   "The reef is quieter than usual today. Something is moving through the water that has not been here before.")
 op << feed_post(octopus,
