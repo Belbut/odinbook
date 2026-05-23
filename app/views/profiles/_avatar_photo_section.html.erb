@@ -1,6 +1,6 @@
 <div class="avatar-container">
         <figure class="image">
-            <%= image_tag user.profile.avatar.representation(resize_to_fill: [200, 200]), class: "is-rounded" %>
+            <%= render_avatar_image(user, variant: :profile, optional_class: "is-rounded")%>
         </figure>
 
     <% if user == current_user %>

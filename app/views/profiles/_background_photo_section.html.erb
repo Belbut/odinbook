@@ -1,6 +1,6 @@
 <div class="background-container">
     <figure class="image ">
-        <%= image_tag user.profile.background.representation(resize_to_fill: [1250, 450]),class: "attachment", width: 1250, height: 450 %>
+        <%= render_image(user.profile.background, variant: :background)%>
     </figure>
 
     <% if user == current_user %>

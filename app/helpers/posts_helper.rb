@@ -13,7 +13,6 @@ module PostsHelper
   PREVIEW_SIZE = 5
 
   def render_first_attachments_preview(post)
-    attachmets_size = post.attachments.size
     attachments_preview = post.attachments.first(PREVIEW_SIZE).map.with_index do |attachment, i|
       variant = i==0 && post.attachments.size.in?([ 3, 5 ]) ? :rectangular : :medium
 
